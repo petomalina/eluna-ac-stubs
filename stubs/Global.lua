@@ -1,14 +1,14 @@
 ---@meta
 
+---@class Global
 ---Adds a taxi path to a specified map, returns the used pathId.
 ---@param waypoints table
 ---@param mountA number
 ---@param mountH number
 ---@param price number
 ---@param pathId number
----@param actualPathId number
 ---@return number
-function AddTaxiPath(waypoints, mountA, mountH, price, pathId, actualPathId) end
+function AddTaxiPath(waypoints, mountA, mountH, price, pathId) end
 
 ---Adds an Item to a vendor and updates the world database.
 ---@param entry number
@@ -24,9 +24,8 @@ function AuthDBExecute(sql) end
 
 ---Executes a SQL query on the login database and returns an ElunaQuery.
 ---@param sql string
----@param results ElunaQuery
 ---@return ElunaQuery
-function AuthDBQuery(sql, results) end
+function AuthDBQuery(sql) end
 
 ---Executes an asynchronous SQL query on the character database and passes an ElunaQuery to a callback function.
 ---@param sql string
@@ -39,9 +38,8 @@ function AuthDBQueryAsync(sql, callback) end
 ---@param duration number
 ---@param reason string
 ---@param whoBanned string
----@param result number
 ---@return number
-function Ban(banMode, nameOrIP, duration, reason, whoBanned, result) end
+function Ban(banMode, nameOrIP, duration, reason, whoBanned) end
 
 ---Executes a SQL query on the character database.
 ---@param sql string
@@ -49,9 +47,8 @@ function CharDBExecute(sql) end
 
 ---Executes a SQL query on the character database and returns an ElunaQuery.
 ---@param sql string
----@param results ElunaQuery
 ---@return ElunaQuery
-function CharDBQuery(sql, results) end
+function CharDBQuery(sql) end
 
 ---Executes an asynchronous SQL query on the character database and passes an ElunaQuery to a callback function.
 ---@param sql string
@@ -138,206 +135,173 @@ function ClearUniqueCreatureEvents(guid, instance_id, event_type) end
 ---@param n number
 ---@param n_ll number
 ---@param n_str string
----@param value number
 ---@return number
-function CreateLongLong(n, n_ll, n_str, value) end
+function CreateLongLong(n, n_ll, n_str) end
 
 ---Registers a global timed event.
 ---@param func function
 ---@param delay number
 ---@param delaytable table
 ---@param repeats number
----@param eventId number
 ---@return number
-function CreateLuaEvent(func, delay, delaytable, repeats, eventId) end
+function CreateLuaEvent(func, delay, delaytable, repeats) end
 
 ---Creates a WorldPacket.
 ---@param opcode Opcodes
 ---@param size number
----@param packet WorldPacket
 ---@return WorldPacket
-function CreatePacket(opcode, size, packet) end
+function CreatePacket(opcode, size) end
 
 ---Returns an object representing an unsigned long long (64-bit) value.
 ---@param n number
 ---@param n_ull number
 ---@param n_str string
----@param value number
 ---@return number
-function CreateULongLong(n, n_ull, n_str, value) end
+function CreateULongLong(n, n_ull, n_str) end
 
 ---Returns the currently active game events.
----@param activeEvents table
 ---@return table
-function GetActiveGameEvents(activeEvents) end
+function GetActiveGameEvents() end
 
 ---Returns the area or zone's name.
 ---@param areaOrZoneId number
 ---@param locale LocaleConstant
----@param areaOrZoneName string
 ---@return string
-function GetAreaName(areaOrZoneId, locale, areaOrZoneName) end
+function GetAreaName(areaOrZoneId, locale) end
 
 ---Returns emulator's supported expansion.
----@param expansion number
 ---@return number
-function GetCoreExpansion(expansion) end
+function GetCoreExpansion() end
 
 ---Returns emulator's name.
----@param coreName string
 ---@return string
-function GetCoreName(coreName) end
+function GetCoreName() end
 
 ---Returns emulator version
----@param version string
 ---@return string
-function GetCoreVersion(version) end
+function GetCoreVersion() end
 
 ---Returns the server's current time.
----@param currTime number
 ---@return number
-function GetCurrTime(currTime) end
+function GetCurrTime() end
 
 ---Returns the entry ID from a GUID.
 ---@param guid number
----@param entry number
 ---@return number
-function GetGUIDEntry(guid, entry) end
+function GetGUIDEntry(guid) end
 
 ---Returns the low GUID from a GUID.
 ---@param guid number
----@param lowguid number
 ---@return number
-function GetGUIDLow(guid, lowguid) end
+function GetGUIDLow(guid) end
 
 ---Returns the type ID from a GUID.
 ---@param guid number
----@param typeId number
 ---@return number
-function GetGUIDType(guid, typeId) end
+function GetGUIDType(guid) end
 
 ---Returns game time in seconds
----@param time number
 ---@return number
-function GetGameTime(time) end
+function GetGameTime() end
 
 ---Returns Guild by the leader's GUID
 ---@param guid number
----@param guild Guild
 ---@return Guild
-function GetGuildByLeaderGUID(guid, guild) end
+function GetGuildByLeaderGUID(guid) end
 
 ---Returns a Guild by name.
 ---@param name string
----@param guild Guild
 ---@return Guild
-function GetGuildByName(name, guild) end
+function GetGuildByName(name) end
 
 ---Builds an Item's GUID.
 ---@param lowguid number
----@param guid number
 ---@return number
-function GetItemGUID(lowguid, guid) end
+function GetItemGUID(lowguid) end
 
 ---Returns an chat link for an Item.
 ---@param entry number
 ---@param locale LocaleConstant
----@param itemLink string
 ---@return string
-function GetItemLink(entry, locale, itemLink) end
+function GetItemLink(entry, locale) end
 
 function GetItemTemplate() end
 
 ---Returns Lua engine's name.
----@param engineName string
 ---@return string
-function GetLuaEngine(engineName) end
+function GetLuaEngine() end
 
 ---Returns a Map by ID.
 ---@param mapId number
 ---@param instanceId number
----@param map Map
 ---@return Map
-function GetMapById(mapId, instanceId, map) end
+function GetMapById(mapId, instanceId) end
 
 ---Builds a GameObject's GUID.
 ---@param lowguid number
 ---@param entry number
----@param guid number
 ---@return number
-function GetObjectGUID(lowguid, entry, guid) end
+function GetObjectGUID(lowguid, entry) end
 
 ---Gets the faction which is the current owner of Halaa in Nagrand 0 = Alliance 1 = Horde
 ---@param the number
----@param the number
 ---@return number
-function GetOwnerHalaa(the, the) end
+function GetOwnerHalaa(the) end
 
 ---Finds and Returns Player by guid if found
 ---@param guid number
----@param player Player
 ---@return Player
-function GetPlayerByGUID(guid, player) end
+function GetPlayerByGUID(guid) end
 
 ---Finds and Returns Player by name if found
 ---@param name string
----@param player Player
 ---@return Player
-function GetPlayerByName(name, player) end
+function GetPlayerByName(name) end
 
 ---Returns the amount of Players in the world.
----@param count number
 ---@return number
-function GetPlayerCount(count) end
+function GetPlayerCount() end
 
 ---Builds a Player's GUID
 ---@param lowguid number
----@param guid number
 ---@return number
-function GetPlayerGUID(lowguid, guid) end
+function GetPlayerGUID(lowguid) end
 
 ---Returns a table with all the current Players in the world
 ---@param team TeamId
 ---@param onlyGM boolean
----@param worldPlayers table
 ---@return table
-function GetPlayersInWorld(team, onlyGM, worldPlayers) end
+function GetPlayersInWorld(team, onlyGM) end
 
 ---Returns Quest template
 ---@param questId number
----@param quest Quest
 ---@return Quest
-function GetQuest(questId, quest) end
+function GetQuest(questId) end
 
 function GetRealmID() end
 
 ---Returns the instance ID of the Lua state. Returns 0 for continent maps and the world state.
----@param instanceId number
 ---@return number
-function GetStateInstanceId(instanceId) end
+function GetStateInstanceId() end
 
 ---Returns the Map pointer of the Lua state. Returns null for the "World" state.
----@param map Map
 ---@return Map
-function GetStateMap(map) end
+function GetStateMap() end
 
 ---Returns the map ID of the Lua state. Returns -1 for the "World" state.
----@param mapId number
 ---@return number
-function GetStateMapId(mapId) end
+function GetStateMapId() end
 
 ---Returns the difference between an old timestamp and the current time.
 ---@param oldTime number
----@param timeDiff number
 ---@return number
-function GetTimeDiff(oldTime, timeDiff) end
+function GetTimeDiff(oldTime) end
 
 ---Builds a Creature's GUID.
 ---@param lowguid number
 ---@param entry number
----@param guid number
 ---@return number
-function GetUnitGUID(lowguid, entry, guid) end
+function GetUnitGUID(lowguid, entry) end
 
 ---Performs a non-blocking HTTP request.
 ---@param httpMethod string
@@ -351,41 +315,35 @@ function HttpRequest(httpMethod, url, headers, body, contentType, func) end
 ---Returns true if the bag and slot is a valid bag position, otherwise false.
 ---@param bag number
 ---@param slot number
----@param isBagPosition boolean
 ---@return boolean
-function IsBagPos(bag, slot, isBagPosition) end
+function IsBagPos(bag, slot) end
 
 ---Returns true if the bag and slot is a valid bank position, otherwise false.
 ---@param bag number
 ---@param slot number
----@param isBankPosition boolean
 ---@return boolean
-function IsBankPos(bag, slot, isBankPosition) end
+function IsBankPos(bag, slot) end
 
 ---Returns true if Eluna is in compatibility mode, false if in multistate.
----@param isCompatibilityMode boolean
 ---@return boolean
-function IsCompatibilityMode(isCompatibilityMode) end
+function IsCompatibilityMode() end
 
 ---Returns true if the bag and slot is a valid equipment position, otherwise false.
 ---@param bag number
 ---@param slot number
----@param isEquipmentPosition boolean
 ---@return boolean
-function IsEquipmentPos(bag, slot, isEquipmentPosition) end
+function IsEquipmentPos(bag, slot) end
 
 ---Returns true if the event is currently active, otherwise false.
 ---@param eventId number
----@param isActive boolean
 ---@return boolean
-function IsGameEventActive(eventId, isActive) end
+function IsGameEventActive(eventId) end
 
 ---Returns true if the bag and slot is a valid inventory position, otherwise false.
 ---@param bag number
 ---@param slot number
----@param isInventoryPos boolean
 ---@return boolean
-function IsInventoryPos(bag, slot, isInventoryPos) end
+function IsInventoryPos(bag, slot) end
 
 ---Kicks a Player from the server.
 ---@param player Player
@@ -403,9 +361,8 @@ function Kick(player) end
 ---@param save boolean
 ---@param durorresptime number
 ---@param phase number
----@param worldObject WorldObject
 ---@return WorldObject
-function PerformIngameSpawn(spawnType, entry, mapId, instanceId, x, y, z, o, save, durorresptime, phase, worldObject) end
+function PerformIngameSpawn(spawnType, entry, mapId, instanceId, x, y, z, o, save, durorresptime, phase) end
 
 ---Prints given parameters to the debug log.
 function PrintDebug() end
@@ -420,61 +377,54 @@ function PrintInfo() end
 ---@param event number
 ---@param func function
 ---@param shots number
----@param cancel function
 ---@return function
-function RegisterBGEvent(event, func, shots, cancel) end
+function RegisterBGEvent(event, func, shots) end
 
 ---Registers a Creature event handler.
 ---@param entry number
 ---@param event number
 ---@param func function
 ---@param shots number
----@param cancel function
 ---@return function
-function RegisterCreatureEvent(entry, event, func, shots, cancel) end
+function RegisterCreatureEvent(entry, event, func, shots) end
 
 ---Registers a Creature gossip event handler.
 ---@param entry number
 ---@param event number
 ---@param func function
 ---@param shots number
----@param cancel function
 ---@return function
-function RegisterCreatureGossipEvent(entry, event, func, shots, cancel) end
+function RegisterCreatureGossipEvent(entry, event, func, shots) end
 
 ---Registers a GameObject event handler.
 ---@param entry number
 ---@param event number
 ---@param func function
 ---@param shots number
----@param cancel function
 ---@return function
-function RegisterGameObjectEvent(entry, event, func, shots, cancel) end
+function RegisterGameObjectEvent(entry, event, func, shots) end
 
 ---Registers a GameObject gossip event handler.
 ---@param entry number
 ---@param event number
 ---@param func function
 ---@param shots number
----@param cancel function
 ---@return function
-function RegisterGameObjectGossipEvent(entry, event, func, shots, cancel) end
+function RegisterGameObjectGossipEvent(entry, event, func, shots) end
 
 ---Registers a Group event handler.
 ---@param event number
 ---@param func function
 ---@param shots number
----@param cancel function
 ---@return function
-function RegisterGroupEvent(event, func, shots, cancel) end
+function RegisterGroupEvent(event, func, shots) end
 
 ---Registers a Guild event handler.
 ---@param event number
 ---@param func function
 ---@param shots number
----@param cancel function
 ---@return function
-function RegisterGuildEvent(event, func, shots, cancel) end
+function RegisterGuildEvent(event, func, shots) end
 
 ---Registers a Map event handler for one instance of a Map.
 ---@param instance_id number
@@ -488,18 +438,16 @@ function RegisterInstanceEvent(instance_id, event, func, shots) end
 ---@param event number
 ---@param func function
 ---@param shots number
----@param cancel function
 ---@return function
-function RegisterItemEvent(entry, event, func, shots, cancel) end
+function RegisterItemEvent(entry, event, func, shots) end
 
 ---Registers an Item gossip event handler.
 ---@param entry number
 ---@param event number
 ---@param func function
 ---@param shots number
----@param cancel function
 ---@return function
-function RegisterItemGossipEvent(entry, event, func, shots, cancel) end
+function RegisterItemGossipEvent(entry, event, func, shots) end
 
 ---Registers a Map event handler for all instance of a Map.
 ---@param map_id number
@@ -513,34 +461,30 @@ function RegisterMapEvent(map_id, event, func, shots) end
 ---@param event number
 ---@param func function
 ---@param shots number
----@param cancel function
 ---@return function
-function RegisterPacketEvent(entry, event, func, shots, cancel) end
+function RegisterPacketEvent(entry, event, func, shots) end
 
 ---Registers a Player event handler.
 ---@param event number
 ---@param func function
 ---@param shots number
----@param cancel function
 ---@return function
-function RegisterPlayerEvent(event, func, shots, cancel) end
+function RegisterPlayerEvent(event, func, shots) end
 
 ---Registers a Player gossip event handler.
 ---@param menu_id number
 ---@param event number
 ---@param func function
 ---@param shots number
----@param cancel function
 ---@return function
-function RegisterPlayerGossipEvent(menu_id, event, func, shots, cancel) end
+function RegisterPlayerGossipEvent(menu_id, event, func, shots) end
 
 ---Registers a server event handler.
 ---@param event number
 ---@param func function
 ---@param shots number
----@param cancel function
 ---@return function
-function RegisterServerEvent(event, func, shots, cancel) end
+function RegisterServerEvent(event, func, shots) end
 
 ---Registers a Creature event handler for a single Creature.
 ---@param guid number
@@ -548,9 +492,8 @@ function RegisterServerEvent(event, func, shots, cancel) end
 ---@param event number
 ---@param func function
 ---@param shots number
----@param cancel function
 ---@return function
-function RegisterUniqueCreatureEvent(guid, instance_id, event, func, shots, cancel) end
+function RegisterUniqueCreatureEvent(guid, instance_id, event, func, shots) end
 
 ---Reloads the Lua engine.
 function ReloadEluna() end
@@ -582,9 +525,8 @@ function SaveAllPlayers() end
 ---@param cod number
 ---@param entry number
 ---@param amount number
----@param itemGUIDlow number
 ---@return number
-function SendMail(subject, text, receiverGUIDLow, senderGUIDLow, stationary, delay, money, cod, entry, amount, itemGUIDlow) end
+function SendMail(subject, text, receiverGUIDLow, senderGUIDLow, stationary, delay, money, cod, entry, amount) end
 
 ---Sends a message to all Players online.
 ---@param message string
@@ -619,9 +561,8 @@ function WorldDBExecute(sql) end
 
 ---Executes a SQL query on the world database and returns an ElunaQuery.
 ---@param sql string
----@param results ElunaQuery
 ---@return ElunaQuery
-function WorldDBQuery(sql, results) end
+function WorldDBQuery(sql) end
 
 ---Executes an asynchronous SQL query on the world database and passes an ElunaQuery to a callback function.
 ---@param sql string
@@ -631,41 +572,35 @@ function WorldDBQueryAsync(sql, callback) end
 ---Performs a bitwise AND (a & b).
 ---@param a number
 ---@param b number
----@param result number
 ---@return number
-function bit_and(a, b, result) end
+function bit_and(a, b) end
 
 ---Performs a bitwise left-shift (a << b).
 ---@param a number
 ---@param b number
----@param result number
 ---@return number
-function bit_lshift(a, b, result) end
+function bit_lshift(a, b) end
 
 ---Performs a bitwise NOT (~a).
 ---@param a number
----@param result number
 ---@return number
-function bit_not(a, result) end
+function bit_not(a) end
 
 ---Performs a bitwise OR (a | b).
 ---@param a number
 ---@param b number
----@param result number
 ---@return number
-function bit_or(a, b, result) end
+function bit_or(a, b) end
 
 ---Performs a bitwise right-shift (a >> b).
 ---@param a number
 ---@param b number
----@param result number
 ---@return number
-function bit_rshift(a, b, result) end
+function bit_rshift(a, b) end
 
 ---Performs a bitwise XOR (a ^ b).
 ---@param a number
 ---@param b number
----@param result number
 ---@return number
-function bit_xor(a, b, result) end
+function bit_xor(a, b) end
 

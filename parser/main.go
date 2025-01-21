@@ -72,7 +72,7 @@ func main() {
 	// Process each class
 	for _, class := range classes {
 		// debug
-		// if class != "Vehicle" {
+		// if class != "Global" {
 		// 	continue
 		// }
 
@@ -317,91 +317,68 @@ func generateLuaDefs(page *WikiPage) string {
 	var sb strings.Builder
 
 	sb.WriteString("---@meta\n\n")
-
-	if page.Title == "Global" {
-		for _, method := range page.Methods {
-			if method.Description != "" {
-				desc := strings.ReplaceAll(method.Description, "\n", " ")
-				sb.WriteString(fmt.Sprintf("---%s\n", desc))
-			}
-
-			// Write parameters with keyword handling
-			for _, param := range method.Parameters {
-				paramName := getSafeName(param.Name)
-				sb.WriteString(fmt.Sprintf("---@param %s %s\n", paramName, param.Type))
-			}
-
-			if method.ReturnType != "" {
-				sb.WriteString(fmt.Sprintf("---@return %s\n", method.ReturnType))
-			}
-
-			// Write function signature with renamed parameters
-			sb.WriteString(fmt.Sprintf("function %s(", method.Name))
-			params := make([]string, len(method.Parameters))
-			for i, param := range method.Parameters {
-				params[i] = getSafeName(param.Name)
-			}
-			sb.WriteString(strings.Join(params, ", "))
-			sb.WriteString(") end\n\n")
-		}
+	// Write class definition with inheritance
+	if page.BaseType != "" {
+		sb.WriteString(fmt.Sprintf("---@class %s : %s\n", page.Title, page.BaseType))
 	} else {
-		// Write class definition with inheritance
-		if page.BaseType != "" {
-			sb.WriteString(fmt.Sprintf("---@class %s : %s\n", page.Title, page.BaseType))
+		sb.WriteString(fmt.Sprintf("---@class %s\n", page.Title))
+	}
+
+	// Write fields
+	for _, field := range page.Fields {
+		if field.Description != "" {
+			sb.WriteString(fmt.Sprintf("---@field public %s %s @ %s\n",
+				field.Name, field.Type, field.Description))
 		} else {
-			sb.WriteString(fmt.Sprintf("---@class %s\n", page.Title))
+			sb.WriteString(fmt.Sprintf("---@field public %s %s\n",
+				field.Name, field.Type))
 		}
+	}
 
-		// Write fields
-		for _, field := range page.Fields {
-			if field.Description != "" {
-				sb.WriteString(fmt.Sprintf("---@field public %s %s @ %s\n",
-					field.Name, field.Type, field.Description))
-			} else {
-				sb.WriteString(fmt.Sprintf("---@field public %s %s\n",
-					field.Name, field.Type))
-			}
-		}
-
+	if page.Title != "Global" {
 		sb.WriteString(fmt.Sprintf("%s = {}\n\n", page.Title))
+	}
 
-		// Write methods with consistent formatting
-		for _, method := range page.Methods {
-			if method.Description != "" {
-				// Format description as a single line
-				desc := strings.ReplaceAll(method.Description, "\n", " ")
-				sb.WriteString(fmt.Sprintf("---%s\n", desc))
-			}
-
-			// return types are doubling in the method.Parameters because of the html structure,
-			// so we need to remove the last parameter if it has the same type as return type
-			if method.ReturnType != "" {
-				lastParam := method.Parameters[len(method.Parameters)-1]
-				if lastParam.Type == method.ReturnType {
-					method.Parameters = method.Parameters[:len(method.Parameters)-1]
-				}
-			}
-
-			// Parameters with keyword handling
-			for _, param := range method.Parameters {
-				paramName := getSafeName(param.Name)
-				sb.WriteString(fmt.Sprintf("---@param %s %s\n", paramName, param.Type))
-			}
-
-			// Return type
-			if method.ReturnType != "" {
-				sb.WriteString(fmt.Sprintf("---@return %s\n", method.ReturnType))
-			}
-
-			// Method signature with renamed parameters
-			sb.WriteString(fmt.Sprintf("function %s:%s(", page.Title, method.Name))
-			params := make([]string, len(method.Parameters))
-			for i, param := range method.Parameters {
-				params[i] = getSafeName(param.Name)
-			}
-			sb.WriteString(strings.Join(params, ", "))
-			sb.WriteString(") end\n\n")
+	// Write methods with consistent formatting
+	for _, method := range page.Methods {
+		if method.Description != "" {
+			// Format description as a single line
+			desc := strings.ReplaceAll(method.Description, "\n", " ")
+			sb.WriteString(fmt.Sprintf("---%s\n", desc))
 		}
+
+		// return types are doubling in the method.Parameters because of the html structure,
+		// so we need to remove the last parameter if it has the same type as return type
+		if method.ReturnType != "" {
+			lastParam := method.Parameters[len(method.Parameters)-1]
+			if lastParam.Type == method.ReturnType {
+				method.Parameters = method.Parameters[:len(method.Parameters)-1]
+			}
+		}
+
+		// Parameters with keyword handling
+		for _, param := range method.Parameters {
+			paramName := getSafeName(param.Name)
+			sb.WriteString(fmt.Sprintf("---@param %s %s\n", paramName, param.Type))
+		}
+
+		// Return type
+		if method.ReturnType != "" {
+			sb.WriteString(fmt.Sprintf("---@return %s\n", method.ReturnType))
+		}
+
+		// Method signature with renamed parameters
+		if page.Title != "Global" {
+			sb.WriteString(fmt.Sprintf("function %s:%s(", page.Title, method.Name))
+		} else {
+			sb.WriteString(fmt.Sprintf("function %s(", method.Name))
+		}
+		params := make([]string, len(method.Parameters))
+		for i, param := range method.Parameters {
+			params[i] = getSafeName(param.Name)
+		}
+		sb.WriteString(strings.Join(params, ", "))
+		sb.WriteString(") end\n\n")
 	}
 
 	return sb.String()
