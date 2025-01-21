@@ -176,23 +176,27 @@ func parseWikiPage(baseURL, className string) (*WikiPage, error) {
 		}
 	})
 
-	c.OnHTML("#synopsis + p code", func(e *colly.HTMLElement) {
+	// Parse return type from returns section
+	c.OnHTML("#returns ~ dl dt code strong a", func(e *colly.HTMLElement) {
 		urlParts := strings.Split(e.Request.URL.Path, "/")
 		if len(urlParts) < 2 {
 			return
 		}
 		methodName := strings.TrimSuffix(urlParts[len(urlParts)-1], ".html")
-		slog.Debug("parsing method synopsis", "class", className, "method", methodName)
 
 		method, exists := methods[methodName]
 		if !exists {
 			return
 		}
 
-		signature := e.Text
-		parts := strings.Split(signature, "=")
-		if len(parts) == 2 {
-			returnType := strings.TrimSpace(parts[0])
+		// Get return type from the link or strong tag
+		returnType := e.Text
+		if returnType == "" {
+			// If no link (for basic types like 'number'), get from parent strong tag
+			returnType = e.DOM.Parent().Text()
+		}
+
+		if returnType != "" {
 			method.ReturnType = returnType
 			slog.Debug("found return type",
 				"class", className,

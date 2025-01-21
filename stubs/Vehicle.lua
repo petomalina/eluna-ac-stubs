@@ -1,21 +1,10 @@
 ---@class Vehicle
 local Vehicle = {}
 
----Returns the Vehicle's owner
----@param owner Unit
----@return owner
-function Vehicle:GetOwner(owner) end
-
----Returns the Vehicle's passenger in the specified seat
----@param seat number
----@param passenger Unit
----@return passenger
-function Vehicle:GetPassenger(seat, passenger) end
-
 ---Returns true if the Unit passenger is on board
 ---@param passenger Unit
 ---@param isOnBoard boolean
----@return isOnBoard
+---@return boolean
 function Vehicle:IsOnBoard(passenger, isOnBoard) end
 
 ---Removes Unit passenger from the Vehicle
@@ -29,7 +18,18 @@ function Vehicle:AddPassenger(passenger, seat) end
 
 ---Returns the Vehicle's entry
 ---@param entry number
----@return entry
+---@return number
 function Vehicle:GetEntry(entry) end
+
+---Returns the Vehicle's owner
+---@param owner Unit
+---@return Unit
+function Vehicle:GetOwner(owner) end
+
+---Returns the Vehicle's passenger in the specified seat
+---@param seat number
+---@param passenger Unit
+---@return Unit
+function Vehicle:GetPassenger(seat, passenger) end
 
 return Vehicle
