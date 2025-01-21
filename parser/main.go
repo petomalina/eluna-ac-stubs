@@ -60,6 +60,14 @@ func getSafeName(name string) string {
 	return name
 }
 
+// correctParameterType corrects the parameter type to the correct Lua type
+func correctParameterType(paramType string) string {
+	if paramType == "bool" {
+		return "boolean"
+	}
+	return paramType
+}
+
 func main() {
 	baseURL := "https://www.azerothcore.org/eluna/"
 
@@ -370,12 +378,12 @@ func generateLuaDefs(page *WikiPage) string {
 			if param.DefaultValue != "" {
 				paramName += "?"
 			}
-			sb.WriteString(fmt.Sprintf("---@param %s %s\n", paramName, param.Type))
+			sb.WriteString(fmt.Sprintf("---@param %s %s\n", paramName, correctParameterType(param.Type)))
 		}
 
 		// Return type
 		if method.ReturnType != "" {
-			sb.WriteString(fmt.Sprintf("---@return %s\n", method.ReturnType))
+			sb.WriteString(fmt.Sprintf("---@return %s\n", correctParameterType(method.ReturnType)))
 		}
 
 		// Method signature with renamed parameters

@@ -29,23 +29,23 @@ function ChatHandler:GetSelectedUnit() end
 
 ---Checks if the current security level is lower than the specified Player's account
 ---@param player Player
----@param strong? bool
----@return bool
+---@param strong? boolean
+---@return boolean
 function ChatHandler:HasLowerSecurity(player, strong) end
 
 ---Checks if the current security level is lower than the specified account's level
 ---@param account uint32
----@param strong? bool
----@return bool
+---@param strong? boolean
+---@return boolean
 function ChatHandler:HasLowerSecurityAccount(account, strong) end
 
 ---Returns true if other previously called ChatHandler methods sent an error
----@return bool
+---@return boolean
 function ChatHandler:HasSentErrorMessage() end
 
 ---Checks if the securityLevel is available
 ---@param securityLevel uint32
----@return bool
+---@return boolean
 function ChatHandler:IsAvailable(securityLevel) end
 
 ---Returns true if the ChatHandler comes from the console, false if it comes from a player
