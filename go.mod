@@ -1,4 +1,4 @@
-module github.com/petomalina/eluna-ac-stubs/parser
+module github.com/petomalina/eluna-ac-stubs
 
 go 1.23.2
 
