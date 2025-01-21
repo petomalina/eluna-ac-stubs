@@ -1,5 +1,7 @@
+---@meta
+
 ---@class Achievement
-local Achievement = {}
+Achievement = {}
 
 ---Returns the Achievement's ID.
 ---@param id number
@@ -12,4 +14,3 @@ function Achievement:GetId(id) end
 ---@return string
 function Achievement:GetName(locale, name) end
 
-return Achievement

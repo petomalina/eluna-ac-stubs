@@ -1,8 +1,14 @@
+---@meta
+
 ---@class Spell
-local Spell = {}
+Spell = {}
 
 ---Cancels the Spell.
 function Spell:Cancel() end
+
+---Casts the Spell.
+---@param skipCheck boolean
+function Spell:Cast(skipCheck) end
 
 ---Finishes the Spell.
 function Spell:Finish() end
@@ -16,24 +22,6 @@ function Spell:GetCastTime(castTime) end
 ---@param caster Unit
 ---@return Unit
 function Spell:GetCaster(caster) end
-
----Returns the target Object of the Spell.
----@param target Object
----@return Object
-function Spell:GetTarget(target) end
-
----Returns true if the Spell is automatically repeating, false otherwise.
----@param isAutoRepeating boolean
----@return boolean
-function Spell:IsAutoRepeat(isAutoRepeating) end
-
----Sets the Spell to automatically repeat.
----@param repeat boolean
-function Spell:SetAutoRepeat(repeat) end
-
----Casts the Spell.
----@param skipCheck boolean
-function Spell:Cast(skipCheck) end
 
 ---Returns the spell duration of the Spell.
 ---@param duration number
@@ -55,6 +43,11 @@ function Spell:GetPowerCost(powerCost) end
 ---@return table
 function Spell:GetReagentCost(reagents) end
 
+---Returns the target Object of the Spell.
+---@param target Object
+---@return Object
+function Spell:GetTarget(target) end
+
 ---Returns the target destination coordinates of the Spell.
 ---@param x number
 ---@param y number
@@ -62,4 +55,12 @@ function Spell:GetReagentCost(reagents) end
 ---@return number
 function Spell:GetTargetDest(x, y, z) end
 
-return Spell
+---Returns true if the Spell is automatically repeating, false otherwise.
+---@param isAutoRepeating boolean
+---@return boolean
+function Spell:IsAutoRepeat(isAutoRepeating) end
+
+---Sets the Spell to automatically repeat.
+---@param rep boolean
+function Spell:SetAutoRepeat(rep) end
+

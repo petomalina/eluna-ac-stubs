@@ -1,15 +1,7 @@
+---@meta
+
 ---@class Vehicle
-local Vehicle = {}
-
----Returns true if the Unit passenger is on board
----@param passenger Unit
----@param isOnBoard boolean
----@return boolean
-function Vehicle:IsOnBoard(passenger, isOnBoard) end
-
----Removes Unit passenger from the Vehicle
----@param passenger Unit
-function Vehicle:RemovePassenger(passenger) end
+Vehicle = {}
 
 ---Adds Unit passenger to a specified seat in the Vehicle
 ---@param passenger Unit
@@ -32,4 +24,13 @@ function Vehicle:GetOwner(owner) end
 ---@return Unit
 function Vehicle:GetPassenger(seat, passenger) end
 
-return Vehicle
+---Returns true if the Unit passenger is on board
+---@param passenger Unit
+---@param isOnBoard boolean
+---@return boolean
+function Vehicle:IsOnBoard(passenger, isOnBoard) end
+
+---Removes Unit passenger from the Vehicle
+---@param passenger Unit
+function Vehicle:RemovePassenger(passenger) end
+

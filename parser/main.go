@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"log/slog"
 	"os"
+	"sort"
 	"strings"
 
 	"github.com/gocolly/colly/v2"
@@ -37,6 +38,25 @@ type Field struct {
 	Name        string
 	Type        string
 	Description string
+}
+
+// Map of Lua keywords to their safe alternatives
+var luaKeywordReplacements = map[string]string{
+	"function": "func",
+	"repeat":   "rep",
+	"end":      "ending",
+	"local":    "loc",
+	"return":   "ret",
+	"break":    "brk",
+	"in":       "input",
+}
+
+// getSafeName returns a safe parameter name, replacing Lua keywords
+func getSafeName(name string) string {
+	if replacement, isKeyword := luaKeywordReplacements[name]; isKeyword {
+		return replacement
+	}
+	return name
 }
 
 func main() {
@@ -263,9 +283,8 @@ func parseWikiPage(baseURL, className string) (*WikiPage, error) {
 		return nil, fmt.Errorf("failed to fetch class page: %w", err)
 	}
 
-	for _, method := range methods {
-		page.Methods = append(page.Methods, *method)
-	}
+	// Convert methods map to sorted slice
+	page.Methods = getSortedMethods(methods)
 
 	slog.Info("finished parsing class",
 		"class", className,
@@ -274,34 +293,53 @@ func parseWikiPage(baseURL, className string) (*WikiPage, error) {
 	return page, nil
 }
 
+// getSortedMethods converts a map of methods to a sorted slice
+func getSortedMethods(methods map[string]*Method) []Method {
+	// Get all method names
+	names := make([]string, 0, len(methods))
+	for name := range methods {
+		names = append(names, name)
+	}
+
+	// Sort method names
+	sort.Strings(names)
+
+	// Create sorted slice of methods
+	sorted := make([]Method, len(names))
+	for i, name := range names {
+		sorted[i] = *methods[name]
+	}
+
+	return sorted
+}
+
 func generateLuaDefs(page *WikiPage) string {
 	var sb strings.Builder
 
-	if page.Title == "Global" {
-		// Handle global methods differently
-		sb.WriteString("--- @meta\n\n")
+	sb.WriteString("---@meta\n\n")
 
-		// Write global methods
+	if page.Title == "Global" {
 		for _, method := range page.Methods {
 			if method.Description != "" {
-				sb.WriteString(fmt.Sprintf("---%s\n", method.Description))
+				desc := strings.ReplaceAll(method.Description, "\n", " ")
+				sb.WriteString(fmt.Sprintf("---%s\n", desc))
 			}
 
-			// Write parameters
+			// Write parameters with keyword handling
 			for _, param := range method.Parameters {
-				sb.WriteString(fmt.Sprintf("---@param %s %s\n", param.Name, param.Type))
+				paramName := getSafeName(param.Name)
+				sb.WriteString(fmt.Sprintf("---@param %s %s\n", paramName, param.Type))
 			}
 
-			// Write return type if available
 			if method.ReturnType != "" {
 				sb.WriteString(fmt.Sprintf("---@return %s\n", method.ReturnType))
 			}
 
-			// Write global function declaration
+			// Write function signature with renamed parameters
 			sb.WriteString(fmt.Sprintf("function %s(", method.Name))
 			params := make([]string, len(method.Parameters))
 			for i, param := range method.Parameters {
-				params[i] = param.Name
+				params[i] = getSafeName(param.Name)
 			}
 			sb.WriteString(strings.Join(params, ", "))
 			sb.WriteString(") end\n\n")
@@ -325,38 +363,36 @@ func generateLuaDefs(page *WikiPage) string {
 			}
 		}
 
-		sb.WriteString(fmt.Sprintf("local %s = {}\n\n", page.Title))
+		sb.WriteString(fmt.Sprintf("%s = {}\n\n", page.Title))
 
-		// Write methods
+		// Write methods with consistent formatting
 		for _, method := range page.Methods {
-			// Write method description if available
 			if method.Description != "" {
-				sb.WriteString(fmt.Sprintf("---%s\n", method.Description))
+				// Format description as a single line
+				desc := strings.ReplaceAll(method.Description, "\n", " ")
+				sb.WriteString(fmt.Sprintf("---%s\n", desc))
 			}
 
-			// Write parameters
+			// Parameters with keyword handling
 			for _, param := range method.Parameters {
-				sb.WriteString(fmt.Sprintf("---@param %s %s\n", param.Name, param.Type))
+				paramName := getSafeName(param.Name)
+				sb.WriteString(fmt.Sprintf("---@param %s %s\n", paramName, param.Type))
 			}
 
-			// Write return type if available
+			// Return type
 			if method.ReturnType != "" {
 				sb.WriteString(fmt.Sprintf("---@return %s\n", method.ReturnType))
 			}
 
-			// Write method signature
+			// Method signature with renamed parameters
 			sb.WriteString(fmt.Sprintf("function %s:%s(", page.Title, method.Name))
-
-			// Add parameters to signature
 			params := make([]string, len(method.Parameters))
 			for i, param := range method.Parameters {
-				params[i] = param.Name
+				params[i] = getSafeName(param.Name)
 			}
 			sb.WriteString(strings.Join(params, ", "))
 			sb.WriteString(") end\n\n")
 		}
-
-		sb.WriteString(fmt.Sprintf("return %s\n", page.Title))
 	}
 
 	return sb.String()

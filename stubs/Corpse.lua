@@ -1,5 +1,12 @@
+---@meta
+
 ---@class Corpse : Object, WorldObject
-local Corpse = {}
+Corpse = {}
+
+---Returns the time when the Player became a ghost and spawned this Corpse.
+---@param ghostTime number
+---@return number
+function Corpse:GetGhostTime(ghostTime) end
 
 ---Returns the GUID of the Player that left the Corpse behind.
 ---@param ownerGUID number
@@ -17,9 +24,3 @@ function Corpse:ResetGhostTime() end
 ---Saves the Corpse to the database.
 function Corpse:SaveToDB() end
 
----Returns the time when the Player became a ghost and spawned this Corpse.
----@param ghostTime number
----@return number
-function Corpse:GetGhostTime(ghostTime) end
-
-return Corpse

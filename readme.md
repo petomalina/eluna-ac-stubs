@@ -16,6 +16,9 @@ Add the following to your `settings.json` file, replacing the path to the `eluna
     "${workspaceFolder}",
     "${workspaceFolder}/eluna-ac-stubs/stubs"
 ],
+"Lua.diagnostics.globals": [
+  "Achievement", "Aura", "BattleGround", "ChatHandler", "Corpse", "Creature", "ElunaQuery", "GameObject", "Global", "Group", "Guild", "Item", "ItemTemplate", "Map", "Object", "Player", "Quest", "Roll", "Spell", "Unit", "Vehicle", "WorldObject", "WorldPacket"
+]
 ```
 
 ## Parsing
