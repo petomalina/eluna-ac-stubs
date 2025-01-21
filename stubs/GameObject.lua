@@ -9,55 +9,45 @@ function GameObject:AddLoot() end
 function GameObject:Despawn() end
 
 ---Returns the guid of the GameObject that is used as the ID in the database
----@param dbguid number
 ---@return number
-function GameObject:GetDBTableGUIDLow(dbguid) end
+function GameObject:GetDBTableGUIDLow() end
 
 ---Returns display ID of the GameObject
----@param displayId number
 ---@return number
-function GameObject:GetDisplayId(displayId) end
+function GameObject:GetDisplayId() end
 
 ---Returns the state of a GameObject Below are client side [GOState]s off of 3.3.5a
----@param goState GOState
 ---@return GOState
-function GameObject:GetGoState(goState) end
+function GameObject:GetGoState() end
 
 ---Returns the Player that can loot the GameObject
----@param player Player
 ---@return Player
-function GameObject:GetLootRecipient(player) end
+function GameObject:GetLootRecipient() end
 
 ---Returns the Group that can loot the GameObject
----@param group Group
 ---@return Group
-function GameObject:GetLootRecipientGroup(group) end
+function GameObject:GetLootRecipientGroup() end
 
 ---Returns the [LootState] of a GameObject Below are [LootState]s off of 3.3.5a
----@param lootState LootState
 ---@return LootState
-function GameObject:GetLootState(lootState) end
+function GameObject:GetLootState() end
 
 ---Returns 'true' if the GameObject can give the specified Quest
 ---@param questId number
----@param hasQuest boolean
 ---@return boolean
-function GameObject:HasQuest(questId, hasQuest) end
+function GameObject:HasQuest(questId) end
 
 ---Returns 'true' if the GameObject is active
----@param isActive boolean
 ---@return boolean
-function GameObject:IsActive(isActive) end
+function GameObject:IsActive() end
 
 ---Returns 'true' if the GameObject is spawned
----@param isSpawned boolean
 ---@return boolean
-function GameObject:IsSpawned(isSpawned) end
+function GameObject:IsSpawned() end
 
 ---Returns 'true' if the GameObject is a transport
----@param isTransport boolean
 ---@return boolean
-function GameObject:IsTransport(isTransport) end
+function GameObject:IsTransport() end
 
 ---Removes GameObject from the world
 ---@param deleteFromDB boolean

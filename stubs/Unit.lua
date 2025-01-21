@@ -6,9 +6,8 @@ Unit = {}
 ---Adds the Aura of the given spell entry on the given target from the Unit.
 ---@param spell number
 ---@param target Unit
----@param aura Aura
 ---@return Aura
-function Unit:AddAura(spell, target, aura) end
+function Unit:AddAura(spell, target) end
 
 ---Adds threat to the Unit from the victim.
 ---@param victim Unit
@@ -27,9 +26,8 @@ function Unit:AddUnitState(state) end
 function Unit:Attack(who, meleeAttack) end
 
 ---The Unit stops attacking its target
----@param isAttacking boolean
 ---@return boolean
-function Unit:AttackStop(isAttacking) end
+function Unit:AttackStop() end
 
 ---Casts the Spell at target Unit with custom basepoints or casters. See also Unit:CastSpell.
 ---@param target Unit
@@ -67,14 +65,12 @@ function Unit:ClearThreatList() end
 function Unit:ClearUnitState(state) end
 
 ---Returns calculated percentage from Health
----@param percentage number
 ---@return number
-function Unit:CountPctFromCurHealth(percentage) end
+function Unit:CountPctFromCurHealth() end
 
 ---Returns calculated percentage from Max Health
----@param percentage number
 ---@return number
-function Unit:CountPctFromMaxHealth(percentage) end
+function Unit:CountPctFromMaxHealth() end
 
 ---Unmorphs the Unit setting it's display ID back to the native display ID.
 function Unit:DeMorph() end
@@ -102,234 +98,191 @@ function Unit:Dismount() end
 function Unit:EmoteState(emoteId) end
 
 ---Returns the Unit's attackers.
----@param attackers table
 ---@return table
-function Unit:GetAttackers(attackers) end
+function Unit:GetAttackers() end
 
 ---Returns the Aura of the given spell entry on the Unit or nil.
 ---@param spellID number
----@param aura Aura
 ---@return Aura
-function Unit:GetAura(spellID, aura) end
+function Unit:GetAura(spellID) end
 
 ---Returns the Unit's base spell power
 ---@param spellSchool number
----@param spellPower number
 ---@return number
-function Unit:GetBaseSpellPower(spellSchool, spellPower) end
+function Unit:GetBaseSpellPower(spellSchool) end
 
 ---Returns the GUID of the Unit's charmed entity.
----@param charmedGUID number
 ---@return number
-function Unit:GetCharmGUID(charmedGUID) end
+function Unit:GetCharmGUID() end
 
 ---Returns the Unit's charmer's GUID.
----@param charmerGUID number
 ---@return number
-function Unit:GetCharmerGUID(charmerGUID) end
+function Unit:GetCharmerGUID() end
 
 ---Returns the Unit's class ID.
----@param class Classes
 ---@return Classes
-function Unit:GetClass(class) end
+function Unit:GetClass() end
 
 ---Returns the Unit's class' name in given or default locale or nil.
 ---@param locale LocaleConstant
----@param className string
 ---@return string
-function Unit:GetClassAsString(locale, className) end
+function Unit:GetClassAsString(locale) end
 
 ---Returns the class mask
----@param classmask number
 ---@return number
-function Unit:GetClassMask(classmask) end
+function Unit:GetClassMask() end
 
 ---Returns the GUID of the Unit's charmer or owner.
----@param controllerGUID number
 ---@return number
-function Unit:GetControllerGUID(controllerGUID) end
+function Unit:GetControllerGUID() end
 
 ---Returns the GUID of the Unit's charmer or owner or its own GUID.
----@param controllerGUID number
 ---@return number
-function Unit:GetControllerGUIDS(controllerGUID) end
+function Unit:GetControllerGUIDS() end
 
 ---Returns the Unit's creator's GUID.
----@param creatorGUID number
 ---@return number
-function Unit:GetCreatorGUID(creatorGUID) end
+function Unit:GetCreatorGUID() end
 
 ---Returns the Unit's creature type ID (enumerated in CreatureType.dbc).
----@param creatureType CreatureType
 ---@return CreatureType
-function Unit:GetCreatureType(creatureType) end
+function Unit:GetCreatureType() end
 
 ---Returns the Critter Guid
----@param critterGuid number
 ---@return number
-function Unit:GetCritterGUID(critterGuid) end
+function Unit:GetCritterGUID() end
 
 ---Returns the currently casted Spell of given type or nil.
 ---@param spellType CurrentSpellTypes
----@param castedSpell Spell
 ---@return Spell
-function Unit:GetCurrentSpell(spellType, castedSpell) end
+function Unit:GetCurrentSpell(spellType) end
 
 ---Returns the Unit's current display ID.
----@param displayId number
 ---@return number
-function Unit:GetDisplayId(displayId) end
+function Unit:GetDisplayId() end
 
 ---Returns the Unit's faction ID.
----@param faction number
 ---@return number
-function Unit:GetFaction(faction) end
+function Unit:GetFaction() end
 
 ---Returns a table containing friendly Unit's within given range of the Unit.
 ---@param range number
----@param friendyUnits table
 ---@return table
-function Unit:GetFriendlyUnitsInRange(range, friendyUnits) end
+function Unit:GetFriendlyUnitsInRange(range) end
 
 ---Returns the Unit's gender.
----@param gender number
 ---@return number
-function Unit:GetGender(gender) end
+function Unit:GetGender() end
 
 ---Returns the Unit's health amount.
----@param healthAmount number
 ---@return number
-function Unit:GetHealth(healthAmount) end
+function Unit:GetHealth() end
 
 ---Returns the Unit's health percent.
----@param healthPct number
 ---@return number
-function Unit:GetHealthPct(healthPct) end
+function Unit:GetHealthPct() end
 
 ---Returns the Unit's level.
----@param level number
 ---@return number
-function Unit:GetLevel(level) end
+function Unit:GetLevel() end
 
 ---Returns the Unit's max health.
----@param maxHealth number
 ---@return number
-function Unit:GetMaxHealth(maxHealth) end
+function Unit:GetMaxHealth() end
 
 ---Returns the Unit's max power amount for given power type.
 ---@param type number
----@param maxPowerAmount number
 ---@return number
-function Unit:GetMaxPower(type, maxPowerAmount) end
+function Unit:GetMaxPower(type) end
 
 ---Returns the Unit's mount's modelID.
----@param mountId number
 ---@return number
-function Unit:GetMountId(mountId) end
+function Unit:GetMountId() end
 
 ---Returns the current movement type for this Unit.
----@param movementType MovementGeneratorType
 ---@return MovementGeneratorType
-function Unit:GetMovementType(movementType) end
+function Unit:GetMovementType() end
 
 ---Returns the Unit's native/original display ID.
----@param displayId number
 ---@return number
-function Unit:GetNativeDisplayId(displayId) end
+function Unit:GetNativeDisplayId() end
 
 ---Returns the Unit's owner.
----@param owner Unit
 ---@return Unit
-function Unit:GetOwner(owner) end
+function Unit:GetOwner() end
 
 ---Returns the Unit's owner's GUID.
----@param ownerGUID number
 ---@return number
-function Unit:GetOwnerGUID(ownerGUID) end
+function Unit:GetOwnerGUID() end
 
 ---Returns the GUID of the Unit's pet.
----@param petGUID number
 ---@return number
-function Unit:GetPetGUID(petGUID) end
+function Unit:GetPetGUID() end
 
 ---Returns the Unit's power amount for given power type.
 ---@param type number
----@param powerAmount number
 ---@return number
-function Unit:GetPower(type, powerAmount) end
+function Unit:GetPower(type) end
 
 ---Returns the Unit's power percent for given power type.
 ---@param type number
----@param powerPct number
 ---@return number
-function Unit:GetPowerPct(type, powerPct) end
+function Unit:GetPowerPct(type) end
 
 ---Returns the Unit's current power type.
----@param powerType Powers
 ---@return Powers
-function Unit:GetPowerType(powerType) end
+function Unit:GetPowerType() end
 
 ---Returns the Unit's race ID.
----@param race Races
 ---@return Races
-function Unit:GetRace(race) end
+function Unit:GetRace() end
 
 ---Returns the Unit's race's name in given or default locale or nil.
 ---@param locale LocaleConstant
----@param raceName string
 ---@return string
-function Unit:GetRaceAsString(locale, raceName) end
+function Unit:GetRaceAsString(locale) end
 
 ---Returns the race mask
----@param racemask number
 ---@return number
-function Unit:GetRaceMask(racemask) end
+function Unit:GetRaceMask() end
 
 ---Returns the Unit's speed of given [UnitMoveType].
 ---@param type UnitMoveType
----@param speed number
 ---@return number
-function Unit:GetSpeed(type, speed) end
+function Unit:GetSpeed(type) end
 
 ---Returns the Unit's speed rate of given [UnitMoveType].
 ---@param type UnitMoveType
----@param speed number
 ---@return number
-function Unit:GetSpeedRate(type, speed) end
+function Unit:GetSpeedRate(type) end
 
 ---Returns the Unit's current stand state.
----@param standState number
 ---@return number
-function Unit:GetStandState(standState) end
+function Unit:GetStandState() end
 
 ---Returns Unit's specified stat
 ---@param statType number
----@param stat number
 ---@return number
-function Unit:GetStat(statType, stat) end
+function Unit:GetStat(statType) end
 
 ---Returns the Unit's threat list.
----@param threatList table
 ---@return table
-function Unit:GetThreatList(threatList) end
+function Unit:GetThreatList() end
 
 ---Returns a table containing unfriendly Unit's within given range of the Unit.
 ---@param range number
----@param unfriendyUnits table
 ---@return table
-function Unit:GetUnfriendlyUnitsInRange(range, unfriendyUnits) end
+function Unit:GetUnfriendlyUnitsInRange(range) end
 
 function Unit:GetVehicle() end
 
 ---Returns Unit's Vehicle methods
----@param vehicle Vehicle
 ---@return Vehicle
-function Unit:GetVehicleKit(vehicle) end
+function Unit:GetVehicleKit() end
 
 ---Returns the Unit's current victim target or nil.
----@param victim Unit
 ---@return Unit
-function Unit:GetVictim(victim) end
+function Unit:GetVictim() end
 
 ---The Unit modifies a specific stat
 ---@param stat number
@@ -340,27 +293,23 @@ function Unit:HandleStatModifier(stat, type, value, apply) end
 
 ---Returns true if the Unit has an aura from the given spell entry.
 ---@param spell number
----@param hasAura boolean
 ---@return boolean
-function Unit:HasAura(spell, hasAura) end
+function Unit:HasAura(spell) end
 
 ---Returns true if the Unit has the given unit state.
 ---@param state UnitState
----@param hasState boolean
 ---@return boolean
-function Unit:HasUnitState(state, hasState) end
+function Unit:HasUnitState(state) end
 
 ---Returns true if the Unit's health is above the given percentage.
 ---@param healthpct number
----@param isAbove boolean
 ---@return boolean
-function Unit:HealthAbovePct(healthpct, isAbove) end
+function Unit:HealthAbovePct(healthpct) end
 
 ---Returns true if the Unit's health is below the given percentage.
 ---@param healthpct number
----@param isBelow boolean
 ---@return boolean
-function Unit:HealthBelowPct(healthpct, isBelow) end
+function Unit:HealthBelowPct(healthpct) end
 
 ---Interrupts Unit's spell state, casting, etc.
 ---@param spellType number
@@ -368,171 +317,138 @@ function Unit:HealthBelowPct(healthpct, isBelow) end
 function Unit:InterruptSpell(spellType, delayed) end
 
 ---Returns true if the Unit is alive.
----@param isAlive boolean
 ---@return boolean
-function Unit:IsAlive(isAlive) end
+function Unit:IsAlive() end
 
 ---Returns true if the Unit is an armorer and can repair equipment.
----@param isArmorer boolean
 ---@return boolean
-function Unit:IsArmorer(isArmorer) end
+function Unit:IsArmorer() end
 
 ---Returns true if the Unit is attacking a player.
----@param isAttackingPlayer boolean
 ---@return boolean
-function Unit:IsAttackingPlayer(isAttackingPlayer) end
+function Unit:IsAttackingPlayer() end
 
 ---Returns true if the Unit an auctioneer.
----@param isAuctioneer boolean
 ---@return boolean
-function Unit:IsAuctioneer(isAuctioneer) end
+function Unit:IsAuctioneer() end
 
 ---Returns true if the Unit is a banker.
----@param isBanker boolean
 ---@return boolean
-function Unit:IsBanker(isBanker) end
+function Unit:IsBanker() end
 
 ---Returns true if the Unit is a battle master.
----@param isBattleMaster boolean
 ---@return boolean
-function Unit:IsBattleMaster(isBattleMaster) end
+function Unit:IsBattleMaster() end
 
 ---Returns true if the Unit is casting a spell
----@param isCasting boolean
 ---@return boolean
-function Unit:IsCasting(isCasting) end
+function Unit:IsCasting() end
 
 ---Returns true if the Unit is a charmed.
----@param isCharmed boolean
 ---@return boolean
-function Unit:IsCharmed(isCharmed) end
+function Unit:IsCharmed() end
 
 ---Returns true if the Unit is dead.
----@param isDead boolean
 ---@return boolean
-function Unit:IsDead(isDead) end
+function Unit:IsDead() end
 
 ---Returns true if the Unit is dying.
----@param isDying boolean
 ---@return boolean
-function Unit:IsDying(isDying) end
+function Unit:IsDying() end
 
 ---Returns true if the Unit has full health.
----@param hasFullHealth boolean
 ---@return boolean
-function Unit:IsFullHealth(hasFullHealth) end
+function Unit:IsFullHealth() end
 
 ---Returns true if the Unit is able to show a gossip window.
----@param hasGossip boolean
 ---@return boolean
-function Unit:IsGossip(hasGossip) end
+function Unit:IsGossip() end
 
 ---Returns true if the Unit a guild master.
----@param isGuildMaster boolean
 ---@return boolean
-function Unit:IsGuildMaster(isGuildMaster) end
+function Unit:IsGuildMaster() end
 
 ---Returns true if the Unit is in an accessible place for the given Creature.
 ---@param obj WorldObject
 ---@param radius number
----@param isAccessible boolean
 ---@return boolean
-function Unit:IsInAccessiblePlaceFor(obj, radius, isAccessible) end
+function Unit:IsInAccessiblePlaceFor(obj, radius) end
 
 ---Returns true if the Unit is in combat.
----@param inCombat boolean
 ---@return boolean
-function Unit:IsInCombat(inCombat) end
+function Unit:IsInCombat() end
 
 ---Returns true if the Unit is in water.
----@param inWater boolean
 ---@return boolean
-function Unit:IsInWater(inWater) end
+function Unit:IsInWater() end
 
 ---Returns true if the Unit an innkeeper.
----@param isInnkeeper boolean
 ---@return boolean
-function Unit:IsInnkeeper(isInnkeeper) end
+function Unit:IsInnkeeper() end
 
 ---Returns true if the Unit is mounted.
----@param isMounted boolean
 ---@return boolean
-function Unit:IsMounted(isMounted) end
+function Unit:IsMounted() end
 
 ---Returns true if the Unit is on a Vehicle.
----@param isOnVehicle boolean
 ---@return boolean
-function Unit:IsOnVehicle(isOnVehicle) end
+function Unit:IsOnVehicle() end
 
 ---Returns true if the Unit flagged for PvP.
----@param isPvP boolean
 ---@return boolean
-function Unit:IsPvPFlagged(isPvP) end
+function Unit:IsPvPFlagged() end
 
 ---Returns true if the Unit is a quest giver.
----@param questGiver boolean
 ---@return boolean
-function Unit:IsQuestGiver(questGiver) end
+function Unit:IsQuestGiver() end
 
 ---Returns true if the Unit is rooted.
----@param isRooted boolean
 ---@return boolean
-function Unit:IsRooted(isRooted) end
+function Unit:IsRooted() end
 
 ---Returns true if the Unit provides services like vendor, training and auction.
----@param isTabardDesigner boolean
 ---@return boolean
-function Unit:IsServiceProvider(isTabardDesigner) end
+function Unit:IsServiceProvider() end
 
 ---Returns true if the Unit is a spirit guide.
----@param isSpiritGuide boolean
 ---@return boolean
-function Unit:IsSpiritGuide(isSpiritGuide) end
+function Unit:IsSpiritGuide() end
 
 ---Returns true if the Unit is a spirit healer.
----@param isSpiritHealer boolean
 ---@return boolean
-function Unit:IsSpiritHealer(isSpiritHealer) end
+function Unit:IsSpiritHealer() end
 
 ---Returns true if the Unit is a spirit guide or spirit healer.
----@param isSpiritService boolean
 ---@return boolean
-function Unit:IsSpiritService(isSpiritService) end
+function Unit:IsSpiritService() end
 
 ---Returns true if the Unit is standing.
----@param isStanding boolean
 ---@return boolean
-function Unit:IsStandState(isStanding) end
+function Unit:IsStandState() end
 
 ---Returns true if the Unit is not moving.
----@param notMoving boolean
 ---@return boolean
-function Unit:IsStopped(notMoving) end
+function Unit:IsStopped() end
 
 ---Returns true if the Unit is a tabard designer.
----@param isTabardDesigner boolean
 ---@return boolean
-function Unit:IsTabardDesigner(isTabardDesigner) end
+function Unit:IsTabardDesigner() end
 
 ---Returns true if the Unit is a taxi master.
----@param isTaxi boolean
 ---@return boolean
-function Unit:IsTaxi(isTaxi) end
+function Unit:IsTaxi() end
 
 ---Returns true if the Unit a trainer.
----@param isTrainer boolean
 ---@return boolean
-function Unit:IsTrainer(isTrainer) end
+function Unit:IsTrainer() end
 
 ---Returns true if the Unit is under water.
----@param underWater boolean
 ---@return boolean
-function Unit:IsUnderWater(underWater) end
+function Unit:IsUnderWater() end
 
 ---Returns true if the Unit is a vendor.
----@param isVendor boolean
 ---@return boolean
-function Unit:IsVendor(isVendor) end
+function Unit:IsVendor() end
 
 ---Makes the Unit kill the target Unit
 ---@param target Unit

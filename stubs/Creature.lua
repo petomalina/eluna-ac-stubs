@@ -19,28 +19,24 @@ function Creature:CallAssistance() end
 function Creature:CallForHelp(radius) end
 
 ---Returns true if the Creature can start attacking nearby hostile Units,   and returns false otherwise.
----@param canAggro boolean
 ---@return boolean
-function Creature:CanAggro(canAggro) end
+function Creature:CanAggro() end
 
 ---Returns true if the Creature can assist friend in combat against enemy,   and returns false otherwise.
 ---@param friend Unit
 ---@param enemy Unit
 ---@param checkFaction boolean
----@param canAssist boolean
 ---@return boolean
-function Creature:CanAssistTo(friend, enemy, checkFaction, canAssist) end
+function Creature:CanAssistTo(friend, enemy, checkFaction) end
 
 ---Returns true if the Creature completes the Quest with the ID questID,   and returns false otherwise.
 ---@param questID number
----@param completesQuest boolean
 ---@return boolean
-function Creature:CanCompleteQuest(questID, completesQuest) end
+function Creature:CanCompleteQuest(questID) end
 
 ---Returns true if the Creature can fly,   and returns false otherwise.
----@param canFly boolean
 ---@return boolean
-function Creature:CanFly(canFly) end
+function Creature:CanFly() end
 
 ---Returns true if the Creature can start attacking specified target
 ---@param target Unit
@@ -48,14 +44,12 @@ function Creature:CanFly(canFly) end
 function Creature:CanStartAttack(target, force) end
 
 ---Returns true if the Creature can move through deep water,   and returns false otherwise.
----@param canSwim boolean
 ---@return boolean
-function Creature:CanSwim(canSwim) end
+function Creature:CanSwim() end
 
 ---Returns true if the Creature can move on land,   and returns false otherwise.
----@param canWalk boolean
 ---@return boolean
-function Creature:CanWalk(canWalk) end
+function Creature:CanWalk() end
 
 ---Despawn this Creature.
 ---@param delay number
@@ -65,9 +59,8 @@ function Creature:DespawnOrUnsummon(delay) end
 function Creature:FleeToGetAssistance() end
 
 ---Returns the Creature's AI name.
----@param AIName string
 ---@return string
-function Creature:GetAIName(AIName) end
+function Creature:GetAIName() end
 
 ---Returns a target from the Creature's threat list based on the   supplied arguments.
 ---@param targetType SelectAggroTarget
@@ -75,240 +68,196 @@ function Creature:GetAIName(AIName) end
 ---@param position number
 ---@param distance number
 ---@param aura number
----@param target Unit
 ---@return Unit
-function Creature:GetAITarget(targetType, playerOnly, position, distance, aura, target) end
+function Creature:GetAITarget(targetType, playerOnly, position, distance, aura) end
 
 ---Returns all Units in the Creature's threat list.
----@param targets table
 ---@return table
-function Creature:GetAITargets(targets) end
+function Creature:GetAITargets() end
 
 ---Returns the number of Units in this Creature's threat list.
----@param targetsCount number
 ---@return number
-function Creature:GetAITargetsCount(targetsCount) end
+function Creature:GetAITargetsCount() end
 
 ---Returns the aggro range of the Creature for target.
 ---@param target Unit
----@param aggroRange number
 ---@return number
-function Creature:GetAggroRange(target, aggroRange) end
+function Creature:GetAggroRange(target) end
 
 ---Returns the effective aggro range of the Creature for target.
 ---@param target Unit
----@param attackDistance number
 ---@return number
-function Creature:GetAttackDistance(target, attackDistance) end
+function Creature:GetAttackDistance(target) end
 
 ---Returns the delay between when the Creature dies and when its body despawns.
----@param corpseDelay number
 ---@return number
-function Creature:GetCorpseDelay(corpseDelay) end
+function Creature:GetCorpseDelay() end
 
 ---Returns the Creature's creature family ID (enumerated in CreatureFamily.dbc).
----@param creatureFamily CreatureFamily
 ---@return CreatureFamily
-function Creature:GetCreatureFamily(creatureFamily) end
+function Creature:GetCreatureFamily() end
 
 ---Returns the Creature's cooldown for spellID.
 ---@param spellID number
----@param cooldown number
 ---@return number
-function Creature:GetCreatureSpellCooldownDelay(spellID, cooldown) end
+function Creature:GetCreatureSpellCooldownDelay(spellID) end
 
 ---Returns the current waypoint ID of the Creature.
----@param wpId number
 ---@return number
-function Creature:GetCurrentWaypointId(wpId) end
+function Creature:GetCurrentWaypointId() end
 
 ---Returns the guid of the Creature that is used as the ID in the database
----@param dbguid number
 ---@return number
-function Creature:GetDBTableGUIDLow(dbguid) end
+function Creature:GetDBTableGUIDLow() end
 
 ---Returns the default movement type for this Creature.
----@param defaultMovementType MovementGeneratorType
 ---@return MovementGeneratorType
-function Creature:GetDefaultMovementType(defaultMovementType) end
+function Creature:GetDefaultMovementType() end
 
 ---Returns the Creature's Extra flags.
----@param extraFlags ExtraFlags
 ---@return ExtraFlags
-function Creature:GetExtraFlags(extraFlags) end
+function Creature:GetExtraFlags() end
 
 ---Returns position the Creature returns to when evading from combat   or respawning.
 ---@param x number
 ---@param y number
 ---@param z number
----@param o number
 ---@return number
-function Creature:GetHomePosition(x, y, z, o) end
+function Creature:GetHomePosition(x, y, z) end
 
 function Creature:GetLootMode() end
 
 ---Returns the Player that can loot this Creature.
----@param lootRecipient Player
 ---@return Player
-function Creature:GetLootRecipient(lootRecipient) end
+function Creature:GetLootRecipient() end
 
 ---Returns the Group that can loot this Creature.
----@param lootRecipientGroup Group
 ---@return Group
-function Creature:GetLootRecipientGroup(lootRecipientGroup) end
+function Creature:GetLootRecipientGroup() end
 
 ---Returns the Creature's NPC flags.
----@param npcFlags NPCFlags
 ---@return NPCFlags
-function Creature:GetNPCFlags(npcFlags) end
+function Creature:GetNPCFlags() end
 
 ---Returns the Creature's rank.
----@param rank Rank
 ---@return Rank
-function Creature:GetRank(rank) end
+function Creature:GetRank() end
 
 ---Returns the time it takes for this Creature to respawn once killed.
----@param respawnDelay number
 ---@return number
-function Creature:GetRespawnDelay(respawnDelay) end
+function Creature:GetRespawnDelay() end
 
 ---Returns the Creature's script ID.
----@param scriptID number
 ---@return number
-function Creature:GetScriptId(scriptID) end
+function Creature:GetScriptId() end
 
 ---Returns the Creature's script name.
----@param scriptName string
 ---@return string
-function Creature:GetScriptName(scriptName) end
+function Creature:GetScriptName() end
 
 ---Returns the Creature's shield block value.
----@param shieldBlockValue number
 ---@return number
-function Creature:GetShieldBlockValue(shieldBlockValue) end
+function Creature:GetShieldBlockValue() end
 
 ---Returns the Creature's Unit flags.
----@param unitFlags UnitFlags
 ---@return UnitFlags
-function Creature:GetUnitFlags(unitFlags) end
+function Creature:GetUnitFlags() end
 
 ---Returns the Creature's Unit flags 2.
----@param unitFlags2 UnitFlags2
 ---@return UnitFlags2
-function Creature:GetUnitFlagsTwo(unitFlags2) end
+function Creature:GetUnitFlagsTwo() end
 
 ---Returns the radius the Creature is permitted to wander from its   respawn point.
----@param wanderRadius number
 ---@return number
-function Creature:GetWanderRadius(wanderRadius) end
+function Creature:GetWanderRadius() end
 
 ---Returns the current waypoint path ID of the Creature.
----@param pathId number
 ---@return number
-function Creature:GetWaypointPath(pathId) end
+function Creature:GetWaypointPath() end
 
 ---Returns true if the Creature cannot cast spellId due to a category cooldown,   and returns false otherwise.
 ---@param spellId number
----@param hasCooldown boolean
 ---@return boolean
-function Creature:HasCategoryCooldown(spellId, hasCooldown) end
+function Creature:HasCategoryCooldown(spellId) end
 
 ---Returns true if Creature has the specified loot mode
 ---@param lootMode number
----@param hasLootMode boolean
 ---@return boolean
-function Creature:HasLootMode(lootMode, hasLootMode) end
+function Creature:HasLootMode(lootMode) end
 
 ---Returns true if the Creature will give its loot to a Player or Group,   and returns false otherwise.
----@param hasLootRecipient boolean
 ---@return boolean
-function Creature:HasLootRecipient(hasLootRecipient) end
+function Creature:HasLootRecipient() end
 
 ---Returns true if the Creature starts the Quest questId,   and returns false otherwise.
 ---@param questId number
----@param hasQuest boolean
 ---@return boolean
-function Creature:HasQuest(questId, hasQuest) end
+function Creature:HasQuest(questId) end
 
 ---Returns true if the Creature has searched for combat assistance already,   and returns false otherwise.
----@param searchedForAssistance boolean
 ---@return boolean
-function Creature:HasSearchedAssistance(searchedForAssistance) end
+function Creature:HasSearchedAssistance() end
 
 ---Returns true if the Creature can cast spellId when mind-controlled,   and returns false otherwise.
 ---@param spellId number
----@param hasSpell boolean
 ---@return boolean
-function Creature:HasSpell(spellId, hasSpell) end
+function Creature:HasSpell(spellId) end
 
 ---Returns true if the Creature has spellId on cooldown,   and returns false otherwise.
 ---@param spellId number
----@param hasCooldown boolean
 ---@return boolean
-function Creature:HasSpellCooldown(spellId, hasCooldown) end
+function Creature:HasSpellCooldown(spellId) end
 
 ---Returns true if the Creature is a civilian,   and returns false otherwise.
----@param isCivilian boolean
 ---@return boolean
-function Creature:IsCivilian(isCivilian) end
+function Creature:IsCivilian() end
 
 ---Returns true if the Creature is damaged enough for looting
----@param isDamagedEnough boolean
 ---@return boolean
-function Creature:IsDamageEnoughForLootingAndReward(isDamagedEnough) end
+function Creature:IsDamageEnoughForLootingAndReward() end
 
 function Creature:IsDungeonBoss() end
 
 ---Returns true if the Creature's rank is Elite or Rare Elite,   and returns false otherwise.
----@param isElite boolean
 ---@return boolean
-function Creature:IsElite(isElite) end
+function Creature:IsElite() end
 
 ---Returns true if the Creature is a city guard,   and returns false otherwise.
----@param isGuard boolean
 ---@return boolean
-function Creature:IsGuard(isGuard) end
+function Creature:IsGuard() end
 
 ---Returns true if the Creature is returning to its spawn position from combat,   and returns false otherwise.
----@param inEvadeMode boolean
 ---@return boolean
-function Creature:IsInEvadeMode(inEvadeMode) end
+function Creature:IsInEvadeMode() end
 
 ---Returns true if the Creature is the leader of a player faction,   and returns false otherwise.
----@param isLeader boolean
 ---@return boolean
-function Creature:IsRacialLeader(isLeader) end
+function Creature:IsRacialLeader() end
 
 ---Returns true if the Creature can regenerate health,   and returns false otherwise.
----@param isRegenerating boolean
 ---@return boolean
-function Creature:IsRegeneratingHealth(isRegenerating) end
+function Creature:IsRegeneratingHealth() end
 
 ---Returns true if the Creature is set to not give reputation when killed,   and returns false otherwise.
----@param reputationDisabled boolean
 ---@return boolean
-function Creature:IsReputationGainDisabled(reputationDisabled) end
+function Creature:IsReputationGainDisabled() end
 
 ---Returns true if the Creature will give its loot to player,   and returns false otherwise.
----@param tapped boolean
 ---@return boolean
-function Creature:IsTappedBy(tapped) end
+function Creature:IsTappedBy() end
 
 ---Returns true if the Creature can be targeted for attack,   and returns false otherwise.
 ---@param mustBeDead boolean
----@param targetable boolean
 ---@return boolean
-function Creature:IsTargetableForAttack(mustBeDead, targetable) end
+function Creature:IsTargetableForAttack(mustBeDead) end
 
 ---Returns true if the Creature is an invisible trigger,   and returns false otherwise.
----@param canFly boolean
 ---@return boolean
-function Creature:IsTrigger(canFly) end
+function Creature:IsTrigger() end
 
 ---Returns true if the Creature's rank is Boss,   and returns false otherwise.
----@param isWorldBoss boolean
 ---@return boolean
-function Creature:IsWorldBoss(isWorldBoss) end
+function Creature:IsWorldBoss() end
 
 ---Make the Creature start following its waypoint path.
 function Creature:MoveWaypoint() end

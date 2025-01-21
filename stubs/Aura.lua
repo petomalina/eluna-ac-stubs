@@ -4,44 +4,36 @@
 Aura = {}
 
 ---Returns the ID of the Spell that caused this Aura to be applied.
----@param aura_id number
 ---@return number
-function Aura:GetAuraId(aura_id) end
+function Aura:GetAuraId() end
 
 ---Returns the Unit that casted the Spell that caused this Aura to be applied.
----@param caster Unit
 ---@return Unit
-function Aura:GetCaster(caster) end
+function Aura:GetCaster() end
 
 ---Returns the GUID of the Unit that casted the Spell that caused this Aura to be applied.
----@param caster_guid string
 ---@return string
-function Aura:GetCasterGUID(caster_guid) end
+function Aura:GetCasterGUID() end
 
 ---Returns the level of the Unit that casted the Spell that caused this Aura to be applied.
----@param caster_level number
 ---@return number
-function Aura:GetCasterLevel(caster_level) end
+function Aura:GetCasterLevel() end
 
 ---Returns the amount of time left until the Aura expires.
----@param duration number
 ---@return number
-function Aura:GetDuration(duration) end
+function Aura:GetDuration() end
 
 ---Returns the amount of time this Aura lasts when applied.
----@param max_duration number
 ---@return number
-function Aura:GetMaxDuration(max_duration) end
+function Aura:GetMaxDuration() end
 
 ---Returns the Unit that the Aura has been applied to.
----@param owner Unit
 ---@return Unit
-function Aura:GetOwner(owner) end
+function Aura:GetOwner() end
 
 ---Returns the number of times the Aura has "stacked".
----@param stack_amount number
 ---@return number
-function Aura:GetStackAmount(stack_amount) end
+function Aura:GetStackAmount() end
 
 ---Remove this Aura from the Unit it is applied to.
 function Aura:Remove() end

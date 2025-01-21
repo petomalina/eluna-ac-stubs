@@ -7,93 +7,80 @@ WorldObject = {}
 ---@param object WorldObject
 ---@param x number
 ---@param y number
----@param angle number
 ---@return number
-function WorldObject:GetAngle(object, x, y, angle) end
+function WorldObject:GetAngle(object, x, y) end
 
 ---Returns the current area ID of the WorldObject
----@param areaId number
 ---@return number
-function WorldObject:GetAreaId(areaId) end
+function WorldObject:GetAreaId() end
 
 ---Returns a table of Creature objects in sight of the WorldObject or within the given range and/or with a specific entry ID
 ---@param range number
 ---@param entryId number
 ---@param hostile number
 ---@param dead number
----@param creaturesInRange table
 ---@return table
-function WorldObject:GetCreaturesInRange(range, entryId, hostile, dead, creaturesInRange) end
+function WorldObject:GetCreaturesInRange(range, entryId, hostile, dead) end
 
 ---Returns the distance from this WorldObject to another WorldObject, or from this WorldObject to a point in 3d space.
 ---@param obj WorldObject
 ---@param x number
 ---@param y number
 ---@param z number
----@param dist number
 ---@return number
-function WorldObject:GetDistance(obj, x, y, z, dist) end
+function WorldObject:GetDistance(obj, x, y, z) end
 
 ---Returns the distance from this WorldObject to another WorldObject, or from this WorldObject to a point in 2d space.
 ---@param obj WorldObject
 ---@param x number
 ---@param y number
----@param dist number
 ---@return number
-function WorldObject:GetDistance2d(obj, x, y, dist) end
+function WorldObject:GetDistance2d(obj, x, y) end
 
 ---Returns the distance from this WorldObject to another WorldObject, or from this WorldObject to a point in 3d space.
 ---@param obj WorldObject
 ---@param x number
 ---@param y number
 ---@param z number
----@param dist number
 ---@return number
-function WorldObject:GetExactDistance(obj, x, y, z, dist) end
+function WorldObject:GetExactDistance(obj, x, y, z) end
 
 ---Returns the distance from this WorldObject to another WorldObject, or from this WorldObject to a point in 2d space.
 ---@param obj WorldObject
 ---@param x number
 ---@param y number
----@param dist number
 ---@return number
-function WorldObject:GetExactDistance2d(obj, x, y, dist) end
+function WorldObject:GetExactDistance2d(obj, x, y) end
 
 ---Returns a table of GameObject objects in sight of the WorldObject or within the given range and/or with a specific entry ID
 ---@param range number
 ---@param entryId number
 ---@param hostile number
----@param gameObjectsInRange table
 ---@return table
-function WorldObject:GetGameObjectsInRange(range, entryId, hostile, gameObjectsInRange) end
+function WorldObject:GetGameObjectsInRange(range, entryId, hostile) end
 
 ---Returns the current instance ID of the WorldObject
----@param instanceId number
 ---@return number
-function WorldObject:GetInstanceId(instanceId) end
+function WorldObject:GetInstanceId() end
 
 ---Returns the coordinates and orientation of the WorldObject
 ---@param x number
 ---@param y number
 ---@param z number
----@param o number
 ---@return number
-function WorldObject:GetLocation(x, y, z, o) end
+function WorldObject:GetLocation(x, y, z) end
 
 ---Returns the current Map object of the WorldObject
----@param mapObject Map
 ---@return Map
-function WorldObject:GetMap(mapObject) end
+function WorldObject:GetMap() end
 
 ---Returns the current map ID of the WorldObject
----@param mapId number
 ---@return number
-function WorldObject:GetMapId(mapId) end
+function WorldObject:GetMapId() end
 
 ---Returns the name of the WorldObject
----@param name string
 ---@return string
-function WorldObject:GetName(name) end
+function WorldObject:GetName() end
 
 ---Returns nearest WorldObject in sight of the WorldObject. The distance, type, entry and hostility requirements the WorldObject must match can be passed.
 ---@param range number
@@ -101,9 +88,8 @@ function WorldObject:GetName(name) end
 ---@param entry number
 ---@param hostile number
 ---@param dead number
----@param worldObject WorldObject
 ---@return WorldObject
-function WorldObject:GetNearObject(range, type, entry, hostile, dead, worldObject) end
+function WorldObject:GetNearObject(range, type, entry, hostile, dead) end
 
 ---Returns a table of WorldObjects in sight of the WorldObject. The distance, type, entry and hostility requirements the WorldObject must match can be passed.
 ---@param range number
@@ -111,119 +97,102 @@ function WorldObject:GetNearObject(range, type, entry, hostile, dead, worldObjec
 ---@param entry number
 ---@param hostile number
 ---@param dead number
----@param worldObjectList table
 ---@return table
-function WorldObject:GetNearObjects(range, type, entry, hostile, dead, worldObjectList) end
+function WorldObject:GetNearObjects(range, type, entry, hostile, dead) end
 
 ---Returns the nearest Creature object in sight of the WorldObject or within the given range and/or with a specific entry ID
 ---@param range number
 ---@param entryId number
 ---@param hostile number
 ---@param dead number
----@param nearestCreature Creature
 ---@return Creature
-function WorldObject:GetNearestCreature(range, entryId, hostile, dead, nearestCreature) end
+function WorldObject:GetNearestCreature(range, entryId, hostile, dead) end
 
 ---Returns the nearest GameObject object in sight of the WorldObject or within the given range and/or with a specific entry ID
 ---@param range number
 ---@param entryId number
 ---@param hostile number
----@param nearestGameObject GameObject
 ---@return GameObject
-function WorldObject:GetNearestGameObject(range, entryId, hostile, nearestGameObject) end
+function WorldObject:GetNearestGameObject(range, entryId, hostile) end
 
 ---Returns the nearest Player object in sight of the WorldObject or within the given range
 ---@param range number
 ---@param hostile number
 ---@param dead number
----@param nearestPlayer Player
 ---@return Player
-function WorldObject:GetNearestPlayer(range, hostile, dead, nearestPlayer) end
+function WorldObject:GetNearestPlayer(range, hostile, dead) end
 
 ---Returns the current orientation of the WorldObject
----@param orientation number
 ---@return number
-function WorldObject:GetO(orientation) end
+function WorldObject:GetO() end
 
 ---Returns the current phase of the WorldObject
----@param phase number
 ---@return number
-function WorldObject:GetPhaseMask(phase) end
+function WorldObject:GetPhaseMask() end
 
 ---Returns a table of Player objects in sight of the WorldObject or within the given range
 ---@param range number
 ---@param hostile number
 ---@param dead number
----@param playersInRange table
 ---@return table
-function WorldObject:GetPlayersInRange(range, hostile, dead, playersInRange) end
+function WorldObject:GetPlayersInRange(range, hostile, dead) end
 
 ---Returns the x, y and z of a point dist away from the WorldObject.
 ---@param distance number
 ---@param angle number
 ---@param x number
 ---@param y number
----@param z number
 ---@return number
-function WorldObject:GetRelativePoint(distance, angle, x, y, z) end
+function WorldObject:GetRelativePoint(distance, angle, x, y) end
 
 ---Returns the current X coordinate of the WorldObject
----@param x number
 ---@return number
-function WorldObject:GetX(x) end
+function WorldObject:GetX() end
 
 ---Returns the current Y coordinate of the WorldObject
----@param y number
 ---@return number
-function WorldObject:GetY(y) end
+function WorldObject:GetY() end
 
 ---Returns the current Z coordinate of the WorldObject
----@param z number
 ---@return number
-function WorldObject:GetZ(z) end
+function WorldObject:GetZ() end
 
 ---Returns the current zone ID of the WorldObject
----@param zoneId number
 ---@return number
-function WorldObject:GetZoneId(zoneId) end
+function WorldObject:GetZoneId() end
 
 ---Returns true if the target is in the given arc behind the WorldObject
 ---@param target WorldObject
 ---@param arc number
----@param isInBack boolean
 ---@return boolean
-function WorldObject:IsInBack(target, arc, isInBack) end
+function WorldObject:IsInBack(target, arc) end
 
 ---Returns true if the target is in the given arc in front of the WorldObject
 ---@param target WorldObject
 ---@param arc number
----@param isInFront boolean
 ---@return boolean
-function WorldObject:IsInFront(target, arc, isInFront) end
+function WorldObject:IsInFront(target, arc) end
 
 ---Returns true if the WorldObjects are on the same map
 ---@param worldobject WorldObject
----@param isInMap boolean
 ---@return boolean
-function WorldObject:IsInMap(worldobject, isInMap) end
+function WorldObject:IsInMap(worldobject) end
 
 ---Returns true if the target is within given range
 ---@param target WorldObject
 ---@param minrange number
 ---@param maxrange number
 ---@param is3D boolean
----@param isInDistance boolean
 ---@return boolean
-function WorldObject:IsInRange(target, minrange, maxrange, is3D, isInDistance) end
+function WorldObject:IsInRange(target, minrange, maxrange, is3D) end
 
 ---Returns true if the point is within given range
 ---@param x number
 ---@param y number
 ---@param minrange number
 ---@param maxrange number
----@param isInDistance boolean
 ---@return boolean
-function WorldObject:IsInRange2d(x, y, minrange, maxrange, isInDistance) end
+function WorldObject:IsInRange2d(x, y, minrange, maxrange) end
 
 ---Returns true if the point is within given range
 ---@param x number
@@ -231,51 +200,45 @@ function WorldObject:IsInRange2d(x, y, minrange, maxrange, isInDistance) end
 ---@param z number
 ---@param minrange number
 ---@param maxrange number
----@param isInDistance boolean
 ---@return boolean
-function WorldObject:IsInRange3d(x, y, z, minrange, maxrange, isInDistance) end
+function WorldObject:IsInRange3d(x, y, z, minrange, maxrange) end
 
 ---Returns true if the target is in the given distance of the WorldObject
 ---@param target WorldObject
 ---@param distance number
 ---@param is3D boolean
----@param isInDistance boolean
 ---@return boolean
-function WorldObject:IsWithinDist(target, distance, is3D, isInDistance) end
+function WorldObject:IsWithinDist(target, distance, is3D) end
 
 ---Returns true if the point is in the given distance of the WorldObject
 ---@param x number
 ---@param y number
 ---@param distance number
----@param isInDistance boolean
 ---@return boolean
-function WorldObject:IsWithinDist2d(x, y, distance, isInDistance) end
+function WorldObject:IsWithinDist2d(x, y, distance) end
 
 ---Returns true if the point is in the given distance of the WorldObject
 ---@param x number
 ---@param y number
 ---@param z number
 ---@param distance number
----@param isInDistance boolean
 ---@return boolean
-function WorldObject:IsWithinDist3d(x, y, z, distance, isInDistance) end
+function WorldObject:IsWithinDist3d(x, y, z, distance) end
 
 ---Returns true if the WorldObject is on the same map and within given distance
 ---@param target WorldObject
 ---@param distance number
 ---@param is3D boolean
----@param isInDistance boolean
 ---@return boolean
-function WorldObject:IsWithinDistInMap(target, distance, is3D, isInDistance) end
+function WorldObject:IsWithinDistInMap(target, distance, is3D) end
 
 ---Returns true if the given WorldObject or coordinates are in the WorldObject's line of sight
 ---@param worldobject WorldObject
 ---@param x number
 ---@param y number
 ---@param z number
----@param isInLoS boolean
 ---@return boolean
-function WorldObject:IsWithinLoS(worldobject, x, y, z, isInLoS) end
+function WorldObject:IsWithinLoS(worldobject, x, y, z) end
 
 ---The WorldObject plays a sound to a Player
 ---@param sound number
@@ -297,9 +260,8 @@ function WorldObject:PlayMusic(music, player) end
 ---@param delay number
 ---@param delaytable table
 ---@param repeats number
----@param eventId number
 ---@return number
-function WorldObject:RegisterEvent(func, delay, delaytable, repeats, eventId) end
+function WorldObject:RegisterEvent(func, delay, delaytable, repeats) end
 
 ---Removes the timed event from a WorldObject by the specified event ID
 ---@param eventId number
@@ -325,9 +287,8 @@ function WorldObject:SetPhaseMask(phaseMask, update) end
 ---@param o number
 ---@param spawnType TempSummonType
 ---@param despawnTimer number
----@param spawnedCreature Creature
 ---@return Creature
-function WorldObject:SpawnCreature(entry, x, y, z, o, spawnType, despawnTimer, spawnedCreature) end
+function WorldObject:SpawnCreature(entry, x, y, z, o, spawnType, despawnTimer) end
 
 ---Spawns a GameObject at specified location.
 ---@param entry number
@@ -336,7 +297,6 @@ function WorldObject:SpawnCreature(entry, x, y, z, o, spawnType, despawnTimer, s
 ---@param z number
 ---@param o number
 ---@param respawnDelay number
----@param gameObject GameObject
 ---@return GameObject
-function WorldObject:SummonGameObject(entry, x, y, z, o, respawnDelay, gameObject) end
+function WorldObject:SummonGameObject(entry, x, y, z, o, respawnDelay) end
 

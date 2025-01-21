@@ -72,7 +72,7 @@ func main() {
 	// Process each class
 	for _, class := range classes {
 		// debug
-		// if class != "Corpse" {
+		// if class != "Vehicle" {
 		// 	continue
 		// }
 
@@ -371,6 +371,15 @@ func generateLuaDefs(page *WikiPage) string {
 				// Format description as a single line
 				desc := strings.ReplaceAll(method.Description, "\n", " ")
 				sb.WriteString(fmt.Sprintf("---%s\n", desc))
+			}
+
+			// return types are doubling in the method.Parameters because of the html structure,
+			// so we need to remove the last parameter if it has the same type as return type
+			if method.ReturnType != "" {
+				lastParam := method.Parameters[len(method.Parameters)-1]
+				if lastParam.Type == method.ReturnType {
+					method.Parameters = method.Parameters[:len(method.Parameters)-1]
+				}
 			}
 
 			// Parameters with keyword handling

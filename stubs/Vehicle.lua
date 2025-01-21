@@ -9,26 +9,22 @@ Vehicle = {}
 function Vehicle:AddPassenger(passenger, seat) end
 
 ---Returns the Vehicle's entry
----@param entry number
 ---@return number
-function Vehicle:GetEntry(entry) end
+function Vehicle:GetEntry() end
 
 ---Returns the Vehicle's owner
----@param owner Unit
 ---@return Unit
-function Vehicle:GetOwner(owner) end
+function Vehicle:GetOwner() end
 
 ---Returns the Vehicle's passenger in the specified seat
 ---@param seat number
----@param passenger Unit
 ---@return Unit
-function Vehicle:GetPassenger(seat, passenger) end
+function Vehicle:GetPassenger(seat) end
 
 ---Returns true if the Unit passenger is on board
 ---@param passenger Unit
----@param isOnBoard boolean
 ---@return boolean
-function Vehicle:IsOnBoard(passenger, isOnBoard) end
+function Vehicle:IsOnBoard(passenger) end
 
 ---Removes Unit passenger from the Vehicle
 ---@param passenger Unit

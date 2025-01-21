@@ -14,51 +14,42 @@ function Spell:Cast(skipCheck) end
 function Spell:Finish() end
 
 ---Returns the cast time of the Spell.
----@param castTime number
 ---@return number
-function Spell:GetCastTime(castTime) end
+function Spell:GetCastTime() end
 
 ---Returns the Unit that casted the Spell.
----@param caster Unit
 ---@return Unit
-function Spell:GetCaster(caster) end
+function Spell:GetCaster() end
 
 ---Returns the spell duration of the Spell.
----@param duration number
 ---@return number
-function Spell:GetDuration(duration) end
+function Spell:GetDuration() end
 
 ---Returns the entry ID of the Spell.
----@param entryId number
 ---@return number
-function Spell:GetEntry(entryId) end
+function Spell:GetEntry() end
 
 ---Returns the power cost of the Spell.
----@param powerCost number
 ---@return number
-function Spell:GetPowerCost(powerCost) end
+function Spell:GetPowerCost() end
 
 ---Returns the reagents needed for the Spell.
----@param reagents table
 ---@return table
-function Spell:GetReagentCost(reagents) end
+function Spell:GetReagentCost() end
 
 ---Returns the target Object of the Spell.
----@param target Object
 ---@return Object
-function Spell:GetTarget(target) end
+function Spell:GetTarget() end
 
 ---Returns the target destination coordinates of the Spell.
 ---@param x number
 ---@param y number
----@param z number
 ---@return number
-function Spell:GetTargetDest(x, y, z) end
+function Spell:GetTargetDest(x, y) end
 
 ---Returns true if the Spell is automatically repeating, false otherwise.
----@param isAutoRepeating boolean
 ---@return boolean
-function Spell:IsAutoRepeat(isAutoRepeating) end
+function Spell:IsAutoRepeat() end
 
 ---Sets the Spell to automatically repeat.
 ---@param rep boolean

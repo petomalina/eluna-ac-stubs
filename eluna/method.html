@@ -1,10 +1,10 @@
 <html lang="en"><head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="API documentation for the Global:GetItemGUID method in the Eluna engine.">
+  <meta name="description" content="API documentation for the Global:RegisterPlayerEvent method in the Eluna engine.">
   <meta name="keywords" content="eluna, lua, lua engine, azerothcore, script, scripting, doc, docs, documentation">
 
-  <title>Global:GetItemGUID - Eluna</title>
+  <title>Global:RegisterPlayerEvent - Eluna</title>
 
   <link rel="stylesheet" type="text/css" href="../static/main.css">
   <link rel="stylesheet" type="text/css" href="../static/dark.css">
@@ -67,7 +67,7 @@
 <a id="Global:GetGameTime" class="fn" href="../Global/GetGameTime.html">GetGameTime</a>
 <a id="Global:GetGuildByLeaderGUID" class="fn" href="../Global/GetGuildByLeaderGUID.html">GetGuildByLeaderGUID</a>
 <a id="Global:GetGuildByName" class="fn" href="../Global/GetGuildByName.html">GetGuildByName</a>
-<a id="Global:GetItemGUID" class="fn current" href="../Global/GetItemGUID.html">GetItemGUID</a>
+<a id="Global:GetItemGUID" class="fn" href="../Global/GetItemGUID.html">GetItemGUID</a>
 <a id="Global:GetItemLink" class="fn" href="../Global/GetItemLink.html">GetItemLink</a>
 <a id="Global:GetItemTemplate" class="fn" href="../Global/GetItemTemplate.html">GetItemTemplate</a>
 <a id="Global:GetLuaEngine" class="fn" href="../Global/GetLuaEngine.html">GetLuaEngine</a>
@@ -110,7 +110,7 @@
 <a id="Global:RegisterItemGossipEvent" class="fn" href="../Global/RegisterItemGossipEvent.html">RegisterItemGossipEvent</a>
 <a id="Global:RegisterMapEvent" class="fn" href="../Global/RegisterMapEvent.html">RegisterMapEvent</a>
 <a id="Global:RegisterPacketEvent" class="fn" href="../Global/RegisterPacketEvent.html">RegisterPacketEvent</a>
-<a id="Global:RegisterPlayerEvent" class="fn" href="../Global/RegisterPlayerEvent.html">RegisterPlayerEvent</a>
+<a id="Global:RegisterPlayerEvent" class="fn current" href="../Global/RegisterPlayerEvent.html">RegisterPlayerEvent</a>
 <a id="Global:RegisterPlayerGossipEvent" class="fn" href="../Global/RegisterPlayerGossipEvent.html">RegisterPlayerGossipEvent</a>
 <a id="Global:RegisterServerEvent" class="fn" href="../Global/RegisterServerEvent.html">RegisterServerEvent</a>
 <a id="Global:RegisterUniqueCreatureEvent" class="fn" href="../Global/RegisterUniqueCreatureEvent.html">RegisterUniqueCreatureEvent</a>
@@ -138,7 +138,7 @@
 
   <script>
     // Highlight current method by adding "current" class to it
-    var element = document.getElementById("Global:GetItemGUID");
+    var element = document.getElementById("Global:RegisterPlayerEvent");
     if (element) {
       var classname = "current";
       arr = element.className.split(" ");
@@ -162,7 +162,7 @@
 <section id="main" class="content mod">
   <h1 class="fqn">
       Method
-  <a class="mod" href="../Global/index.html">Global</a>:<a class="fn" href="../Global/GetItemGUID.html">GetItemGUID</a>
+  <a class="mod" href="../Global/index.html">Global</a>:<a class="fn" href="../Global/RegisterPlayerEvent.html">RegisterPlayerEvent</a>
       <span class="out-of-band">
           <span id="render-detail">
               <a id="collapse-all" href="#">[-]</a>
@@ -173,15 +173,79 @@
 
   
   <div class="toggle-wrapper"><a href="javascript:void(0)" class="collapse-toggle">[<span class="inner">-</span>]<span class="toggle-label" style="display:none">&nbsp;Expand&nbsp;description</span></a></div><div class="docblock">
-      <p>Builds an <a class="mod" href="../Item/index.html">Item</a>'s GUID.</p>
-<p><a class="mod" href="../Item/index.html">Item</a> GUID consist of low GUID and type ID
-<a class="mod" href="../Player/index.html">Player</a> and <a class="mod" href="../Item/index.html">Item</a> for example can have the same low GUID but not GUID.</p>
+      <p>Registers a <a class="mod" href="../Player/index.html">Player</a> event handler.</p>
+<pre>enum PlayerEvents
+{
+  PLAYER_EVENT_ON_CHARACTER_CREATE        =     1,        // (event, player)
+  PLAYER_EVENT_ON_CHARACTER_DELETE        =     2,        // (event, guid)
+  PLAYER_EVENT_ON_LOGIN                   =     3,        // (event, player)
+  PLAYER_EVENT_ON_LOGOUT                  =     4,        // (event, player)
+  PLAYER_EVENT_ON_SPELL_CAST              =     5,        // (event, player, spell, skipCheck)
+  PLAYER_EVENT_ON_KILL_PLAYER             =     6,        // (event, killer, killed)
+  PLAYER_EVENT_ON_KILL_CREATURE           =     7,        // (event, killer, killed)
+  PLAYER_EVENT_ON_KILLED_BY_CREATURE      =     8,        // (event, killer, killed)
+  PLAYER_EVENT_ON_DUEL_REQUEST            =     9,        // (event, target, challenger)
+  PLAYER_EVENT_ON_DUEL_START              =     10,       // (event, player1, player2)
+  PLAYER_EVENT_ON_DUEL_END                =     11,       // (event, winner, loser, type)
+  PLAYER_EVENT_ON_GIVE_XP                 =     12,       // (event, player, amount, victim, source) - Can return new XP amount
+  PLAYER_EVENT_ON_LEVEL_CHANGE            =     13,       // (event, player, oldLevel)
+  PLAYER_EVENT_ON_MONEY_CHANGE            =     14,       // (event, player, amount) - Can return new money amount
+  PLAYER_EVENT_ON_REPUTATION_CHANGE       =     15,       // (event, player, factionId, standing, incremental) - Can return new standing -&gt; if standing == -1, it will prevent default action (rep gain)
+  PLAYER_EVENT_ON_TALENTS_CHANGE          =     16,       // (event, player, points)
+  PLAYER_EVENT_ON_TALENTS_RESET           =     17,       // (event, player, noCost)
+  PLAYER_EVENT_ON_CHAT                    =     18,       // (event, player, msg, Type, lang) - Can return false, newMessage
+  PLAYER_EVENT_ON_WHISPER                 =     19,       // (event, player, msg, Type, lang, receiver) - Can return false, newMessage
+  PLAYER_EVENT_ON_GROUP_CHAT              =     20,       // (event, player, msg, Type, lang, group) - Can return false, newMessage
+  PLAYER_EVENT_ON_GUILD_CHAT              =     21,       // (event, player, msg, Type, lang, guild) - Can return false, newMessage
+  PLAYER_EVENT_ON_CHANNEL_CHAT            =     22,       // (event, player, msg, Type, lang, channel) - channel is negative for custom channels. Can return false, newMessage
+  PLAYER_EVENT_ON_EMOTE                   =     23,       // (event, player, emote) - Not triggered on any known emote
+  PLAYER_EVENT_ON_TEXT_EMOTE              =     24,       // (event, player, textEmote, emoteNum, guid)
+  PLAYER_EVENT_ON_SAVE                    =     25,       // (event, player)
+  PLAYER_EVENT_ON_BIND_TO_INSTANCE        =     26,       // (event, player, difficulty, mapid, permanent)
+  PLAYER_EVENT_ON_UPDATE_ZONE             =     27,       // (event, player, newZone, newArea)
+  PLAYER_EVENT_ON_MAP_CHANGE              =     28,       // (event, player)
+
+  // Custom
+  PLAYER_EVENT_ON_EQUIP                   =     29,       // (event, player, item, bag, slot)
+  PLAYER_EVENT_ON_FIRST_LOGIN             =     30,       // (event, player)
+  PLAYER_EVENT_ON_CAN_USE_ITEM            =     31,       // (event, player, itemEntry) - Can return InventoryResult enum value
+  PLAYER_EVENT_ON_LOOT_ITEM               =     32,       // (event, player, item, count)
+  PLAYER_EVENT_ON_ENTER_COMBAT            =     33,       // (event, player, enemy)
+  PLAYER_EVENT_ON_LEAVE_COMBAT            =     34,       // (event, player)
+  PLAYER_EVENT_ON_REPOP                   =     35,       // (event, player)
+  PLAYER_EVENT_ON_RESURRECT               =     36,       // (event, player)
+  PLAYER_EVENT_ON_LOOT_MONEY              =     37,       // (event, player, amount)
+  PLAYER_EVENT_ON_QUEST_ABANDON           =     38,       // (event, player, questId)
+  PLAYER_EVENT_ON_LEARN_TALENTS           =     39,       // (event, player, talentId, talentRank, spellid)
+  // UNUSED                               =     40,       // (event, player)
+  // UNUSED                               =     41,       // (event, player)
+  PLAYER_EVENT_ON_COMMAND                 =     42,       // (event, player, command, chatHandler) - player is nil if command used from console. Can return false
+  PLAYER_EVENT_ON_PET_ADDED_TO_WORLD      =     43,       // (event, player, pet)
+  PLAYER_EVENT_ON_LEARN_SPELL             =     44,       // (event, player, spellId)
+  PLAYER_EVENT_ON_ACHIEVEMENT_COMPLETE    =     45,       // (event, player, achievement)
+  PLAYER_EVENT_ON_FFAPVP_CHANGE           =     46,       // (event, player, hasFfaPvp)
+  PLAYER_EVENT_ON_UPDATE_AREA             =     47,       // (event, player, oldArea, newArea)
+  PLAYER_EVENT_ON_CAN_INIT_TRADE          =     48,       // (event, player, target) - Can return false to prevent the trade
+  PLAYER_EVENT_ON_CAN_SEND_MAIL           =     49,       // (event, player, receiverGuid, mailbox, subject, body, money, cod, item) - Can return false to prevent sending the mail
+  PLAYER_EVENT_ON_CAN_JOIN_LFG            =     50,       // (event, player, roles, dungeons, comment) - Can return false to prevent queueing
+  PLAYER_EVENT_ON_QUEST_REWARD_ITEM       =     51,       //  (event, player, item, count)
+  PLAYER_EVENT_ON_CREATE_ITEM             =     52,       //  (event, player, item, count)
+  PLAYER_EVENT_ON_STORE_NEW_ITEM          =     53,       //  (event, player, item, count)
+  PLAYER_EVENT_ON_COMPLETE_QUEST          =     54,       // (event, player, quest)
+  PLAYER_EVENT_ON_CAN_GROUP_INVITE        =     55,       // (event, player, memberName) - Can return false to prevent inviting
+  PLAYER_EVENT_ON_GROUP_ROLL_REWARD_ITEM  =     56,       // (event, player, item, count, voteType, roll)
+  PLAYER_EVENT_ON_BG_DESERTION            =     57,       // (event, player, type)
+};
+</pre>
 
       <h2 id="synopsis" class="section-header">
           <a href="#synopsis">Synopsis</a>
       </h2>
       <p>
-          <code>guid = GetItemGUID( lowguid )</code>
+          <code>cancel = RegisterPlayerEvent( event, function )</code>
+      </p>
+      <p>
+          <code>cancel = RegisterPlayerEvent( event, function, shots )</code>
       </p>
 
       <h2 id="arguments" class="section-header">
@@ -189,8 +253,16 @@
       </h2>
       <p>
           </p><dl>
-              <dt><code><strong><a href="http://www.lua.org/pil/2.3.html">number</a></strong> lowguid</code></dt>
-              <dd class="docblock"><p>Low GUID of the <a class="mod" href="../Item/index.html">Item</a>. </p><p><em>Valid numbers</em>: integers from 0 to 4,294,967,295.</p></dd>
+              <dt><code><strong><a href="http://www.lua.org/pil/2.3.html">number</a></strong> event</code></dt>
+              <dd class="docblock"><p><a class="mod" href="../Player/index.html">Player</a> event Id, refer to PlayerEvents above. </p><p><em>Valid numbers</em>: integers from 0 to 4,294,967,295.</p></dd>
+          </dl>
+          <dl>
+              <dt><code><strong><a href="http://www.lua.org/pil/2.6.html">function</a></strong> function</code></dt>
+              <dd class="docblock"><p>Function to register. </p></dd>
+          </dl>
+          <dl>
+              <dt><code><strong><a href="http://www.lua.org/pil/2.3.html">number</a></strong> shots (0)</code></dt>
+              <dd class="docblock"><p>The number of times the function will be called, 0 means "always call this function". </p><p><em>Valid numbers</em>: integers from 0 to 4,294,967,295.</p></dd>
           </dl>
       <p></p>
 
@@ -199,8 +271,8 @@
       </h2>
       <p>
           </p><dl>
-              <dt><code><strong><a href="http://www.lua.org/pil/2.3.html">number</a></strong> guid</code></dt>
-              <dd class="docblock"><p><em>Valid numbers</em>: integers from 0 to 18,446,744,073,709,551,615.</p></dd>
+              <dt><code><strong><a href="http://www.lua.org/pil/2.6.html">function</a></strong> cancel</code></dt>
+              <dd class="docblock"><p>A function that cancels the binding when called. </p></dd>
           </dl>
       <p></p>
   </div>

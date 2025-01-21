@@ -11,9 +11,8 @@ function Player:AddComboPoints(target, count) end
 ---Adds the given amount of the specified item entry to the player.
 ---@param entry number
 ---@param itemCount number
----@param item Item
 ---@return Item
-function Player:AddItem(entry, itemCount, item) end
+function Player:AddItem(entry, itemCount) end
 
 function Player:AddLifetimeKills() end
 
@@ -38,73 +37,61 @@ function Player:AdvanceSkillsToMax() end
 function Player:AreaExploredOrEventHappens(quest) end
 
 ---Returns true if the Player can block incomming attacks, false otherwise.
----@param canBlock boolean
 ---@return boolean
-function Player:CanBlock(canBlock) end
+function Player:CanBlock() end
 
 ---Returns true if the Player satisfies all requirements to complete the quest entry.
 ---@param entry number
----@param canComplete boolean
 ---@return boolean
-function Player:CanCompleteQuest(entry, canComplete) end
+function Player:CanCompleteQuest(entry) end
 
 ---Returns true if the Player satisfies all requirements to complete the quest entry.
 ---@param questId number
----@param canCompleteRepeatableQuest boolean
 ---@return boolean
-function Player:CanCompleteRepeatableQuest(questId, canCompleteRepeatableQuest) end
+function Player:CanCompleteRepeatableQuest(questId) end
 
 ---Returns true if the player can equip the given Item or item entry to the given slot, false otherwise.
 ---@param item Item
 ---@param entry number
 ---@param slot number
----@param canEquip boolean
 ---@return boolean
-function Player:CanEquipItem(item, entry, slot, canEquip) end
+function Player:CanEquipItem(item, entry, slot) end
 
 ---Returns true if the Player can fly, false otherwise.
----@param canFly boolean
 ---@return boolean
-function Player:CanFly(canFly) end
+function Player:CanFly() end
 
 ---Returns true if the Player can parry incomming attacks, false otherwise.
----@param canParry boolean
 ---@return boolean
-function Player:CanParry(canParry) end
+function Player:CanParry() end
 
 ---Returns true if the Player satisfies all requirements to reward the quest entry.
 ---@param questId number
----@param canRewardQuest boolean
 ---@return boolean
-function Player:CanRewardQuest(questId, canRewardQuest) end
+function Player:CanRewardQuest(questId) end
 
 ---Returns true if the Player can share Quest specified by ID, false otherwise.
 ---@param entryId number
----@param hasSpellCooldown boolean
 ---@return boolean
-function Player:CanShareQuest(entryId, hasSpellCooldown) end
+function Player:CanShareQuest(entryId) end
 
 ---Returns true if the Player can currently communicate through chat, false otherwise.
----@param canSpeak boolean
 ---@return boolean
-function Player:CanSpeak(canSpeak) end
+function Player:CanSpeak() end
 
 ---Returns true if the Player can Titan Grip, false otherwise.
----@param canTitanGrip boolean
 ---@return boolean
-function Player:CanTitanGrip(canTitanGrip) end
+function Player:CanTitanGrip() end
 
 ---Returns true if the Player has permission to uninvite others from the current group, false otherwise.
----@param canUninviteFromGroup boolean
 ---@return boolean
-function Player:CanUninviteFromGroup(canUninviteFromGroup) end
+function Player:CanUninviteFromGroup() end
 
 ---Returns true if the Player can use the item or item entry specified, false otherwise.
 ---@param item Item
 ---@param entry number
----@param canUse boolean
 ---@return boolean
-function Player:CanUseItem(item, entry, canUse) end
+function Player:CanUseItem(item, entry) end
 
 ---Clears the Players combo points
 function Player:ClearComboPoints() end
@@ -156,294 +143,240 @@ function Player:DurabilityRepairAll(takeCost, discountMod, guidBank) end
 ---@param item Item
 ---@param entry number
 ---@param slot number
----@param equippedItem Item
 ---@return Item
-function Player:EquipItem(item, entry, slot, equippedItem) end
+function Player:EquipItem(item, entry, slot) end
 
 ---Sets the given Quest entry failed for the Player.
 ---@param entry number
 function Player:FailQuest(entry) end
 
 ---Returns the Players account ID
----@param accountId number
 ---@return number
-function Player:GetAccountId(accountId) end
+function Player:GetAccountId() end
 
 ---Returns the Players account name
----@param accountName string
 ---@return string
-function Player:GetAccountName(accountName) end
+function Player:GetAccountName() end
 
 ---Returns the progress of the Player for the specified achievement criteria.
 ---@param criteriaId number
----@param progress number
 ---@return number
-function Player:GetAchievementCriteriaProgress(criteriaId, progress) end
+function Player:GetAchievementCriteriaProgress(criteriaId) end
 
 ---Returns the Players current amount of Achievement Points
----@param achievementPoints number
 ---@return number
-function Player:GetAchievementPoints(achievementPoints) end
+function Player:GetAchievementPoints() end
 
 ---Returns the Players active spec ID
----@param specId number
 ---@return number
-function Player:GetActiveSpec(specId) end
+function Player:GetActiveSpec() end
 
 ---Returns the Players current amount of Arena Points
----@param arenaPoints number
 ---@return number
-function Player:GetArenaPoints(arenaPoints) end
+function Player:GetArenaPoints() end
 
 ---Returns base skill value
 ---@param skill number
----@param baseVal number
 ---@return number
-function Player:GetBaseSkillValue(skill, baseVal) end
+function Player:GetBaseSkillValue(skill) end
 
 ---Returns the Players current BattleGround ID
----@param battleGroundId number
 ---@return number
-function Player:GetBattlegroundId(battleGroundId) end
+function Player:GetBattlegroundId() end
 
 ---Returns the Players current BattleGround type ID
----@param typeId BattleGroundTypeId
 ---@return BattleGroundTypeId
-function Player:GetBattlegroundTypeId(typeId) end
+function Player:GetBattlegroundTypeId() end
 
 ---Returns the faction ID the Player is currently flagged as champion for
----@param championingFaction number
 ---@return number
-function Player:GetChampioningFaction(championingFaction) end
+function Player:GetChampioningFaction() end
 
 ---Returns active GM chat tag
----@param tag number
 ---@return number
-function Player:GetChatTag(tag) end
+function Player:GetChatTag() end
 
 ---Returns the Players amount of money in copper
----@param coinage number
 ---@return number
-function Player:GetCoinage(coinage) end
+function Player:GetCoinage() end
 
 ---Returns Player's combo points
----@param comboPoints number
 ---@return number
-function Player:GetComboPoints(comboPoints) end
+function Player:GetComboPoints() end
 
 ---Returns Unit target combo points are on
----@param target Unit
 ---@return Unit
-function Player:GetComboTarget(target) end
+function Player:GetComboTarget() end
 
 ---Returns the Players current amount of Achievements Completed
----@param achievementsCount number
 ---@return number
-function Player:GetCompletedAchievementsCount(achievementsCount) end
+function Player:GetCompletedAchievementsCount() end
 
 ---Returns the Players completed quest count
----@param questcount number
 ---@return number
-function Player:GetCompletedQuestsCount(questcount) end
+function Player:GetCompletedQuestsCount() end
 
 ---Returns the Players Corpse object
----@param corpse Corpse
 ---@return Corpse
-function Player:GetCorpse(corpse) end
+function Player:GetCorpse() end
 
 ---Returns the Players database locale index
----@param localeIndex number
 ---@return number
-function Player:GetDbLocaleIndex(localeIndex) end
+function Player:GetDbLocaleIndex() end
 
 ---Returns the Players game client locale
----@param locale LocaleConstant
 ---@return LocaleConstant
-function Player:GetDbcLocale(locale) end
+function Player:GetDbcLocale() end
 
 ---Returns raid or dungeon difficulty
 ---@param isRaid boolean
----@param difficulty number
 ---@return number
-function Player:GetDifficulty(isRaid, difficulty) end
+function Player:GetDifficulty(isRaid) end
 
 ---Returns the Players current level of intoxication
----@param drunkValue number
 ---@return number
-function Player:GetDrunkValue(drunkValue) end
+function Player:GetDrunkValue() end
 
 ---Returns a Players Item object by gear slot specified
 ---@param slot number
----@param item Item
 ---@return Item
-function Player:GetEquippedItemBySlot(slot, item) end
+function Player:GetEquippedItemBySlot(slot) end
 
 ---Returns the Players free talent point amount
----@param freeTalentPointAmt number
 ---@return number
-function Player:GetFreeTalentPoints(freeTalentPointAmt) end
+function Player:GetFreeTalentPoints() end
 
 ---Returns the Players GM Rank
----@param gmRank AccountTypes
 ---@return AccountTypes
-function Player:GetGMRank(gmRank) end
+function Player:GetGMRank() end
 
 ---Get glyphId of the glyph slot specified by slotIndex off the Player's current talent specialization.`
 ---@param slotIndex number
----@param of lyphI
 ---@return lyphI
-function Player:GetGlyph(slotIndex, of) end
+function Player:GetGlyph(slotIndex) end
 
 ---Returns the database textID of the WorldObject's gossip header text for the Player
 ---@param object WorldObject
----@param textId number
 ---@return number
-function Player:GetGossipTextId(object, textId) end
+function Player:GetGossipTextId(object) end
 
 ---Returns the Players Group object
----@param group Group
 ---@return Group
-function Player:GetGroup(group) end
+function Player:GetGroup() end
 
 ---Returns Group invitation
----@param group Group
 ---@return Group
-function Player:GetGroupInvite(group) end
+function Player:GetGroupInvite() end
 
 ---Returns the Players Guild object
----@param guild Guild
 ---@return Guild
-function Player:GetGuild(guild) end
+function Player:GetGuild() end
 
 ---Returns the Players current Guild ID
----@param guildId number
 ---@return number
-function Player:GetGuildId(guildId) end
+function Player:GetGuildId() end
 
 ---Returns the name of the Players current Guild
----@param guildName string
 ---@return string
-function Player:GetGuildName(guildName) end
+function Player:GetGuildName() end
 
 ---Returns the Players current guild rank
----@param guildRank number
 ---@return number
-function Player:GetGuildRank(guildRank) end
+function Player:GetGuildRank() end
 
 ---Returns health bonus from amount of stamina
----@param bonus number
 ---@return number
-function Player:GetHealthBonusFromStamina(bonus) end
+function Player:GetHealthBonusFromStamina() end
 
 ---Returns last week's standing position
----@param standingPos number
 ---@return number
-function Player:GetHonorLastWeekStandingPos(standingPos) end
+function Player:GetHonorLastWeekStandingPos() end
 
 ---Returns the Players current amount of Honor Points
----@param honorPoints number
 ---@return number
-function Player:GetHonorPoints(honorPoints) end
+function Player:GetHonorPoints() end
 
 ---Returns Player kills
 ---@param honorable boolean
----@param kills number
 ---@return number
-function Player:GetHonorStoredKills(honorable, kills) end
+function Player:GetHonorStoredKills(honorable) end
 
 ---Returns the amount of time the Player has spent ingame
----@param inGameTime number
 ---@return number
-function Player:GetInGameTime(inGameTime) end
+function Player:GetInGameTime() end
 
 ---Returns an Item from the player by entry.
 ---@param entryId number
----@param item Item
 ---@return Item
-function Player:GetItemByEntry(entryId, item) end
+function Player:GetItemByEntry(entryId) end
 
 ---Returns an Item from the player by guid.
 ---@param guid number
----@param item Item
 ---@return Item
-function Player:GetItemByGUID(guid, item) end
+function Player:GetItemByGUID(guid) end
 
 ---Returns an item in given bag on given slot.
 ---@param bag number
 ---@param slot number
----@param item Item
 ---@return Item
-function Player:GetItemByPos(bag, slot, item) end
+function Player:GetItemByPos(bag, slot) end
 
 ---Returns amount of the specified Item the Player has.
 ---@param entry number
 ---@param checkinBank boolean
----@param itemamount number
 ---@return number
-function Player:GetItemCount(entry, checkinBank, itemamount) end
+function Player:GetItemCount(entry, checkinBank) end
 
 ---Returns the Players current latency in MS
----@param latency number
 ---@return number
-function Player:GetLatency(latency) end
+function Player:GetLatency() end
 
 ---Returns the Players time played at current level
----@param currLevelPlayTime number
 ---@return number
-function Player:GetLevelPlayedTime(currLevelPlayTime) end
+function Player:GetLevelPlayedTime() end
 
 ---Returns the Players lifetime Honorable Kills
----@param lifeTimeKils number
 ---@return number
-function Player:GetLifetimeKills(lifeTimeKils) end
+function Player:GetLifetimeKills() end
 
 ---Returns the amount of mails in the player's mailbox.
----@param mailCount number
 ---@return number
-function Player:GetMailCount(mailCount) end
+function Player:GetMailCount() end
 
 ---Returns a mailed Item by guid.
 ---@param guid number
----@param item Item
 ---@return Item
-function Player:GetMailItem(guid, item) end
+function Player:GetMailItem(guid) end
 
 ---Returns mana bonus from amount of intellect
----@param bonus number
 ---@return number
-function Player:GetManaBonusFromIntellect(bonus) end
+function Player:GetManaBonusFromIntellect() end
 
 ---Returns max value of specified skill
 ---@param skill number
----@param val number
 ---@return number
-function Player:GetMaxSkillValue(skill, val) end
+function Player:GetMaxSkillValue(skill) end
 
 ---Returns a random Raid Member Player object within radius specified of Player
 ---@param radius number
----@param player Player
 ---@return Player
-function Player:GetNextRandomRaidMember(radius, player) end
+function Player:GetNextRandomRaidMember(radius) end
 
 ---Returns Players original Group object
----@param group Group
 ---@return Group
-function Player:GetOriginalGroup(group) end
+function Player:GetOriginalGroup() end
 
 ---Returns Players original sub group
----@param subGroup number
 ---@return number
-function Player:GetOriginalSubGroup(subGroup) end
+function Player:GetOriginalSubGroup() end
 
 ---Returns the normal phase of the player instead of the actual phase possibly containing GM phase
----@param phasemask number
 ---@return number
-function Player:GetPhaseMaskForSpawn(phasemask) end
+function Player:GetPhaseMaskForSpawn() end
 
 ---Returns the Players IP address
----@param ip string
 ---@return string
-function Player:GetPlayerIP(ip) end
+function Player:GetPlayerIP() end
 
 ---Gets a setting value for the Player
 ---@param source string
@@ -452,72 +385,60 @@ function Player:GetPlayerSettingValue(source, index) end
 
 ---Returns max value of specified skill without bonus'
 ---@param skill number
----@param pureVal number
 ---@return number
-function Player:GetPureMaxSkillValue(skill, pureVal) end
+function Player:GetPureMaxSkillValue(skill) end
 
 ---Returns skill value without bonus'
 ---@param skill number
----@param pureVal number
 ---@return number
-function Player:GetPureSkillValue(skill, pureVal) end
+function Player:GetPureSkillValue(skill) end
 
 ---Returns the quest level of the Players Quest specified by object
 ---@param questId number
----@param questRewardStatus QuestStatus
 ---@return QuestStatus
-function Player:GetQuestLevel(questId, questRewardStatus) end
+function Player:GetQuestLevel(questId) end
 
 ---Returns true if the Players Quest specified by entry ID has been rewarded, false otherwise.
 ---@param questId number
----@param questRewardStatus boolean
 ---@return boolean
-function Player:GetQuestRewardStatus(questId, questRewardStatus) end
+function Player:GetQuestRewardStatus(questId) end
 
 ---Returns the status of the Players Quest specified by entry ID
 ---@param questId number
----@param questStatus QuestStatus
 ---@return QuestStatus
-function Player:GetQuestStatus(questId, questStatus) end
+function Player:GetQuestStatus(questId) end
 
 ---Returns rank points
----@param rankPoints number
 ---@return number
-function Player:GetRankPoints(rankPoints) end
+function Player:GetRankPoints() end
 
 ---Returns the amount of reputation the Player has with the faction specified
 ---@param faction number
----@param reputationAmt number
 ---@return number
-function Player:GetReputation(faction, reputationAmt) end
+function Player:GetReputation(faction) end
 
 ---Returns the Players reputation rank of faction specified
 ---@param faction number
----@param rank ReputationRank
 ---@return ReputationRank
-function Player:GetReputationRank(faction, rank) end
+function Player:GetReputationRank(faction) end
 
 ---Returns Quest required Creature or GameObject count
 ---@param quest number
 ---@param entry number
----@param count number
 ---@return number
-function Player:GetReqKillOrCastCurrentCount(quest, entry, count) end
+function Player:GetReqKillOrCastCurrentCount(quest, entry) end
 
 ---Returns the Players current resting bonus
----@param restBonus number
 ---@return number
-function Player:GetRestBonus(restBonus) end
+function Player:GetRestBonus() end
 
 ---Returns the Players currently selected Unit object
----@param unit Unit
 ---@return Unit
-function Player:GetSelection(unit) end
+function Player:GetSelection() end
 
 ---Returns the Players current shield block value
----@param blockValue number
 ---@return number
-function Player:GetShieldBlockValue(blockValue) end
+function Player:GetShieldBlockValue() end
 
 ---Returns skill permanent bonus value
 ---@param skill number
@@ -531,51 +452,42 @@ function Player:GetSkillTempBonusValue(skill, bonusVal) end
 
 ---Returns skill value
 ---@param skill number
----@param val number
 ---@return number
-function Player:GetSkillValue(skill, val) end
+function Player:GetSkillValue(skill) end
 
 ---Returns the amount of available specs the Player currently has
----@param specCount number
 ---@return number
-function Player:GetSpecsCount(specCount) end
+function Player:GetSpecsCount() end
 
 ---Returns the Players cooldown delay by specified Spell ID
 ---@param spellId number
----@param spellCooldownDelay number
 ---@return number
-function Player:GetSpellCooldownDelay(spellId, spellCooldownDelay) end
+function Player:GetSpellCooldownDelay(spellId) end
 
 ---Returns Players current sub group
----@param subGroup number
 ---@return number
-function Player:GetSubGroup(subGroup) end
+function Player:GetSubGroup() end
 
 ---Returns the Players [TeamId]
----@param teamId TeamId
 ---@return TeamId
-function Player:GetTeam(teamId) end
+function Player:GetTeam() end
 
 ---Returns the Players total time played
----@param totalPlayTime number
 ---@return number
-function Player:GetTotalPlayedTime(totalPlayTime) end
+function Player:GetTotalPlayedTime() end
 
 ---Returns the Player that is currently trading with this Player
----@param trader Player
 ---@return Player
-function Player:GetTrader(trader) end
+function Player:GetTrader() end
 
 ---Returns the Player's experience points
----@param xp number
 ---@return number
-function Player:GetXP(xp) end
+function Player:GetXP() end
 
 ---Returns rested experience bonus
 ---@param xp number
----@param xpBonus number
 ---@return number
-function Player:GetXPRestBonus(xp, xpBonus) end
+function Player:GetXPRestBonus(xp) end
 
 ---Gives the Player experience
 ---@param xp number
@@ -619,9 +531,8 @@ function Player:GossipSendPOI(x, y, icon, flags, data, iconText) end
 
 ---Creates a new Group with the creator Player as leader.
 ---@param invited Player
----@param createdGroup Group
 ---@return Group
-function Player:GroupCreate(invited, createdGroup) end
+function Player:GroupCreate(invited) end
 
 ---Completes a Quest if in a Group
 ---@param quest number
@@ -630,152 +541,126 @@ function Player:GroupEventHappens(quest, obj) end
 
 ---Makes the Player invite another player to a group.
 ---@param invited Player
----@param success boolean
 ---@return boolean
-function Player:GroupInvite(invited, success) end
+function Player:GroupInvite(invited) end
 
 ---Returns true if the Player has completed the specified achievement, false otherwise.
 ---@param achievementId number
----@param hasAchieved boolean
 ---@return boolean
-function Player:HasAchieved(achievementId, hasAchieved) end
+function Player:HasAchieved(achievementId) end
 
 ---Returns true if Player has specified login flag
 ---@param flag number
----@param hasLoginFlag boolean
 ---@return boolean
-function Player:HasAtLoginFlag(flag, hasLoginFlag) end
+function Player:HasAtLoginFlag(flag) end
 
 ---Returns true if the Player has a Caster Specialization, false otherwise.
----@param HasCasterSpec boolean
 ---@return boolean
-function Player:HasCasterSpec(HasCasterSpec) end
+function Player:HasCasterSpec() end
 
 ---Returns true if the Player has a Heal Specialization, false otherwise.
----@param HasHealSpec boolean
 ---@return boolean
-function Player:HasHealSpec(HasHealSpec) end
+function Player:HasHealSpec() end
 
 ---Returns true if the Player has the given amount of item entry specified, false otherwise.
 ---@param itemId number
 ---@param count number
 ---@param check_bank boolean
----@param hasItem boolean
 ---@return boolean
-function Player:HasItem(itemId, count, check_bank, hasItem) end
+function Player:HasItem(itemId, count, check_bank) end
 
 ---Returns true if the Player has a Melee Specialization, false otherwise.
----@param HasMeleeSpec boolean
 ---@return boolean
-function Player:HasMeleeSpec(HasMeleeSpec) end
+function Player:HasMeleeSpec() end
 
 ---Returns true if the Player has an active Quest by specific ID, false otherwise.
 ---@param questId number
----@param hasQuest boolean
 ---@return boolean
-function Player:HasQuest(questId, hasQuest) end
+function Player:HasQuest(questId) end
 
 ---Returns true if Player has Quest for GameObject
 ---@param entry number
----@param hasQuest boolean
 ---@return boolean
-function Player:HasQuestForGO(entry, hasQuest) end
+function Player:HasQuestForGO(entry) end
 
 ---Returns true if the Player has a quest for the item entry specified, false otherwise.
 ---@param entry number
----@param hasQuest boolean
 ---@return boolean
-function Player:HasQuestForItem(entry, hasQuest) end
+function Player:HasQuestForItem(entry) end
 
 ---Returns true if the Player has a skill by specific ID, false otherwise.
 ---@param skill number
----@param hasSkill boolean
 ---@return boolean
-function Player:HasSkill(skill, hasSkill) end
+function Player:HasSkill(skill) end
 
 ---Returns true if the Player has a Spell by specific ID, false otherwise.
 ---@param spellId number
----@param hasSpell boolean
 ---@return boolean
-function Player:HasSpell(spellId, hasSpell) end
+function Player:HasSpell(spellId) end
 
 ---Returns true if the Spell specified by ID is currently on cooldown for the Player, false otherwise.
 ---@param spellId number
----@param hasSpellCooldown boolean
 ---@return boolean
-function Player:HasSpellCooldown(spellId, hasSpellCooldown) end
+function Player:HasSpellCooldown(spellId) end
 
 ---Returns true if the Player has a talent by ID in specified spec, false otherwise.
 ---@param spellId number
 ---@param spec number
----@param hasTalent boolean
 ---@return boolean
-function Player:HasTalent(spellId, spec, hasTalent) end
+function Player:HasTalent(spellId, spec) end
 
 ---Returns true if the Player has a Tank Specialization, false otherwise.
----@param HasTankSpec boolean
 ---@return boolean
-function Player:HasTankSpec(HasTankSpec) end
+function Player:HasTankSpec() end
 
 ---Returns true if the Player has a title by specific ID, false otherwise.
 ---@param titleId number
----@param hasTitle boolean
 ---@return boolean
-function Player:HasTitle(titleId, hasTitle) end
+function Player:HasTitle(titleId) end
 
 ---Returns true if the Player is currently in an arena, false otherwise.
----@param inArena boolean
 ---@return boolean
-function Player:InArena(inArena) end
+function Player:InArena() end
 
 ---Returns true if the Player is currently in a BattleGround, false otherwise.
----@param inBattleGround boolean
 ---@return boolean
-function Player:InBattleground(inBattleGround) end
+function Player:InBattleground() end
 
 ---Returns true if the Player is currently in a BattleGround queue, false otherwise.
----@param inBattlegroundQueue boolean
 ---@return boolean
-function Player:InBattlegroundQueue(inBattlegroundQueue) end
+function Player:InBattlegroundQueue() end
 
 ---Sets the given quest entry incomplete for the Player.
 ---@param entry number
 function Player:IncompleteQuest(entry) end
 
 ---Returns true if the Player is 'Away From Keyboard' flagged, false otherwise.
----@param isAFK boolean
 ---@return boolean
-function Player:IsAFK(isAFK) end
+function Player:IsAFK() end
 
 ---Returns true if the Player is accepting whispers, false otherwise.
----@param isAcceptingWhispers boolean
 ---@return boolean
-function Player:IsAcceptingWhispers(isAcceptingWhispers) end
+function Player:IsAcceptingWhispers() end
 
 ---Returns true if the Player is a part of the Alliance faction, false otherwise.
----@param isAlliance boolean
 ---@return boolean
-function Player:IsAlliance(isAlliance) end
+function Player:IsAlliance() end
 
 ---Returns true if the Player is 'Do Not Disturb' flagged, false otherwise.
----@param isDND boolean
 ---@return boolean
-function Player:IsDND(isDND) end
+function Player:IsDND() end
 
 ---Returns true if the Player is currently falling, false otherwise.
----@param isFalling boolean
 ---@return boolean
-function Player:IsFalling(isFalling) end
+function Player:IsFalling() end
 
 ---Returns true if the Player is currently flying, false otherwise.
----@param isFlying boolean
 ---@return boolean
-function Player:IsFlying(isFlying) end
+function Player:IsFlying() end
 
 ---Returns true if the Player is a Game Master, false otherwise.
----@param isGM boolean
 ---@return boolean
-function Player:IsGM(isGM) end
+function Player:IsGM() end
 
 function Player:IsGMChat() end
 
@@ -785,73 +670,60 @@ function Player:IsGroupVisibleFor() end
 
 ---Returns true if the Player is eligible for Honor or XP gain by Unit specified, false otherwise.
 ---@param unit Unit
----@param isHonorOrXPTarget boolean
 ---@return boolean
-function Player:IsHonorOrXPTarget(unit, isHonorOrXPTarget) end
+function Player:IsHonorOrXPTarget(unit) end
 
 ---Returns true if the Player is a part of the Horde faction, false otherwise.
----@param isHorde boolean
 ---@return boolean
-function Player:IsHorde(isHorde) end
+function Player:IsHorde() end
 
 ---Returns true if the Player is immune to everything.
----@param isImmune boolean
 ---@return boolean
-function Player:IsImmuneToDamage(isImmune) end
+function Player:IsImmuneToDamage() end
 
 ---Returns true if the Player is in an arena team specified by type, false otherwise.
 ---@param type number
----@param isInArenaTeam boolean
 ---@return boolean
-function Player:IsInArenaTeam(type, isInArenaTeam) end
+function Player:IsInArenaTeam(type) end
 
 ---Returns true if the Player is in a Group, false otherwise.
----@param isInGroup boolean
 ---@return boolean
-function Player:IsInGroup(isInGroup) end
+function Player:IsInGroup() end
 
 ---Returns true if the Player is in a Guild, false otherwise.
----@param isInGuild boolean
 ---@return boolean
-function Player:IsInGuild(isInGuild) end
+function Player:IsInGuild() end
 
 ---Returns true if the Player is currently in the same Group as another Player by object, false otherwise.
 ---@param player Player
----@param isInSameGroupWith boolean
 ---@return boolean
-function Player:IsInSameGroupWith(player, isInSameGroupWith) end
+function Player:IsInSameGroupWith(player) end
 
 ---Returns true if the Player is currently in the same raid as another Player by object, false otherwise.
 ---@param player Player
----@param isInSameRaidWith boolean
 ---@return boolean
-function Player:IsInSameRaidWith(player, isInSameRaidWith) end
+function Player:IsInSameRaidWith(player) end
 
 ---Returns true if the Player is currently in water, false otherwise.
----@param isInWater boolean
 ---@return boolean
-function Player:IsInWater(isInWater) end
+function Player:IsInWater() end
 
 ---Returns true if the Player is currently moving, false otherwise.
----@param isMoving boolean
 ---@return boolean
-function Player:IsMoving(isMoving) end
+function Player:IsMoving() end
 
 ---Returns true if the Player is currently rested, false otherwise.
----@param isRested boolean
 ---@return boolean
-function Player:IsRested(isRested) end
+function Player:IsRested() end
 
 ---Returns true if the Player has taxi cheat activated, false otherwise.
----@param isTaxiCheater boolean
 ---@return boolean
-function Player:IsTaxiCheater(isTaxiCheater) end
+function Player:IsTaxiCheater() end
 
 ---Returns true if the Player can see anoter Player specified by object, false otherwise.
 ---@param player Player
----@param isVisibleForPlayer boolean
 ---@return boolean
-function Player:IsVisibleForPlayer(player, isVisibleForPlayer) end
+function Player:IsVisibleForPlayer(player) end
 
 ---Kicks the Player from the server
 function Player:KickPlayer() end
@@ -949,9 +821,8 @@ function Player:ResetSpellCooldown(spellId, update) end
 function Player:ResetTalents(noCost) end
 
 ---Returns the Players accumulated talent reset cost
----@param resetCost number
 ---@return number
-function Player:ResetTalentsCost(resetCost) end
+function Player:ResetTalentsCost() end
 
 ---Resets cooldown of the specified category
 ---@param category number

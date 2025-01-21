@@ -5,94 +5,76 @@ BattleGround = {}
 
 ---Returns the amount of alive players in the BattleGround by the team ID.
 ---@param team Team
----@param count number
 ---@return number
-function BattleGround:GetAlivePlayersCountByTeam(team, count) end
+function BattleGround:GetAlivePlayersCountByTeam(team) end
 
 ---Returns the bonus honor given by amount of kills in the specific BattleGround.
 ---@param kills number
----@param bonusHonor number
 ---@return number
-function BattleGround:GetBonusHonorFromKillCount(kills, bonusHonor) end
+function BattleGround:GetBonusHonorFromKillCount(kills) end
 
 ---Returns the bracket ID of the specific BattleGround.
----@param bracketId BattleGroundBracketId
 ---@return BattleGroundBracketId
-function BattleGround:GetBracketId(bracketId) end
+function BattleGround:GetBracketId() end
 
 ---Returns the end time of the BattleGround.
----@param endTime number
 ---@return number
-function BattleGround:GetEndTime(endTime) end
+function BattleGround:GetEndTime() end
 
 ---Returns the amount of free slots for the selected team in the specific BattleGround.
 ---@param team Team
----@param freeSlots number
 ---@return number
-function BattleGround:GetFreeSlotsForTeam(team, freeSlots) end
+function BattleGround:GetFreeSlotsForTeam(team) end
 
 ---Returns the instance ID of the BattleGround.
----@param instanceId number
 ---@return number
-function BattleGround:GetInstanceId(instanceId) end
+function BattleGround:GetInstanceId() end
 
 ---Returns the Map of the BattleGround.
----@param map Map
 ---@return Map
-function BattleGround:GetMap(map) end
+function BattleGround:GetMap() end
 
 ---Returns the map ID of the BattleGround.
----@param mapId number
 ---@return number
-function BattleGround:GetMapId(mapId) end
+function BattleGround:GetMapId() end
 
 ---Returns the max allowed Player level of the specific BattleGround.
----@param maxLevel number
 ---@return number
-function BattleGround:GetMaxLevel(maxLevel) end
+function BattleGround:GetMaxLevel() end
 
 ---Returns the maximum allowed Player count of the specific BattleGround.
----@param maxPlayerCount number
 ---@return number
-function BattleGround:GetMaxPlayers(maxPlayerCount) end
+function BattleGround:GetMaxPlayers() end
 
 ---Returns the maximum allowed Player count per team of the specific BattleGround.
----@param maxTeamPlayerCount number
 ---@return number
-function BattleGround:GetMaxPlayersPerTeam(maxTeamPlayerCount) end
+function BattleGround:GetMaxPlayersPerTeam() end
 
 ---Returns the minimum allowed Player level of the specific BattleGround.
----@param minLevel number
 ---@return number
-function BattleGround:GetMinLevel(minLevel) end
+function BattleGround:GetMinLevel() end
 
 ---Returns the minimum allowed Player count of the specific BattleGround.
----@param minPlayerCount number
 ---@return number
-function BattleGround:GetMinPlayers(minPlayerCount) end
+function BattleGround:GetMinPlayers() end
 
 ---Returns the minimum allowed Player count per team of the specific BattleGround.
----@param minTeamPlayerCount number
 ---@return number
-function BattleGround:GetMinPlayersPerTeam(minTeamPlayerCount) end
+function BattleGround:GetMinPlayersPerTeam() end
 
 ---Returns the name of the BattleGround.
----@param name string
 ---@return string
-function BattleGround:GetName(name) end
+function BattleGround:GetName() end
 
 ---Returns the status of the specific BattleGround.
----@param status BattleGroundStatus
 ---@return BattleGroundStatus
-function BattleGround:GetStatus(status) end
+function BattleGround:GetStatus() end
 
 ---Returns the type ID of the BattleGround.
----@param typeId BattleGroundTypeId
 ---@return BattleGroundTypeId
-function BattleGround:GetTypeId(typeId) end
+function BattleGround:GetTypeId() end
 
 ---Returns the winning team of the specific BattleGround.
----@param team Team
 ---@return Team
-function BattleGround:GetWinner(team) end
+function BattleGround:GetWinner() end
 

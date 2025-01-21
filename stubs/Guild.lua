@@ -17,44 +17,36 @@ function Guild:DeleteMember(player, isDisbanding) end
 function Guild:Disband() end
 
 ---Returns the Guilds entry ID
----@param entryId number
 ---@return number
-function Guild:GetId(entryId) end
+function Guild:GetId() end
 
 ---Returns the Guilds current info
----@param guildInfo string
 ---@return string
-function Guild:GetInfo(guildInfo) end
+function Guild:GetInfo() end
 
 ---Finds and returns the Guild leader by their GUID if logged in
----@param leader Player
 ---@return Player
-function Guild:GetLeader(leader) end
+function Guild:GetLeader() end
 
 ---Returns Guild leader GUID
----@param leaderGUID number
 ---@return number
-function Guild:GetLeaderGUID(leaderGUID) end
+function Guild:GetLeaderGUID() end
 
 ---Returns the Guilds current Message Of The Day
----@param guildMOTD string
 ---@return string
-function Guild:GetMOTD(guildMOTD) end
+function Guild:GetMOTD() end
 
 ---Returns the member count of this Guild
----@param memberCount number
 ---@return number
-function Guild:GetMemberCount(memberCount) end
+function Guild:GetMemberCount() end
 
 ---Returns a table with the Players in this Guild
----@param guildPlayers table
 ---@return table
-function Guild:GetMembers(guildPlayers) end
+function Guild:GetMembers() end
 
 ---Returns the Guilds name
----@param guildName string
 ---@return string
-function Guild:GetName(guildName) end
+function Guild:GetName() end
 
 ---Sends a WorldPacket to all the Players in the Guild
 ---@param packet WorldPacket

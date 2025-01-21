@@ -4,82 +4,66 @@
 ItemTemplate = {}
 
 ---Returns the Player classes allowed to use this ItemTemplate.
----@param allowableClass number
 ---@return number
-function ItemTemplate:GetAllowableClass(allowableClass) end
+function ItemTemplate:GetAllowableClass() end
 
 ---Returns the Player races allowed to use this ItemTemplate.
----@param allowableRace number
 ---@return number
-function ItemTemplate:GetAllowableRace(allowableRace) end
+function ItemTemplate:GetAllowableRace() end
 
 ---Returns the ItemTemplate's default purchase count.
----@param buyCount number
 ---@return number
-function ItemTemplate:GetBuyCount(buyCount) end
+function ItemTemplate:GetBuyCount() end
 
 ---Returns the ItemTemplate's purchase price.
----@param buyPrice number
 ---@return number
-function ItemTemplate:GetBuyPrice(buyPrice) end
+function ItemTemplate:GetBuyPrice() end
 
 ---Returns the ItemTemplate's class.
----@param class number
 ---@return number
-function ItemTemplate:GetClass(class) end
+function ItemTemplate:GetClass() end
 
 ---Returns the ItemTemplate's display ID.
----@param displayId number
 ---@return number
-function ItemTemplate:GetDisplayId(displayId) end
+function ItemTemplate:GetDisplayId() end
 
 ---Returns the ItemTemplate's extra flags.
----@param flags number
 ---@return number
-function ItemTemplate:GetExtraFlags(flags) end
+function ItemTemplate:GetExtraFlags() end
 
 ---Returns the ItemTemplate's flags.
----@param flags number
 ---@return number
-function ItemTemplate:GetFlags(flags) end
+function ItemTemplate:GetFlags() end
 
 ---Returns the ItemTemplate's inventory type.
----@param inventoryType number
 ---@return number
-function ItemTemplate:GetInventoryType(inventoryType) end
+function ItemTemplate:GetInventoryType() end
 
 ---Returns the ItemTemplate's ID.
----@param itemId number
 ---@return number
-function ItemTemplate:GetItemId(itemId) end
+function ItemTemplate:GetItemId() end
 
 ---Returns the ItemTemplate's item level.
----@param itemLevel number
 ---@return number
-function ItemTemplate:GetItemLevel(itemLevel) end
+function ItemTemplate:GetItemLevel() end
 
 ---Returns the ItemTemplate's name.
----@param name string
 ---@return string
-function ItemTemplate:GetName(name) end
+function ItemTemplate:GetName() end
 
 ---Returns the ItemTemplate's quality.
----@param quality number
 ---@return number
-function ItemTemplate:GetQuality(quality) end
+function ItemTemplate:GetQuality() end
 
 ---Returns the minimum level required to use this ItemTemplate.
----@param requiredLevel number
 ---@return number
-function ItemTemplate:GetRequiredLevel(requiredLevel) end
+function ItemTemplate:GetRequiredLevel() end
 
 ---Returns the ItemTemplate's sell price.
----@param sellPrice number
 ---@return number
-function ItemTemplate:GetSellPrice(sellPrice) end
+function ItemTemplate:GetSellPrice() end
 
 ---Returns the ItemTemplate's subclass.
----@param subClass number
 ---@return number
-function ItemTemplate:GetSubClass(subClass) end
+function ItemTemplate:GetSubClass() end
 
