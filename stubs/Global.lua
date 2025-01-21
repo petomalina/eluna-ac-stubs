@@ -5,8 +5,8 @@
 ---@param waypoints table
 ---@param mountA number
 ---@param mountH number
----@param price number
----@param pathId number
+---@param price? number
+---@param pathId? number
 ---@return number
 function AddTaxiPath(waypoints, mountA, mountH, price, pathId) end
 
@@ -142,7 +142,7 @@ function CreateLongLong(n, n_ll, n_str) end
 ---@param func function
 ---@param delay number
 ---@param delaytable table
----@param repeats number
+---@param repeats? number
 ---@return number
 function CreateLuaEvent(func, delay, delaytable, repeats) end
 
@@ -165,7 +165,7 @@ function GetActiveGameEvents() end
 
 ---Returns the area or zone's name.
 ---@param areaOrZoneId number
----@param locale LocaleConstant
+---@param locale? LocaleConstant
 ---@return string
 function GetAreaName(areaOrZoneId, locale) end
 
@@ -221,7 +221,7 @@ function GetItemGUID(lowguid) end
 
 ---Returns an chat link for an Item.
 ---@param entry number
----@param locale LocaleConstant
+---@param locale? LocaleConstant
 ---@return string
 function GetItemLink(entry, locale) end
 
@@ -233,7 +233,7 @@ function GetLuaEngine() end
 
 ---Returns a Map by ID.
 ---@param mapId number
----@param instanceId number
+---@param instanceId? number
 ---@return Map
 function GetMapById(mapId, instanceId) end
 
@@ -268,8 +268,8 @@ function GetPlayerCount() end
 function GetPlayerGUID(lowguid) end
 
 ---Returns a table with all the current Players in the world
----@param team TeamId
----@param onlyGM boolean
+---@param team? TeamId
+---@param onlyGM? boolean
 ---@return table
 function GetPlayersInWorld(team, onlyGM) end
 
@@ -358,9 +358,9 @@ function Kick(player) end
 ---@param y number
 ---@param z number
 ---@param o number
----@param save boolean
----@param durorresptime number
----@param phase number
+---@param save? boolean
+---@param durorresptime? number
+---@param phase? number
 ---@return WorldObject
 function PerformIngameSpawn(spawnType, entry, mapId, instanceId, x, y, z, o, save, durorresptime, phase) end
 
@@ -376,7 +376,7 @@ function PrintInfo() end
 ---Registers a BattleGround event handler.
 ---@param event number
 ---@param func function
----@param shots number
+---@param shots? number
 ---@return function
 function RegisterBGEvent(event, func, shots) end
 
@@ -384,7 +384,7 @@ function RegisterBGEvent(event, func, shots) end
 ---@param entry number
 ---@param event number
 ---@param func function
----@param shots number
+---@param shots? number
 ---@return function
 function RegisterCreatureEvent(entry, event, func, shots) end
 
@@ -392,7 +392,7 @@ function RegisterCreatureEvent(entry, event, func, shots) end
 ---@param entry number
 ---@param event number
 ---@param func function
----@param shots number
+---@param shots? number
 ---@return function
 function RegisterCreatureGossipEvent(entry, event, func, shots) end
 
@@ -400,7 +400,7 @@ function RegisterCreatureGossipEvent(entry, event, func, shots) end
 ---@param entry number
 ---@param event number
 ---@param func function
----@param shots number
+---@param shots? number
 ---@return function
 function RegisterGameObjectEvent(entry, event, func, shots) end
 
@@ -408,21 +408,21 @@ function RegisterGameObjectEvent(entry, event, func, shots) end
 ---@param entry number
 ---@param event number
 ---@param func function
----@param shots number
+---@param shots? number
 ---@return function
 function RegisterGameObjectGossipEvent(entry, event, func, shots) end
 
 ---Registers a Group event handler.
 ---@param event number
 ---@param func function
----@param shots number
+---@param shots? number
 ---@return function
 function RegisterGroupEvent(event, func, shots) end
 
 ---Registers a Guild event handler.
 ---@param event number
 ---@param func function
----@param shots number
+---@param shots? number
 ---@return function
 function RegisterGuildEvent(event, func, shots) end
 
@@ -430,14 +430,14 @@ function RegisterGuildEvent(event, func, shots) end
 ---@param instance_id number
 ---@param event number
 ---@param func function
----@param shots number
+---@param shots? number
 function RegisterInstanceEvent(instance_id, event, func, shots) end
 
 ---Registers an Item event handler.
 ---@param entry number
 ---@param event number
 ---@param func function
----@param shots number
+---@param shots? number
 ---@return function
 function RegisterItemEvent(entry, event, func, shots) end
 
@@ -445,7 +445,7 @@ function RegisterItemEvent(entry, event, func, shots) end
 ---@param entry number
 ---@param event number
 ---@param func function
----@param shots number
+---@param shots? number
 ---@return function
 function RegisterItemGossipEvent(entry, event, func, shots) end
 
@@ -453,21 +453,21 @@ function RegisterItemGossipEvent(entry, event, func, shots) end
 ---@param map_id number
 ---@param event number
 ---@param func function
----@param shots number
+---@param shots? number
 function RegisterMapEvent(map_id, event, func, shots) end
 
 ---Registers a WorldPacket event handler.
 ---@param entry number
 ---@param event number
 ---@param func function
----@param shots number
+---@param shots? number
 ---@return function
 function RegisterPacketEvent(entry, event, func, shots) end
 
 ---Registers a Player event handler.
 ---@param event number
 ---@param func function
----@param shots number
+---@param shots? number
 ---@return function
 function RegisterPlayerEvent(event, func, shots) end
 
@@ -475,14 +475,14 @@ function RegisterPlayerEvent(event, func, shots) end
 ---@param menu_id number
 ---@param event number
 ---@param func function
----@param shots number
+---@param shots? number
 ---@return function
 function RegisterPlayerGossipEvent(menu_id, event, func, shots) end
 
 ---Registers a server event handler.
 ---@param event number
 ---@param func function
----@param shots number
+---@param shots? number
 ---@return function
 function RegisterServerEvent(event, func, shots) end
 
@@ -491,7 +491,7 @@ function RegisterServerEvent(event, func, shots) end
 ---@param instance_id number
 ---@param event number
 ---@param func function
----@param shots number
+---@param shots? number
 ---@return function
 function RegisterUniqueCreatureEvent(guid, instance_id, event, func, shots) end
 
@@ -500,11 +500,11 @@ function ReloadEluna() end
 
 ---Removes a global timed event specified by ID.
 ---@param eventId number
----@param all_Events boolean
+---@param all_Events? boolean
 function RemoveEventById(eventId, all_Events) end
 
 ---Removes all global timed events.
----@param all_Events boolean
+---@param all_Events? boolean
 function RemoveEvents(all_Events) end
 
 ---Runs a command.
@@ -518,13 +518,13 @@ function SaveAllPlayers() end
 ---@param subject string
 ---@param text string
 ---@param receiverGUIDLow number
----@param senderGUIDLow number
----@param stationary MailStationery
----@param delay number
----@param money number
----@param cod number
----@param entry number
----@param amount number
+---@param senderGUIDLow? number
+---@param stationary? MailStationery
+---@param delay? number
+---@param money? number
+---@param cod? number
+---@param entry? number
+---@param amount? number
 ---@return number
 function SendMail(subject, text, receiverGUIDLow, senderGUIDLow, stationary, delay, money, cod, entry, amount) end
 
@@ -538,12 +538,12 @@ function SetOwnerHalaa(teamId) end
 
 ---Starts the event by eventId, if force is set, the event will force start regardless of previous event state.
 ---@param eventId number
----@param force boolean
+---@param force? boolean
 function StartGameEvent(eventId, force) end
 
 ---Stops the event by eventId, if force is set, the event will force stop regardless of previous event state.
 ---@param eventId number
----@param force boolean
+---@param force? boolean
 function StopGameEvent(eventId, force) end
 
 ---Removes all Items from a vendor and updates the database.

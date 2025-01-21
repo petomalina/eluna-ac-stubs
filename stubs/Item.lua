@@ -62,7 +62,7 @@ function Item:GetInventoryType() end
 function Item:GetItemLevel() end
 
 ---Returns the chat link of the Item
----@param locale LocaleConstant
+---@param locale? LocaleConstant
 ---@return string
 function Item:GetItemLink(locale) end
 

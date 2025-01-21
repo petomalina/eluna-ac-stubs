@@ -7,7 +7,7 @@ Map = {}
 ---@param x number
 ---@param y number
 ---@param z number
----@param phasemask number
+---@param phasemask? number
 ---@return number
 function Map:GetAreaId(x, y, z, phasemask) end
 

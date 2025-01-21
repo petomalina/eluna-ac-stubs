@@ -29,13 +29,13 @@ function ChatHandler:GetSelectedUnit() end
 
 ---Checks if the current security level is lower than the specified Player's account
 ---@param player Player
----@param strong bool
+---@param strong? bool
 ---@return bool
 function ChatHandler:HasLowerSecurity(player, strong) end
 
 ---Checks if the current security level is lower than the specified account's level
 ---@param account uint32
----@param strong bool
+---@param strong? bool
 ---@return bool
 function ChatHandler:HasLowerSecurityAccount(account, strong) end
 

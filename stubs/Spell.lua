@@ -7,7 +7,7 @@ Spell = {}
 function Spell:Cancel() end
 
 ---Casts the Spell.
----@param skipCheck boolean
+---@param skipCheck? boolean
 function Spell:Cast(skipCheck) end
 
 ---Finishes the Spell.

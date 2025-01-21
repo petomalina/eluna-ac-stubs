@@ -25,7 +25,7 @@ function Creature:CanAggro() end
 ---Returns true if the Creature can assist friend in combat against enemy,   and returns false otherwise.
 ---@param friend Unit
 ---@param enemy Unit
----@param checkFaction boolean
+---@param checkFaction? boolean
 ---@return boolean
 function Creature:CanAssistTo(friend, enemy, checkFaction) end
 
@@ -40,7 +40,7 @@ function Creature:CanFly() end
 
 ---Returns true if the Creature can start attacking specified target
 ---@param target Unit
----@param force boolean
+---@param force? boolean
 function Creature:CanStartAttack(target, force) end
 
 ---Returns true if the Creature can move through deep water,   and returns false otherwise.
@@ -52,7 +52,7 @@ function Creature:CanSwim() end
 function Creature:CanWalk() end
 
 ---Despawn this Creature.
----@param delay number
+---@param delay? number
 function Creature:DespawnOrUnsummon(delay) end
 
 ---Make the Creature flee combat to get assistance from a nearby friendly Creature.
@@ -64,10 +64,10 @@ function Creature:GetAIName() end
 
 ---Returns a target from the Creature's threat list based on the   supplied arguments.
 ---@param targetType SelectAggroTarget
----@param playerOnly boolean
----@param position number
----@param distance number
----@param aura number
+---@param playerOnly? boolean
+---@param position? number
+---@param distance? number
+---@param aura? number
 ---@return Unit
 function Creature:GetAITarget(targetType, playerOnly, position, distance, aura) end
 
@@ -247,7 +247,7 @@ function Creature:IsReputationGainDisabled() end
 function Creature:IsTappedBy() end
 
 ---Returns true if the Creature can be targeted for attack,   and returns false otherwise.
----@param mustBeDead boolean
+---@param mustBeDead? boolean
 ---@return boolean
 function Creature:IsTargetableForAttack(mustBeDead) end
 
@@ -282,7 +282,7 @@ function Creature:SaveToDB() end
 function Creature:SelectVictim() end
 
 ---Sets whether the Creature can be aggroed.
----@param allow boolean
+---@param allow? boolean
 function Creature:SetAggroEnabled(allow) end
 
 ---Sets the Creature's death state to deathState.
@@ -298,7 +298,7 @@ function Creature:SetDefaultMovementType(type) end
 function Creature:SetDisableGravity(disable) end
 
 ---Sets whether the Creature gives reputation or not.
----@param disable boolean
+---@param disable? boolean
 function Creature:SetDisableReputationGain(disable) end
 
 ---Equips given Items to the Unit. Using 0 removes the equipped Item
@@ -315,7 +315,7 @@ function Creature:SetEquipmentSlots(main_hand, off_hand, ranged) end
 function Creature:SetHomePosition(x, y, z, o) end
 
 ---Sets whether the creature is hovering / levitating or not.
----@param enable boolean
+---@param enable? boolean
 function Creature:SetHover(enable) end
 
 ---Sets the Creature as in combat with all Players in the dungeon instance.
@@ -328,11 +328,11 @@ function Creature:SetLootMode() end
 function Creature:SetNPCFlags(flags) end
 
 ---Sets whether the Creature can call nearby enemies for help in combat or not.
----@param enable boolean
+---@param enable? boolean
 function Creature:SetNoCallAssistance(enable) end
 
 ---Sets whether the Creature can search for assistance at low health or not.
----@param enable boolean
+---@param enable? boolean
 function Creature:SetNoSearchAssistance(enable) end
 
 ---Sets the Creature's ReactState to state.
@@ -340,7 +340,7 @@ function Creature:SetNoSearchAssistance(enable) end
 function Creature:SetReactState(state) end
 
 ---Sets whether the Creature can regenerate health or not.
----@param enable boolean
+---@param enable? boolean
 function Creature:SetRegeneratingHealth(enable) end
 
 ---Sets the time it takes for the Creature to respawn when killed.
@@ -356,7 +356,7 @@ function Creature:SetUnitFlags(flags) end
 function Creature:SetUnitFlagsTwo(flags) end
 
 ---Sets whether the Creature is currently walking or running.
----@param enable boolean
+---@param enable? boolean
 function Creature:SetWalk(enable) end
 
 ---Sets the distance the Creature can wander from it's spawn point.
@@ -365,6 +365,6 @@ function Creature:SetWanderRadius(distance) end
 
 ---Transform the Creature into another Creature.
 ---@param entry number
----@param dataGUIDLow number
+---@param dataGUIDLow? number
 function Creature:UpdateEntry(entry, dataGUIDLow) end
 

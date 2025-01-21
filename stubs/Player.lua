@@ -10,7 +10,7 @@ function Player:AddComboPoints(target, count) end
 
 ---Adds the given amount of the specified item entry to the player.
 ---@param entry number
----@param itemCount number
+---@param itemCount? number
 ---@return Item
 function Player:AddItem(entry, itemCount) end
 
@@ -110,7 +110,7 @@ function Player:DurabilityLoss(item, percent) end
 
 ---Damages all Items equipped. If inventory is true, damages Items in bags
 ---@param percent number
----@param inventory boolean
+---@param inventory? boolean
 function Player:DurabilityLossAll(percent, inventory) end
 
 ---Sets durability loss for an Item in the specified slot
@@ -124,19 +124,19 @@ function Player:DurabilityPointsLoss(item, points) end
 
 ---Sets durability loss on all Items equipped
 ---@param points number
----@param inventory boolean
+---@param inventory? boolean
 function Player:DurabilityPointsLossAll(points, inventory) end
 
 ---Repairs Item at specified position.
 ---@param position number
----@param cost boolean
----@param discountMod number
+---@param cost? boolean
+---@param discountMod? number
 function Player:DurabilityRepair(position, cost, discountMod) end
 
 ---Repairs all Items.
----@param takeCost boolean
----@param discountMod number
----@param guidBank boolean
+---@param takeCost? boolean
+---@param discountMod? number
+---@param guidBank? boolean
 function Player:DurabilityRepairAll(takeCost, discountMod, guidBank) end
 
 ---Equips the given item or item entry to the given slot. Returns the equipped item or nil.
@@ -229,7 +229,7 @@ function Player:GetDbLocaleIndex() end
 function Player:GetDbcLocale() end
 
 ---Returns raid or dungeon difficulty
----@param isRaid boolean
+---@param isRaid? boolean
 ---@return number
 function Player:GetDifficulty(isRaid) end
 
@@ -297,7 +297,7 @@ function Player:GetHonorLastWeekStandingPos() end
 function Player:GetHonorPoints() end
 
 ---Returns Player kills
----@param honorable boolean
+---@param honorable? boolean
 ---@return number
 function Player:GetHonorStoredKills(honorable) end
 
@@ -323,7 +323,7 @@ function Player:GetItemByPos(bag, slot) end
 
 ---Returns amount of the specified Item the Player has.
 ---@param entry number
----@param checkinBank boolean
+---@param checkinBank? boolean
 ---@return number
 function Player:GetItemCount(entry, checkinBank) end
 
@@ -491,7 +491,7 @@ function Player:GetXPRestBonus(xp) end
 
 ---Gives the Player experience
 ---@param xp number
----@param victim Unit
+---@param victim? Unit
 function Player:GiveXP(xp, victim) end
 
 ---Adds the gossip items to the Player's gossip for the quests the given WorldObject can offer to the player.
@@ -509,9 +509,9 @@ function Player:GossipComplete() end
 ---@param msg string
 ---@param sender number
 ---@param intid number
----@param code boolean
----@param popup string
----@param money number
+---@param code? boolean
+---@param popup? string
+---@param money? number
 function Player:GossipMenuAddItem(icon, msg, sender, intid, code, popup, money) end
 
 ---Sends the current gossip items of the player to him as a gossip menu with header text from the given textId.
@@ -564,8 +564,8 @@ function Player:HasHealSpec() end
 
 ---Returns true if the Player has the given amount of item entry specified, false otherwise.
 ---@param itemId number
----@param count number
----@param check_bank boolean
+---@param count? number
+---@param check_bank? boolean
 ---@return boolean
 function Player:HasItem(itemId, count, check_bank) end
 
@@ -745,11 +745,11 @@ function Player:LearnSpell(spellId) end
 function Player:LearnTalent(talent_id, talentRank) end
 
 ---Forces the Player to leave a BattleGround
----@param teleToEntry boolean
+---@param teleToEntry? boolean
 function Player:LeaveBattleground(teleToEntry) end
 
 ---Forces the Player to log out
----@param saveToDb boolean
+---@param saveToDb? boolean
 function Player:LogoutPlayer(saveToDb) end
 
 ---Adds or detracts from the Players current Arena Points
@@ -780,7 +780,7 @@ function Player:RemoveFromGroup() end
 ---Removes the given amount of the specified Item from the player.
 ---@param item Item
 ---@param entry number
----@param itemCount number
+---@param itemCount? number
 function Player:RemoveItem(item, entry, itemCount) end
 
 ---Removes specified amount of lifetime kills
@@ -813,11 +813,11 @@ function Player:ResetPetTalents() end
 
 ---Resets cooldown of the specified spell
 ---@param spellId number
----@param update boolean
+---@param update? boolean
 function Player:ResetSpellCooldown(spellId, update) end
 
 ---Resets the Players talents
----@param noCost boolean
+---@param noCost? boolean
 function Player:ResetTalents(noCost) end
 
 ---Returns the Players accumulated talent reset cost
@@ -826,12 +826,12 @@ function Player:ResetTalentsCost() end
 
 ---Resets cooldown of the specified category
 ---@param category number
----@param update boolean
+---@param update? boolean
 function Player:ResetTypeCooldowns(category, update) end
 
 ---Resurrects the Player.
----@param healthPercent number
----@param ressSickness boolean
+---@param healthPercent? number
+---@param ressSickness? boolean
 function Player:ResurrectPlayer(healthPercent, ressSickness) end
 
 ---Rewards the given quest entry for the Player if he has completed it.
@@ -891,12 +891,12 @@ function Player:SendNotification(message) end
 
 ---Sends a WorldPacket to the Player
 ---@param packet WorldPacket
----@param selfOnly boolean
+---@param selfOnly? boolean
 function Player:SendPacket(packet, selfOnly) end
 
 ---Shows a quest accepting window to the Player for the given quest.
 ---@param questId number
----@param activateAccept boolean
+---@param activateAccept? boolean
 function Player:SendQuestTemplate(questId, activateAccept) end
 
 ---Sends a bank window to the Player from the WorldObject specified.
@@ -904,7 +904,7 @@ function Player:SendQuestTemplate(questId, activateAccept) end
 function Player:SendShowBank(sender) end
 
 ---Shows the mailbox window to the player from specified guid.
----@param guid number
+---@param guid? number
 function Player:SendShowMailBox(guid) end
 
 ---Sends a spirit resurrection request to the Player
@@ -928,7 +928,7 @@ function Player:SendTrainerList(sender) end
 function Player:SendUpdateWorldState(field, value) end
 
 ---Toggles whether the Player accepts whispers or not
----@param acceptWhispers boolean
+---@param acceptWhispers? boolean
 function Player:SetAcceptWhispers(acceptWhispers) end
 
 ---Adds the specified achievement to the Players
@@ -960,7 +960,7 @@ function Player:SetCoinage(copperAmt) end
 function Player:SetDrunkValue(drunkValue) end
 
 ---Toggle the Players FFA flag
----@param applyFFA boolean
+---@param applyFFA? boolean
 function Player:SetFFA(applyFFA) end
 
 ---Sets the Players faction standing to that of the race specified
@@ -972,15 +972,15 @@ function Player:SetFactionForRace(raceId) end
 function Player:SetFreeTalentPoints(talentPointAmt) end
 
 ---Toggle Blizz (GM) tag
----@param on boolean
+---@param on? boolean
 function Player:SetGMChat(on) end
 
 ---Toggles whether the Player has GM visibility on or off
----@param gmVisible boolean
+---@param gmVisible? boolean
 function Player:SetGMVisible(gmVisible) end
 
 ---Toggles the Players GM mode on or off
----@param setGmMode boolean
+---@param setGmMode? boolean
 function Player:SetGameMaster(setGmMode) end
 
 ---Sets the Players gender to gender specified
@@ -1006,7 +1006,7 @@ function Player:SetHonorPoints(honorPoints) end
 
 ---Sets kills
 ---@param kills number
----@param honorable boolean
+---@param honorable? boolean
 function Player:SetHonorStoredKills(kills, honorable) end
 
 ---Adds the specified title to the Players list of known titles
@@ -1018,11 +1018,11 @@ function Player:SetKnownTitle(titleId) end
 function Player:SetLifetimeKills(honorableKills) end
 
 ---Locks the player controls and disallows all movement and casting.
----@param apply boolean
+---@param apply? boolean
 function Player:SetPlayerLock(apply) end
 
 ---Toggles PvP Death
----@param on boolean
+---@param on? boolean
 function Player:SetPvPDeath(on) end
 
 ---Sets Quest state
@@ -1056,11 +1056,11 @@ function Player:SetSkill(id, step, currVal, maxVal) end
 
 ---The Player sets the spell power
 ---@param value number
----@param apply boolean
+---@param apply? boolean
 function Player:SetSpellPower(value, apply) end
 
 ---Toggles whether the Player has taxi cheat enabled or not
----@param taxiCheat boolean
+---@param taxiCheat? boolean
 function Player:SetTaxiCheat(taxiCheat) end
 
 ---Converts Player's corpse to bones
@@ -1101,8 +1101,8 @@ function Player:ToggleDND() end
 function Player:UnbindAllInstances() end
 
 ---Unbinds the Player from his instances except the one he currently is in.
----@param map number
----@param difficulty number
+---@param map? number
+---@param difficulty? number
 function Player:UnbindInstance(map, difficulty) end
 
 ---Removes a title by ID from the Players list of known titles

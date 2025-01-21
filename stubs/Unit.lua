@@ -12,8 +12,8 @@ function Unit:AddAura(spell, target) end
 ---Adds threat to the Unit from the victim.
 ---@param victim Unit
 ---@param threat number
----@param schoolMask SpellSchoolMask
----@param spell number
+---@param schoolMask? SpellSchoolMask
+---@param spell? number
 function Unit:AddThreat(victim, threat, schoolMask, spell) end
 
 ---Adds the given unit state for the Unit.
@@ -22,7 +22,7 @@ function Unit:AddUnitState(state) end
 
 ---The Unit tries to attack a given target
 ---@param who Unit
----@param meleeAttack boolean
+---@param meleeAttack? boolean
 function Unit:Attack(who, meleeAttack) end
 
 ---The Unit stops attacking its target
@@ -30,20 +30,20 @@ function Unit:Attack(who, meleeAttack) end
 function Unit:AttackStop() end
 
 ---Casts the Spell at target Unit with custom basepoints or casters. See also Unit:CastSpell.
----@param target Unit
+---@param target? Unit
 ---@param spell number
----@param triggered boolean
----@param bp0 number
----@param bp1 number
----@param bp2 number
----@param castItem Item
----@param originalCaster number
+---@param triggered? boolean
+---@param bp0? number
+---@param bp1? number
+---@param bp2? number
+---@param castItem? Item
+---@param originalCaster? number
 function Unit:CastCustomSpell(target, spell, triggered, bp0, bp1, bp2, castItem, originalCaster) end
 
 ---Makes the Unit cast the spell on the target.
----@param target Unit
+---@param target? Unit
 ---@param spell number
----@param triggered boolean
+---@param triggered? boolean
 function Unit:CastSpell(target, spell, triggered) end
 
 ---Makes the Unit cast the spell to the given coordinates, used for area effect spells.
@@ -51,7 +51,7 @@ function Unit:CastSpell(target, spell, triggered) end
 ---@param y number
 ---@param z number
 ---@param spell number
----@param triggered boolean
+---@param triggered? boolean
 function Unit:CastSpellAoF(x, y, z, spell, triggered) end
 
 ---Clears the Unit's combat
@@ -78,16 +78,16 @@ function Unit:DeMorph() end
 ---Makes the Unit damage the target Unit
 ---@param target Unit
 ---@param damage number
----@param durabilityloss boolean
----@param school SpellSchools
----@param spell number
+---@param durabilityloss? boolean
+---@param school? SpellSchools
+---@param spell? number
 function Unit:DealDamage(target, damage, durabilityloss, school, spell) end
 
 ---Makes the Unit heal the target Unit with given spell
 ---@param target Unit
 ---@param spell number
 ---@param amount number
----@param critical boolean
+---@param critical? boolean
 function Unit:DealHeal(target, spell, amount, critical) end
 
 ---Dismounts the Unit.
@@ -124,7 +124,7 @@ function Unit:GetCharmerGUID() end
 function Unit:GetClass() end
 
 ---Returns the Unit's class' name in given or default locale or nil.
----@param locale LocaleConstant
+---@param locale? LocaleConstant
 ---@return string
 function Unit:GetClassAsString(locale) end
 
@@ -166,7 +166,7 @@ function Unit:GetDisplayId() end
 function Unit:GetFaction() end
 
 ---Returns a table containing friendly Unit's within given range of the Unit.
----@param range number
+---@param range? number
 ---@return table
 function Unit:GetFriendlyUnitsInRange(range) end
 
@@ -238,7 +238,7 @@ function Unit:GetPowerType() end
 function Unit:GetRace() end
 
 ---Returns the Unit's race's name in given or default locale or nil.
----@param locale LocaleConstant
+---@param locale? LocaleConstant
 ---@return string
 function Unit:GetRaceAsString(locale) end
 
@@ -270,7 +270,7 @@ function Unit:GetStat(statType) end
 function Unit:GetThreatList() end
 
 ---Returns a table containing unfriendly Unit's within given range of the Unit.
----@param range number
+---@param range? number
 ---@return table
 function Unit:GetUnfriendlyUnitsInRange(range) end
 
@@ -288,7 +288,7 @@ function Unit:GetVictim() end
 ---@param stat number
 ---@param type number
 ---@param value number
----@param apply boolean
+---@param apply? boolean
 function Unit:HandleStatModifier(stat, type, value, apply) end
 
 ---Returns true if the Unit has an aura from the given spell entry.
@@ -313,7 +313,7 @@ function Unit:HealthBelowPct(healthpct) end
 
 ---Interrupts Unit's spell state, casting, etc.
 ---@param spellType number
----@param delayed boolean
+---@param delayed? boolean
 function Unit:InterruptSpell(spellType, delayed) end
 
 ---Returns true if the Unit is alive.
@@ -452,7 +452,7 @@ function Unit:IsVendor() end
 
 ---Makes the Unit kill the target Unit
 ---@param target Unit
----@param durLoss boolean
+---@param durLoss? boolean
 function Unit:Kill(target, durLoss) end
 
 ---modifies the Unit's power amount for the given power type.
@@ -471,30 +471,30 @@ function Unit:Mount(displayId) end
 
 ---The Unit will chase the target
 ---@param target Unit
----@param dist number
----@param angle number
+---@param dist? number
+---@param angle? number
 function Unit:MoveChase(target, dist, angle) end
 
 ---Clears the Unit's movement
----@param reset boolean
+---@param reset? boolean
 function Unit:MoveClear(reset) end
 
 ---The Unit will move confused
 function Unit:MoveConfused() end
 
 ---The Unit's movement expires and clears movement
----@param reset boolean
+---@param reset? boolean
 function Unit:MoveExpire(reset) end
 
 ---The Unit will flee
 ---@param target Unit
----@param time number
+---@param time? number
 function Unit:MoveFleeing(target, time) end
 
 ---The Unit will follow the target
 ---@param target Unit
----@param dist number
----@param angle number
+---@param dist? number
+---@param angle? number
 function Unit:MoveFollow(target, dist, angle) end
 
 ---The Unit will move to its set home location
@@ -509,7 +509,7 @@ function Unit:MoveIdle() end
 ---@param z number
 ---@param zSpeed number
 ---@param maxHeight number
----@param id number
+---@param id? number
 function Unit:MoveJump(x, y, z, zSpeed, maxHeight, id) end
 
 ---The Unit will move at random
@@ -524,7 +524,7 @@ function Unit:MoveStop() end
 ---@param x number
 ---@param y number
 ---@param z number
----@param genPath boolean
+---@param genPath? boolean
 function Unit:MoveTo(id, x, y, z, genPath) end
 
 ---Makes the Unit teleport to given coordinates within same map.
@@ -557,8 +557,8 @@ function Unit:SendChatMessageToPlayer(type, lang, msg, target) end
 
 ---The Unit will emote the message
 ---@param msg string
----@param receiver Unit
----@param bossEmote boolean
+---@param receiver? Unit
+---@param bossEmote? boolean
 function Unit:SendUnitEmote(msg, receiver, bossEmote) end
 
 ---The Unit will say the message
@@ -570,7 +570,7 @@ function Unit:SendUnitSay(msg, language) end
 ---@param msg string
 ---@param lang number
 ---@param receiver Player
----@param bossWhisper boolean
+---@param bossWhisper? boolean
 function Unit:SendUnitWhisper(msg, lang, receiver, bossWhisper) end
 
 ---The Unit will yell the message
@@ -579,7 +579,7 @@ function Unit:SendUnitWhisper(msg, lang, receiver, bossWhisper) end
 function Unit:SendUnitYell(msg, language) end
 
 ---Confuses the Unit, if 'false' specified, the Unit is no longer confused.
----@param apply boolean
+---@param apply? boolean
 function Unit:SetConfused(apply) end
 
 ---Sets creator GUID
@@ -593,7 +593,7 @@ function Unit:SetCritterGUID() end
 function Unit:SetDisplayId(displayId) end
 
 ---Sets the Unit's FFA flag on or off.
----@param apply boolean
+---@param apply? boolean
 function Unit:SetFFA(apply) end
 
 ---Sets the Unit's facing/orientation.
@@ -609,7 +609,7 @@ function Unit:SetFacingToObject(target) end
 function Unit:SetFaction(faction) end
 
 ---Fears the Unit, if 'false' specified, the Unit is no longer feared.
----@param apply boolean
+---@param apply? boolean
 function Unit:SetFeared(apply) end
 
 ---Sets the Unit's health.
@@ -618,7 +618,7 @@ function Unit:SetHealth(health) end
 
 ---Sets a mechanic immunity for the Unit.
 ---@param immunity number
----@param apply boolean
+---@param apply? boolean
 function Unit:SetImmuneTo(immunity, apply) end
 
 ---Sets the Unit in combat with the enemy Unit.
@@ -664,15 +664,15 @@ function Unit:SetPower(amount, type) end
 function Unit:SetPowerType(type) end
 
 ---Sets the Unit's PvP on or off.
----@param apply boolean
+---@param apply? boolean
 function Unit:SetPvP(apply) end
 
 ---Roots the Unit to the ground, if 'false' specified, unroots the Unit.
----@param apply boolean
+---@param apply? boolean
 function Unit:SetRooted(apply) end
 
 ---Sets the Unit's sanctuary flag on or off.
----@param apply boolean
+---@param apply? boolean
 function Unit:SetSanctuary(apply) end
 
 ---Sets the Unit's sheath state.
@@ -682,13 +682,13 @@ function Unit:SetSheath(sheathState) end
 ---Sets the Unit's speed of given [UnitMoveType] to given speed. If forced, packets sent to clients forcing the visual change.
 ---@param type UnitMoveType
 ---@param rate number
----@param forced boolean
+---@param forced? boolean
 function Unit:SetSpeed(type, rate, forced) end
 
 ---Sets the Unit's speed rate of given [UnitMoveType] to given rate. If forced, packets sent to clients forcing the visual change.
 ---@param type UnitMoveType
 ---@param rate number
----@param forced boolean
+---@param forced? boolean
 function Unit:SetSpeedRate(type, rate, forced) end
 
 ---Sets the Unit's stand state
@@ -696,10 +696,10 @@ function Unit:SetSpeedRate(type, rate, forced) end
 function Unit:SetStandState(state) end
 
 ---Toggles (Sets) Unit's water walking
----@param enable boolean
+---@param enable? boolean
 function Unit:SetWaterWalk(enable) end
 
 ---Stops the Unit's current spell cast
----@param spell number
+---@param spell? number
 function Unit:StopSpellCast(spell) end
 

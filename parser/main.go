@@ -29,8 +29,9 @@ type Method struct {
 
 // Parameter represents a method parameter
 type Parameter struct {
-	Name string
-	Type string
+	Name         string
+	Type         string
+	DefaultValue string
 }
 
 // Field represents a class field
@@ -261,15 +262,22 @@ func parseWikiPage(baseURL, className string) (*WikiPage, error) {
 
 				paramName := strings.Trim(parts[1], "()")
 
+				defaultValue := ""
+				if len(parts) > 2 {
+					defaultValue = strings.Trim(parts[2], "()")
+				}
+
 				slog.Debug("found parameter",
 					"class", className,
 					"method", methodName,
 					"name", paramName,
 					"type", paramType,
+					"default_value", defaultValue,
 				)
 				param := Parameter{
-					Type: paramType,
-					Name: paramName,
+					Type:         paramType,
+					Name:         paramName,
+					DefaultValue: defaultValue,
 				}
 				method.Parameters = append(method.Parameters, param)
 			}
@@ -359,6 +367,9 @@ func generateLuaDefs(page *WikiPage) string {
 		// Parameters with keyword handling
 		for _, param := range method.Parameters {
 			paramName := getSafeName(param.Name)
+			if param.DefaultValue != "" {
+				paramName += "?"
+			}
 			sb.WriteString(fmt.Sprintf("---@param %s %s\n", paramName, param.Type))
 		}
 

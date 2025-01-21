@@ -8,7 +8,7 @@ Achievement = {}
 function Achievement:GetId() end
 
 ---Returns the Achievement's name.
----@param locale LocaleConstant
+---@param locale? LocaleConstant
 ---@return string
 function Achievement:GetName(locale) end
 

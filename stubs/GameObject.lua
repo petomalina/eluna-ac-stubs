@@ -68,10 +68,10 @@ function GameObject:SetGoState(state) end
 function GameObject:SetLootState(state) end
 
 ---Sets the respawn or despawn time for the gameobject.
----@param delay number
+---@param delay? number
 function GameObject:SetRespawnTime(delay) end
 
 ---Activates a door or a button/lever
----@param delay number
+---@param delay? number
 function GameObject:UseDoorOrButton(delay) end
 
