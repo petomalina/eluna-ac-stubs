@@ -1,4 +1,4 @@
-name: Daily Wiki Update
+name: Midnight Stub Update
 
 on:
   schedule:
@@ -23,7 +23,7 @@ jobs:
         run: go mod download
         
       - name: Run parser
-        run: cd parser && go run main.go
+        run: go run parser/main.go
         
       - name: Check for changes
         id: git-check
