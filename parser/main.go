@@ -29,6 +29,7 @@ type Method struct {
 	Parameters  []Parameter
 	Description string
 	Enums       []Enum
+	EnumNames   []string
 }
 
 // Enum represents enum information
@@ -228,6 +229,7 @@ func parseClassPage(baseURL, className string) (*ClassPage, error) {
 		method.Parameters = methodPage.Parameters
 		method.ReturnType = methodPage.ReturnType
 		method.Enums = methodPage.Enums
+		method.EnumNames = methodPage.EnumNames
 	}
 
 	// Convert methods map to sorted slice
@@ -244,6 +246,7 @@ type MethodPage struct {
 	Parameters []Parameter
 	ReturnType string
 	Enums      []Enum
+	EnumNames  []string
 }
 
 func parseMethodPage(baseURL, className, methodName string) (*MethodPage, error) {
@@ -350,6 +353,7 @@ func parseMethodPage(baseURL, className, methodName string) (*MethodPage, error)
 				})
 				alreadyFoundEnums[enumName] = struct{}{}
 			}
+			page.EnumNames = append(page.EnumNames, enumName)
 		}
 	})
 
@@ -523,6 +527,14 @@ func generateLuaDefs(page *ClassPage) string {
 		// Parameters with keyword handling
 		for _, param := range method.Parameters {
 			paramName := getSafeName(param.Name)
+
+			// events also have enum definitions that we can use for the types
+			if strings.HasPrefix(method.Name, "Register") && paramName == "event" {
+				if len(method.EnumNames) > 0 {
+					param.Type = method.EnumNames[0]
+				}
+			}
+
 			if param.DefaultValue != "" {
 				paramName += "?"
 			}

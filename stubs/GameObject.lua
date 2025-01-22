@@ -38,6 +38,18 @@ function GameObject:GetLootRecipient() end
 ---@return Group
 function GameObject:GetLootRecipientGroup() end
 
+---@alias LootState
+---| 0 # GO_NOT_READY
+---| 1 # GO_READY
+---| 2 # GO_ACTIVATED
+---| 3 # GO_JUST_DEACTIVATED
+
+-- LootState
+GO_NOT_READY = 0
+GO_READY = 1
+GO_ACTIVATED = 2
+GO_JUST_DEACTIVATED = 3
+
 ---Returns the [LootState] of a GameObject Below are [LootState]s off of 3.3.5a
 ---@return LootState
 function GameObject:GetLootState() end
@@ -72,18 +84,6 @@ function GameObject:SaveToDB() end
 ---Sets the state of a GameObject
 ---@param state GOState
 function GameObject:SetGoState(state) end
-
----@alias LootState
----| 0 # GO_NOT_READY
----| 1 # GO_READY
----| 2 # GO_ACTIVATED
----| 3 # GO_JUST_DEACTIVATED
-
--- LootState
-GO_NOT_READY = 0
-GO_READY = 1
-GO_ACTIVATED = 2
-GO_JUST_DEACTIVATED = 3
 
 ---Sets the [LootState] of a GameObject Below are [LootState]s off of 3.3.5a
 ---@param state LootState

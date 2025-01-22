@@ -408,95 +408,23 @@ BG_EVENT_ON_PRE_DESTROY = 4
 BG_EVENT_COUNT = 5
 
 ---Registers a BattleGround event handler.
----@param event number
+---@param event BGEvents
 ---@param func function
 ---@param shots? number
 ---@return function
 function RegisterBGEvent(event, func, shots) end
 
----@alias CreatureEvents
----| 1 # CREATURE_EVENT_ON_ENTER_COMBAT
----| 2 # CREATURE_EVENT_ON_LEAVE_COMBAT
----| 3 # CREATURE_EVENT_ON_TARGET_DIED
----| 4 # CREATURE_EVENT_ON_DIED
----| 5 # CREATURE_EVENT_ON_SPAWN
----| 6 # CREATURE_EVENT_ON_REACH_WP
----| 7 # CREATURE_EVENT_ON_AIUPDATE
----| 8 # CREATURE_EVENT_ON_RECEIVE_EMOTE
----| 9 # CREATURE_EVENT_ON_DAMAGE_TAKEN
----| 10 # CREATURE_EVENT_ON_PRE_COMBAT
----| 12 # CREATURE_EVENT_ON_OWNER_ATTACKED
----| 13 # CREATURE_EVENT_ON_OWNER_ATTACKED_AT
----| 14 # CREATURE_EVENT_ON_HIT_BY_SPELL
----| 15 # CREATURE_EVENT_ON_SPELL_HIT_TARGET
----| 19 # CREATURE_EVENT_ON_JUST_SUMMONED_CREATURE
----| 20 # CREATURE_EVENT_ON_SUMMONED_CREATURE_DESPAWN
----| 21 # CREATURE_EVENT_ON_SUMMONED_CREATURE_DIED
----| 22 # CREATURE_EVENT_ON_SUMMONED
----| 23 # CREATURE_EVENT_ON_RESET
----| 24 # CREATURE_EVENT_ON_REACH_HOME
----| 26 # CREATURE_EVENT_ON_CORPSE_REMOVED
----| 27 # CREATURE_EVENT_ON_MOVE_IN_LOS
----| 30 # CREATURE_EVENT_ON_DUMMY_EFFECT
----| 31 # CREATURE_EVENT_ON_QUEST_ACCEPT
----| 34 # CREATURE_EVENT_ON_QUEST_REWARD
----| 35 # CREATURE_EVENT_ON_DIALOG_STATUS
----| 36 # CREATURE_EVENT_ON_ADD
----| 37 # CREATURE_EVENT_ON_REMOVE
----| 38 # CREATURE_EVENT_COUNT
-
--- CreatureEvents
-CREATURE_EVENT_ON_ENTER_COMBAT = 1
-CREATURE_EVENT_ON_LEAVE_COMBAT = 2
-CREATURE_EVENT_ON_TARGET_DIED = 3
-CREATURE_EVENT_ON_DIED = 4
-CREATURE_EVENT_ON_SPAWN = 5
-CREATURE_EVENT_ON_REACH_WP = 6
-CREATURE_EVENT_ON_AIUPDATE = 7
-CREATURE_EVENT_ON_RECEIVE_EMOTE = 8
-CREATURE_EVENT_ON_DAMAGE_TAKEN = 9
-CREATURE_EVENT_ON_PRE_COMBAT = 10
-CREATURE_EVENT_ON_OWNER_ATTACKED = 12
-CREATURE_EVENT_ON_OWNER_ATTACKED_AT = 13
-CREATURE_EVENT_ON_HIT_BY_SPELL = 14
-CREATURE_EVENT_ON_SPELL_HIT_TARGET = 15
-CREATURE_EVENT_ON_JUST_SUMMONED_CREATURE = 19
-CREATURE_EVENT_ON_SUMMONED_CREATURE_DESPAWN = 20
-CREATURE_EVENT_ON_SUMMONED_CREATURE_DIED = 21
-CREATURE_EVENT_ON_SUMMONED = 22
-CREATURE_EVENT_ON_RESET = 23
-CREATURE_EVENT_ON_REACH_HOME = 24
-CREATURE_EVENT_ON_CORPSE_REMOVED = 26
-CREATURE_EVENT_ON_MOVE_IN_LOS = 27
-CREATURE_EVENT_ON_DUMMY_EFFECT = 30
-CREATURE_EVENT_ON_QUEST_ACCEPT = 31
-CREATURE_EVENT_ON_QUEST_REWARD = 34
-CREATURE_EVENT_ON_DIALOG_STATUS = 35
-CREATURE_EVENT_ON_ADD = 36
-CREATURE_EVENT_ON_REMOVE = 37
-CREATURE_EVENT_COUNT = 38
-
 ---Registers a Creature event handler.
 ---@param entry number
----@param event number
+---@param event CreatureEvents
 ---@param func function
 ---@param shots? number
 ---@return function
 function RegisterCreatureEvent(entry, event, func, shots) end
 
----@alias GossipEvents
----| 1 # GOSSIP_EVENT_ON_HELLO
----| 2 # GOSSIP_EVENT_ON_SELECT
----| 3 # GOSSIP_EVENT_COUNT
-
--- GossipEvents
-GOSSIP_EVENT_ON_HELLO = 1
-GOSSIP_EVENT_ON_SELECT = 2
-GOSSIP_EVENT_COUNT = 3
-
 ---Registers a Creature gossip event handler.
 ---@param entry number
----@param event number
+---@param event GossipEvents
 ---@param func function
 ---@param shots? number
 ---@return function
@@ -536,7 +464,7 @@ GAMEOBJECT_EVENT_COUNT = 15
 
 ---Registers a GameObject event handler.
 ---@param entry number
----@param event number
+---@param event GameObjectEvents
 ---@param func function
 ---@param shots? number
 ---@return function
@@ -544,7 +472,7 @@ function RegisterGameObjectEvent(entry, event, func, shots) end
 
 ---Registers a GameObject gossip event handler.
 ---@param entry number
----@param event number
+---@param event GossipEvents
 ---@param func function
 ---@param shots? number
 ---@return function
@@ -569,7 +497,7 @@ GROUP_EVENT_ON_CREATE = 6
 GROUP_EVENT_COUNT = 7
 
 ---Registers a Group event handler.
----@param event number
+---@param event GroupEvents
 ---@param func function
 ---@param shots? number
 ---@return function
@@ -604,15 +532,35 @@ GUILD_EVENT_ON_BANK_EVENT = 11
 GUILD_EVENT_COUNT = 12
 
 ---Registers a Guild event handler.
----@param event number
+---@param event GuildEvents
 ---@param func function
 ---@param shots? number
 ---@return function
 function RegisterGuildEvent(event, func, shots) end
 
+---@alias InstanceEvents
+---| 1 # INSTANCE_EVENT_ON_INITIALIZE
+---| 2 # INSTANCE_EVENT_ON_LOAD
+---| 3 # INSTANCE_EVENT_ON_UPDATE
+---| 4 # INSTANCE_EVENT_ON_PLAYER_ENTER
+---| 5 # INSTANCE_EVENT_ON_CREATURE_CREATE
+---| 6 # INSTANCE_EVENT_ON_GAMEOBJECT_CREATE
+---| 7 # INSTANCE_EVENT_ON_CHECK_ENCOUNTER_IN_PROGRESS
+---| 8 # INSTANCE_EVENT_COUNT
+
+-- InstanceEvents
+INSTANCE_EVENT_ON_INITIALIZE = 1
+INSTANCE_EVENT_ON_LOAD = 2
+INSTANCE_EVENT_ON_UPDATE = 3
+INSTANCE_EVENT_ON_PLAYER_ENTER = 4
+INSTANCE_EVENT_ON_CREATURE_CREATE = 5
+INSTANCE_EVENT_ON_GAMEOBJECT_CREATE = 6
+INSTANCE_EVENT_ON_CHECK_ENCOUNTER_IN_PROGRESS = 7
+INSTANCE_EVENT_COUNT = 8
+
 ---Registers a Map event handler for one instance of a Map.
 ---@param instance_id number
----@param event number
+---@param event InstanceEvents
 ---@param func function
 ---@param shots? number
 function RegisterInstanceEvent(instance_id, event, func, shots) end
@@ -635,7 +583,7 @@ ITEM_EVENT_COUNT = 6
 
 ---Registers an Item event handler.
 ---@param entry number
----@param event number
+---@param event ItemEvents
 ---@param func function
 ---@param shots? number
 ---@return function
@@ -643,35 +591,15 @@ function RegisterItemEvent(entry, event, func, shots) end
 
 ---Registers an Item gossip event handler.
 ---@param entry number
----@param event number
+---@param event GossipEvents
 ---@param func function
 ---@param shots? number
 ---@return function
 function RegisterItemGossipEvent(entry, event, func, shots) end
 
----@alias InstanceEvents
----| 1 # INSTANCE_EVENT_ON_INITIALIZE
----| 2 # INSTANCE_EVENT_ON_LOAD
----| 3 # INSTANCE_EVENT_ON_UPDATE
----| 4 # INSTANCE_EVENT_ON_PLAYER_ENTER
----| 5 # INSTANCE_EVENT_ON_CREATURE_CREATE
----| 6 # INSTANCE_EVENT_ON_GAMEOBJECT_CREATE
----| 7 # INSTANCE_EVENT_ON_CHECK_ENCOUNTER_IN_PROGRESS
----| 8 # INSTANCE_EVENT_COUNT
-
--- InstanceEvents
-INSTANCE_EVENT_ON_INITIALIZE = 1
-INSTANCE_EVENT_ON_LOAD = 2
-INSTANCE_EVENT_ON_UPDATE = 3
-INSTANCE_EVENT_ON_PLAYER_ENTER = 4
-INSTANCE_EVENT_ON_CREATURE_CREATE = 5
-INSTANCE_EVENT_ON_GAMEOBJECT_CREATE = 6
-INSTANCE_EVENT_ON_CHECK_ENCOUNTER_IN_PROGRESS = 7
-INSTANCE_EVENT_COUNT = 8
-
 ---Registers a Map event handler for all instance of a Map.
 ---@param map_id number
----@param event number
+---@param event InstanceEvents
 ---@param func function
 ---@param shots? number
 function RegisterMapEvent(map_id, event, func, shots) end
@@ -690,7 +618,7 @@ PACKET_EVENT_COUNT = 8
 
 ---Registers a WorldPacket event handler.
 ---@param entry number
----@param event number
+---@param event PacketEvents
 ---@param func function
 ---@param shots? number
 ---@return function
@@ -811,15 +739,25 @@ PLAYER_EVENT_ON_GROUP_ROLL_REWARD_ITEM = 56
 PLAYER_EVENT_ON_BG_DESERTION = 57
 
 ---Registers a Player event handler.
----@param event number
+---@param event PlayerEvents
 ---@param func function
 ---@param shots? number
 ---@return function
 function RegisterPlayerEvent(event, func, shots) end
 
+---@alias GossipEvents
+---| 1 # GOSSIP_EVENT_ON_HELLO
+---| 2 # GOSSIP_EVENT_ON_SELECT
+---| 3 # GOSSIP_EVENT_COUNT
+
+-- GossipEvents
+GOSSIP_EVENT_ON_HELLO = 1
+GOSSIP_EVENT_ON_SELECT = 2
+GOSSIP_EVENT_COUNT = 3
+
 ---Registers a Player gossip event handler.
 ---@param menu_id number
----@param event number
+---@param event GossipEvents
 ---@param func function
 ---@param shots? number
 ---@return function
@@ -898,16 +836,78 @@ GAME_EVENT_START = 34
 GAME_EVENT_STOP = 35
 
 ---Registers a server event handler.
----@param event number
+---@param event ServerEvents
 ---@param func function
 ---@param shots? number
 ---@return function
 function RegisterServerEvent(event, func, shots) end
 
+---@alias CreatureEvents
+---| 1 # CREATURE_EVENT_ON_ENTER_COMBAT
+---| 2 # CREATURE_EVENT_ON_LEAVE_COMBAT
+---| 3 # CREATURE_EVENT_ON_TARGET_DIED
+---| 4 # CREATURE_EVENT_ON_DIED
+---| 5 # CREATURE_EVENT_ON_SPAWN
+---| 6 # CREATURE_EVENT_ON_REACH_WP
+---| 7 # CREATURE_EVENT_ON_AIUPDATE
+---| 8 # CREATURE_EVENT_ON_RECEIVE_EMOTE
+---| 9 # CREATURE_EVENT_ON_DAMAGE_TAKEN
+---| 10 # CREATURE_EVENT_ON_PRE_COMBAT
+---| 12 # CREATURE_EVENT_ON_OWNER_ATTACKED
+---| 13 # CREATURE_EVENT_ON_OWNER_ATTACKED_AT
+---| 14 # CREATURE_EVENT_ON_HIT_BY_SPELL
+---| 15 # CREATURE_EVENT_ON_SPELL_HIT_TARGET
+---| 19 # CREATURE_EVENT_ON_JUST_SUMMONED_CREATURE
+---| 20 # CREATURE_EVENT_ON_SUMMONED_CREATURE_DESPAWN
+---| 21 # CREATURE_EVENT_ON_SUMMONED_CREATURE_DIED
+---| 22 # CREATURE_EVENT_ON_SUMMONED
+---| 23 # CREATURE_EVENT_ON_RESET
+---| 24 # CREATURE_EVENT_ON_REACH_HOME
+---| 26 # CREATURE_EVENT_ON_CORPSE_REMOVED
+---| 27 # CREATURE_EVENT_ON_MOVE_IN_LOS
+---| 30 # CREATURE_EVENT_ON_DUMMY_EFFECT
+---| 31 # CREATURE_EVENT_ON_QUEST_ACCEPT
+---| 34 # CREATURE_EVENT_ON_QUEST_REWARD
+---| 35 # CREATURE_EVENT_ON_DIALOG_STATUS
+---| 36 # CREATURE_EVENT_ON_ADD
+---| 37 # CREATURE_EVENT_ON_REMOVE
+---| 38 # CREATURE_EVENT_COUNT
+
+-- CreatureEvents
+CREATURE_EVENT_ON_ENTER_COMBAT = 1
+CREATURE_EVENT_ON_LEAVE_COMBAT = 2
+CREATURE_EVENT_ON_TARGET_DIED = 3
+CREATURE_EVENT_ON_DIED = 4
+CREATURE_EVENT_ON_SPAWN = 5
+CREATURE_EVENT_ON_REACH_WP = 6
+CREATURE_EVENT_ON_AIUPDATE = 7
+CREATURE_EVENT_ON_RECEIVE_EMOTE = 8
+CREATURE_EVENT_ON_DAMAGE_TAKEN = 9
+CREATURE_EVENT_ON_PRE_COMBAT = 10
+CREATURE_EVENT_ON_OWNER_ATTACKED = 12
+CREATURE_EVENT_ON_OWNER_ATTACKED_AT = 13
+CREATURE_EVENT_ON_HIT_BY_SPELL = 14
+CREATURE_EVENT_ON_SPELL_HIT_TARGET = 15
+CREATURE_EVENT_ON_JUST_SUMMONED_CREATURE = 19
+CREATURE_EVENT_ON_SUMMONED_CREATURE_DESPAWN = 20
+CREATURE_EVENT_ON_SUMMONED_CREATURE_DIED = 21
+CREATURE_EVENT_ON_SUMMONED = 22
+CREATURE_EVENT_ON_RESET = 23
+CREATURE_EVENT_ON_REACH_HOME = 24
+CREATURE_EVENT_ON_CORPSE_REMOVED = 26
+CREATURE_EVENT_ON_MOVE_IN_LOS = 27
+CREATURE_EVENT_ON_DUMMY_EFFECT = 30
+CREATURE_EVENT_ON_QUEST_ACCEPT = 31
+CREATURE_EVENT_ON_QUEST_REWARD = 34
+CREATURE_EVENT_ON_DIALOG_STATUS = 35
+CREATURE_EVENT_ON_ADD = 36
+CREATURE_EVENT_ON_REMOVE = 37
+CREATURE_EVENT_COUNT = 38
+
 ---Registers a Creature event handler for a single Creature.
 ---@param guid number
 ---@param instance_id number
----@param event number
+---@param event CreatureEvents
 ---@param func function
 ---@param shots? number
 ---@return function
