@@ -10,8 +10,8 @@ import (
 	"github.com/gocolly/colly/v2"
 )
 
-// WikiPage represents a parsed wiki page
-type WikiPage struct {
+// ClassPage represents a parsed Class page
+type ClassPage struct {
 	Title    string
 	Content  string
 	Methods  []Method
@@ -25,6 +25,14 @@ type Method struct {
 	ReturnType  string
 	Parameters  []Parameter
 	Description string
+	Enums       []Enum
+}
+
+// Enum represents enum information
+type Enum struct {
+	Name    string
+	Values  map[string]int
+	Comment string
 }
 
 // Parameter represents a method parameter
@@ -81,9 +89,9 @@ func main() {
 	// Process each class
 	for _, class := range classes {
 		// debug
-		// if class != "Global" {
-		// 	continue
-		// }
+		if class != "Global" {
+			continue
+		}
 
 		page, err := parseWikiPage(baseURL, class)
 		if err != nil {
@@ -143,13 +151,13 @@ func contains(slice []string, str string) bool {
 	return false
 }
 
-func parseWikiPage(baseURL, className string) (*WikiPage, error) {
+func parseWikiPage(baseURL, className string) (*ClassPage, error) {
 	slog.Info("parsing class page", "class", className)
 	c := colly.NewCollector(
 		colly.AllowURLRevisit(),
 	)
 
-	page := &WikiPage{
+	page := &ClassPage{
 		Title: className,
 	}
 
@@ -329,7 +337,7 @@ func getSortedMethods(methods map[string]*Method) []Method {
 	return sorted
 }
 
-func generateLuaDefs(page *WikiPage) string {
+func generateLuaDefs(page *ClassPage) string {
 	var sb strings.Builder
 
 	sb.WriteString("---@meta\n\n")
