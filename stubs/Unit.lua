@@ -9,6 +9,26 @@ Unit = {}
 ---@return Aura
 function Unit:AddAura(spell, target) end
 
+---@alias SpellSchoolMask
+---| 0 # SPELL_SCHOOL_MASK_NONE
+---| 1 # SPELL_SCHOOL_MASK_NORMAL
+---| 2 # SPELL_SCHOOL_MASK_HOLY
+---| 4 # SPELL_SCHOOL_MASK_FIRE
+---| 8 # SPELL_SCHOOL_MASK_NATURE
+---| 16 # SPELL_SCHOOL_MASK_FROST
+---| 32 # SPELL_SCHOOL_MASK_SHADOW
+---| 64 # SPELL_SCHOOL_MASK_ARCANE
+
+-- SpellSchoolMask
+SPELL_SCHOOL_MASK_NONE = 0
+SPELL_SCHOOL_MASK_NORMAL = 1
+SPELL_SCHOOL_MASK_HOLY = 2
+SPELL_SCHOOL_MASK_FIRE = 4
+SPELL_SCHOOL_MASK_NATURE = 8
+SPELL_SCHOOL_MASK_FROST = 16
+SPELL_SCHOOL_MASK_SHADOW = 32
+SPELL_SCHOOL_MASK_ARCANE = 64
+
 ---Adds threat to the Unit from the victim.
 ---@param victim Unit
 ---@param threat number
@@ -74,6 +94,26 @@ function Unit:CountPctFromMaxHealth() end
 
 ---Unmorphs the Unit setting it's display ID back to the native display ID.
 function Unit:DeMorph() end
+
+---@alias SpellSchools
+---| 0 # SPELL_SCHOOL_NORMAL
+---| 1 # SPELL_SCHOOL_HOLY
+---| 2 # SPELL_SCHOOL_FIRE
+---| 3 # SPELL_SCHOOL_NATURE
+---| 4 # SPELL_SCHOOL_FROST
+---| 5 # SPELL_SCHOOL_SHADOW
+---| 6 # SPELL_SCHOOL_ARCANE
+---| 7 # MAX_SPELL_SCHOOL
+
+-- SpellSchools
+SPELL_SCHOOL_NORMAL = 0
+SPELL_SCHOOL_HOLY = 1
+SPELL_SCHOOL_FIRE = 2
+SPELL_SCHOOL_NATURE = 3
+SPELL_SCHOOL_FROST = 4
+SPELL_SCHOOL_SHADOW = 5
+SPELL_SCHOOL_ARCANE = 6
+MAX_SPELL_SCHOOL = 7
 
 ---Makes the Unit damage the target Unit
 ---@param target Unit
@@ -144,6 +184,36 @@ function Unit:GetControllerGUIDS() end
 ---@return number
 function Unit:GetCreatorGUID() end
 
+---@alias CreatureType
+---| 1 # CREATURE_TYPE_BEAST
+---| 2 # CREATURE_TYPE_DRAGONKIN
+---| 3 # CREATURE_TYPE_DEMON
+---| 4 # CREATURE_TYPE_ELEMENTAL
+---| 5 # CREATURE_TYPE_GIANT
+---| 6 # CREATURE_TYPE_UNDEAD
+---| 7 # CREATURE_TYPE_HUMANOID
+---| 8 # CREATURE_TYPE_CRITTER
+---| 9 # CREATURE_TYPE_MECHANICAL
+---| 10 # CREATURE_TYPE_NOT_SPECIFIED
+---| 11 # CREATURE_TYPE_TOTEM
+---| 12 # CREATURE_TYPE_NON_COMBAT_PET
+---| 13 # CREATURE_TYPE_GAS_CLOUD
+
+-- CreatureType
+CREATURE_TYPE_BEAST = 1
+CREATURE_TYPE_DRAGONKIN = 2
+CREATURE_TYPE_DEMON = 3
+CREATURE_TYPE_ELEMENTAL = 4
+CREATURE_TYPE_GIANT = 5
+CREATURE_TYPE_UNDEAD = 6
+CREATURE_TYPE_HUMANOID = 7
+CREATURE_TYPE_CRITTER = 8
+CREATURE_TYPE_MECHANICAL = 9
+CREATURE_TYPE_NOT_SPECIFIED = 10
+CREATURE_TYPE_TOTEM = 11
+CREATURE_TYPE_NON_COMBAT_PET = 12
+CREATURE_TYPE_GAS_CLOUD = 13
+
 ---Returns the Unit's creature type ID (enumerated in CreatureType.dbc).
 ---@return CreatureType
 function Unit:GetCreatureType() end
@@ -151,6 +221,18 @@ function Unit:GetCreatureType() end
 ---Returns the Critter Guid
 ---@return number
 function Unit:GetCritterGUID() end
+
+---@alias CurrentSpellTypes
+---| 0 # CURRENT_MELEE_SPELL
+---| 1 # CURRENT_GENERIC_SPELL
+---| 2 # CURRENT_CHANNELED_SPELL
+---| 3 # CURRENT_AUTOREPEAT_SPELL
+
+-- CurrentSpellTypes
+CURRENT_MELEE_SPELL = 0
+CURRENT_GENERIC_SPELL = 1
+CURRENT_CHANNELED_SPELL = 2
+CURRENT_AUTOREPEAT_SPELL = 3
 
 ---Returns the currently casted Spell of given type or nil.
 ---@param spellType CurrentSpellTypes
@@ -198,6 +280,48 @@ function Unit:GetMaxPower(type) end
 ---Returns the Unit's mount's modelID.
 ---@return number
 function Unit:GetMountId() end
+
+---@alias MovementGeneratorType
+---| 0 # IDLE_MOTION_TYPE
+---| 1 # RANDOM_MOTION_TYPE
+---| 2 # WAYPOINT_MOTION_TYPE
+---| 3 # ANIMAL_RANDOM_MOTION_TYPE
+---| 3 # MAX_DB_MOTION_TYPE
+---| 4 # CONFUSED_MOTION_TYPE
+---| 5 # CHASE_MOTION_TYPE
+---| 6 # HOME_MOTION_TYPE
+---| 7 # FLIGHT_MOTION_TYPE
+---| 8 # POINT_MOTION_TYPE
+---| 9 # FLEEING_MOTION_TYPE
+---| 10 # DISTRACT_MOTION_TYPE
+---| 11 # ASSISTANCE_MOTION_TYPE
+---| 12 # ASSISTANCE_DISTRACT_MOTION_TYPE
+---| 13 # TIMED_FLEEING_MOTION_TYPE
+---| 14 # FOLLOW_MOTION_TYPE
+---| 15 # ROTATE_MOTION_TYPE
+---| 16 # EFFECT_MOTION_TYPE
+---| 17 # NULL_MOTION_TYPE
+
+-- MovementGeneratorType
+IDLE_MOTION_TYPE = 0
+RANDOM_MOTION_TYPE = 1
+WAYPOINT_MOTION_TYPE = 2
+ANIMAL_RANDOM_MOTION_TYPE = 3
+MAX_DB_MOTION_TYPE = 3
+CONFUSED_MOTION_TYPE = 4
+CHASE_MOTION_TYPE = 5
+HOME_MOTION_TYPE = 6
+FLIGHT_MOTION_TYPE = 7
+POINT_MOTION_TYPE = 8
+FLEEING_MOTION_TYPE = 9
+DISTRACT_MOTION_TYPE = 10
+ASSISTANCE_MOTION_TYPE = 11
+ASSISTANCE_DISTRACT_MOTION_TYPE = 12
+TIMED_FLEEING_MOTION_TYPE = 13
+FOLLOW_MOTION_TYPE = 14
+ROTATE_MOTION_TYPE = 15
+EFFECT_MOTION_TYPE = 16
+NULL_MOTION_TYPE = 17
 
 ---Returns the current movement type for this Unit.
 ---@return MovementGeneratorType
@@ -250,6 +374,28 @@ function Unit:GetRaceMask() end
 ---@param type UnitMoveType
 ---@return number
 function Unit:GetSpeed(type) end
+
+---@alias UnitMoveType
+---| 0 # MOVE_WALK
+---| 1 # MOVE_RUN
+---| 2 # MOVE_RUN_BACK
+---| 3 # MOVE_SWIM
+---| 4 # MOVE_SWIM_BACK
+---| 5 # MOVE_TURN_RATE
+---| 6 # MOVE_FLIGHT
+---| 7 # MOVE_FLIGHT_BACK
+---| 8 # MOVE_PITCH_RATE
+
+-- UnitMoveType
+MOVE_WALK = 0
+MOVE_RUN = 1
+MOVE_RUN_BACK = 2
+MOVE_SWIM = 3
+MOVE_SWIM_BACK = 4
+MOVE_TURN_RATE = 5
+MOVE_FLIGHT = 6
+MOVE_FLIGHT_BACK = 7
+MOVE_PITCH_RATE = 8
 
 ---Returns the Unit's speed rate of given [UnitMoveType].
 ---@param type UnitMoveType
@@ -633,6 +779,30 @@ function Unit:SetLevel(level) end
 ---@param maxHealth number
 function Unit:SetMaxHealth(maxHealth) end
 
+---@alias Powers
+---| 0 # POWER_MANA
+---| 1 # POWER_RAGE
+---| 2 # POWER_FOCUS
+---| 3 # POWER_ENERGY
+---| 4 # POWER_HAPPINESS
+---| 5 # POWER_RUNE
+---| 6 # POWER_RUNIC_POWER
+---| 7 # MAX_POWERS
+---| 127 # POWER_ALL
+---| 4294967294 # POWER_HEALTH
+
+-- Powers
+POWER_MANA = 0
+POWER_RAGE = 1
+POWER_FOCUS = 2
+POWER_ENERGY = 3
+POWER_HAPPINESS = 4
+POWER_RUNE = 5
+POWER_RUNIC_POWER = 6
+MAX_POWERS = 7
+POWER_ALL = 127
+POWER_HEALTH = 4294967294
+
 ---Sets the Unit's max power amount for the given power type.
 ---@param type number
 ---@param maxPower number
@@ -674,6 +844,16 @@ function Unit:SetRooted(apply) end
 ---Sets the Unit's sanctuary flag on or off.
 ---@param apply? boolean
 function Unit:SetSanctuary(apply) end
+
+---@alias SheathState
+---| 0 # SHEATH_STATE_UNARMED
+---| 1 # SHEATH_STATE_MELEE
+---| 2 # SHEATH_STATE_RANGED
+
+-- SheathState
+SHEATH_STATE_UNARMED = 0
+SHEATH_STATE_MELEE = 1
+SHEATH_STATE_RANGED = 2
 
 ---Sets the Unit's sheath state.
 ---@param sheathState SheathState

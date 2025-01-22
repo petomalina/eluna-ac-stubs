@@ -5,10 +5,13 @@ import (
 	"log/slog"
 	"os"
 	"sort"
+	"strconv"
 	"strings"
 
 	"github.com/gocolly/colly/v2"
 )
+
+var alreadyFoundEnums = make(map[string]struct{})
 
 // ClassPage represents a parsed Class page
 type ClassPage struct {
@@ -73,6 +76,11 @@ func correctParameterType(paramType string) string {
 	if paramType == "bool" {
 		return "boolean"
 	}
+
+	if paramType == "uint32" {
+		return "number"
+	}
+
 	return paramType
 }
 
@@ -89,7 +97,7 @@ func main() {
 	// Process each class
 	for _, class := range classes {
 		// debug
-		// if class != "Creature" {
+		// if class != "Achievement" {
 		// 	continue
 		// }
 
@@ -219,6 +227,7 @@ func parseClassPage(baseURL, className string) (*ClassPage, error) {
 		}
 		method.Parameters = methodPage.Parameters
 		method.ReturnType = methodPage.ReturnType
+		method.Enums = methodPage.Enums
 	}
 
 	// Convert methods map to sorted slice
@@ -234,6 +243,7 @@ func parseClassPage(baseURL, className string) (*ClassPage, error) {
 type MethodPage struct {
 	Parameters []Parameter
 	ReturnType string
+	Enums      []Enum
 }
 
 func parseMethodPage(baseURL, className, methodName string) (*MethodPage, error) {
@@ -241,6 +251,107 @@ func parseMethodPage(baseURL, className, methodName string) (*MethodPage, error)
 	page := &MethodPage{}
 
 	slog.Info("parsing method page", "class", className, "method", methodName)
+
+	// Parse enum values
+	c.OnHTML("section#main > div.docblock > pre", func(e *colly.HTMLElement) {
+		text := e.Text
+
+		// Look for enum definition
+		if !strings.Contains(text, "enum") {
+			return
+		}
+
+		// for enums that use auto incrementing values, we need to keep track of the last parsed value
+		var lastParsedValue int = 0
+
+		// Extract enum name and content
+		lines := strings.Split(text, "\n")
+		var enumName string
+		values := make(map[string]int)
+
+		for _, line := range lines {
+			line = strings.TrimSpace(line)
+
+			if strings.HasPrefix(strings.TrimSpace(line), "//") {
+				continue
+			}
+
+			if strings.Contains(line, "{") || strings.Contains(line, "}") {
+				continue
+			}
+
+			if strings.TrimSpace(line) == "" {
+				continue
+			}
+
+			// Parse enum name
+			if strings.HasPrefix(line, "enum") {
+				parts := strings.Fields(line)
+				if len(parts) >= 2 {
+					enumName = parts[1]
+					continue
+				}
+			}
+
+			parts := strings.Split(line, "=")
+			if len(parts) == 0 {
+				continue
+			}
+			name := strings.TrimSpace(parts[0])
+
+			// sometimes values might look like this, so we need to remove the comment and the comma
+			// SELECT_TARGET_TOPAGGRO,    //Selects targets from top aggro to bottom
+			// SELECT_TARGET_FARTHEST     //Selects targets from farthest to nearest
+			commentIndex := strings.Index(name, "//")
+			if commentIndex != -1 {
+				name = name[:commentIndex]
+			}
+			name = strings.TrimRight(name, ", ")
+
+			if len(parts) == 2 {
+				// Extract value and comment
+				valueParts := strings.Split(parts[1], "//")
+				valueStr := strings.TrimSpace(valueParts[0])
+				valueStr = strings.TrimRight(valueStr, ", ")
+
+				value, err := strconv.ParseInt(valueStr, 0, 64)
+				if err != nil {
+					slog.Error("failed to parse enum value",
+						"class", className,
+						"method", methodName,
+						"name", name,
+						"value", valueStr,
+						"error", err,
+					)
+					continue
+				}
+
+				lastParsedValue = int(value)
+			} else {
+				lastParsedValue++
+			}
+
+			values[name] = lastParsedValue
+		}
+
+		if enumName != "" && len(values) > 0 {
+			slog.Info("found enum",
+				"class", className,
+				"method", methodName,
+				"enum", enumName,
+				"values_count", len(values),
+			)
+
+			if _, ok := alreadyFoundEnums[enumName]; !ok {
+				// Add enum to page instead of method
+				page.Enums = append(page.Enums, Enum{
+					Name:   enumName,
+					Values: values,
+				})
+				alreadyFoundEnums[enumName] = struct{}{}
+			}
+		}
+	})
 
 	// Parse return type from returns section
 	c.OnHTML("#returns ~ dl dt code strong a", func(e *colly.HTMLElement) {
@@ -309,6 +420,14 @@ func parseMethodPage(baseURL, className, methodName string) (*MethodPage, error)
 		return nil, fmt.Errorf("failed to fetch method page: %w", err)
 	}
 
+	// return types are doubling in the method.Parameters because of the html structure,
+	// so we need to remove the last parameter if it has the same type as return type
+	if page.ReturnType != "" {
+		lastParam := page.Parameters[len(page.Parameters)-1]
+		if lastParam.Type == page.ReturnType {
+			page.Parameters = page.Parameters[:len(page.Parameters)-1]
+		}
+	}
 	return page, nil
 }
 
@@ -336,6 +455,7 @@ func generateLuaDefs(page *ClassPage) string {
 	var sb strings.Builder
 
 	sb.WriteString("---@meta\n\n")
+
 	// Write class definition with inheritance
 	if page.BaseType != "" {
 		sb.WriteString(fmt.Sprintf("---@class %s : %s\n", page.Title, page.BaseType))
@@ -360,19 +480,44 @@ func generateLuaDefs(page *ClassPage) string {
 
 	// Write methods with consistent formatting
 	for _, method := range page.Methods {
+		for _, enum := range method.Enums {
+			names := make([]string, 0, len(enum.Values))
+			for name := range enum.Values {
+				names = append(names, name)
+			}
+
+			// sort the names based on the mapped values
+			sort.Slice(names, func(i, j int) bool {
+				return enum.Values[names[i]] < enum.Values[names[j]]
+			})
+
+			// also create EmmyLua alias
+			/*
+				---@alias LocaleConstant
+				---| 0 # enUS
+				---| 1 # koKR
+				---| 2 # frFR
+			*/
+			sb.WriteString(fmt.Sprintf("---@alias %s\n", enum.Name))
+
+			for _, value := range names {
+				sb.WriteString(fmt.Sprintf("---| %d # %s\n", enum.Values[value], value))
+			}
+
+			// Add comment describing the enum
+			sb.WriteString(fmt.Sprintf("\n-- %s\n", enum.Name))
+
+			// Write each enum value as a global constant
+			for _, name := range names {
+				sb.WriteString(fmt.Sprintf("%s = %d\n", name, enum.Values[name]))
+			}
+			sb.WriteString("\n")
+		}
+
 		if method.Description != "" {
 			// Format description as a single line
 			desc := strings.ReplaceAll(method.Description, "\n", " ")
 			sb.WriteString(fmt.Sprintf("---%s\n", desc))
-		}
-
-		// return types are doubling in the method.Parameters because of the html structure,
-		// so we need to remove the last parameter if it has the same type as return type
-		if method.ReturnType != "" {
-			lastParam := method.Parameters[len(method.Parameters)-1]
-			if lastParam.Type == method.ReturnType {
-				method.Parameters = method.Parameters[:len(method.Parameters)-1]
-			}
 		}
 
 		// Parameters with keyword handling

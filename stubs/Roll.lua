@@ -27,6 +27,22 @@ function Roll:GetItemRandomSuffix() end
 ---@return number
 function Roll:GetItemSlot() end
 
+---@alias RollVote
+---| 0 # PASS
+---| 1 # NEED
+---| 2 # GREED
+---| 3 # DISENCHANT
+---| 4 # NOT_EMITED_YET
+---| 5 # NOT_VALID
+
+-- RollVote
+PASS = 0
+NEED = 1
+GREED = 2
+DISENCHANT = 3
+NOT_EMITED_YET = 4
+NOT_VALID = 5
+
 ---Returns the vote type for a Player on this Roll. See Roll:GetPlayerVoteGUIDs to obtain the GUIDs of the Players who rolled.
 ---@param guid number
 ---@return RollVote
@@ -35,6 +51,22 @@ function Roll:GetPlayerVote(guid) end
 ---Returns the GUIDs of the Players who rolled. See Roll:GetPlayerVote to obtain the vote type of a Player.
 ---@return table
 function Roll:GetPlayerVoteGUIDs() end
+
+---@alias RollMask
+---| 1 # ROLL_FLAG_TYPE_PASS
+---| 2 # ROLL_FLAG_TYPE_NEED
+---| 4 # ROLL_FLAG_TYPE_GREED
+---| 7 # ROLL_ALL_TYPE_NO_DISENCHANT
+---| 8 # ROLL_FLAG_TYPE_DISENCHANT
+---| 15 # ROLL_ALL_TYPE_MASK
+
+-- RollMask
+ROLL_FLAG_TYPE_PASS = 1
+ROLL_FLAG_TYPE_NEED = 2
+ROLL_FLAG_TYPE_GREED = 4
+ROLL_ALL_TYPE_NO_DISENCHANT = 7
+ROLL_FLAG_TYPE_DISENCHANT = 8
+ROLL_ALL_TYPE_MASK = 15
 
 ---Returns the mask applied to this Roll.
 ---@return RollMask

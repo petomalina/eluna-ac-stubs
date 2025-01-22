@@ -18,6 +18,20 @@ function Group:Disband() end
 ---@return number
 function Group:GetGUID() end
 
+---@alias GroupType
+---| 0 # GROUPTYPE_NORMAL
+---| 1 # GROUPTYPE_BG
+---| 2 # GROUPTYPE_RAID
+---| 4 # GROUPTYPE_LFG_RESTRICTED
+---| 8 # GROUPTYPE_LFG
+
+-- GroupType
+GROUPTYPE_NORMAL = 0
+GROUPTYPE_BG = 1
+GROUPTYPE_RAID = 2
+GROUPTYPE_LFG_RESTRICTED = 4
+GROUPTYPE_LFG = 8
+
 ---Returns the type of this Group
 ---@return GroupType
 function Group:GetGroupType() end
@@ -80,6 +94,18 @@ function Group:IsMember(guid) end
 ---@return boolean
 function Group:IsRaidGroup() end
 
+---@alias RemoveMethod
+---| 0 # GROUP_REMOVEMETHOD_DEFAULT
+---| 1 # GROUP_REMOVEMETHOD_KICK
+---| 2 # GROUP_REMOVEMETHOD_LEAVE
+---| 3 # GROUP_REMOVEMETHOD_KICK_LFG
+
+-- RemoveMethod
+GROUP_REMOVEMETHOD_DEFAULT = 0
+GROUP_REMOVEMETHOD_KICK = 1
+GROUP_REMOVEMETHOD_LEAVE = 2
+GROUP_REMOVEMETHOD_KICK_LFG = 3
+
 ---Removes a Player from this Group and returns 'true' if successful
 ---@param guid number
 ---@param method RemoveMethod
@@ -101,6 +127,16 @@ function Group:SendPacket(packet, ignorePlayersInBg, ignore) end
 ---Sets the leader of this Group
 ---@param guid number
 function Group:SetLeader(guid) end
+
+---@alias GroupMemberFlags
+---| 1 # MEMBER_FLAG_ASSISTANT
+---| 2 # MEMBER_FLAG_MAINTANK
+---| 4 # MEMBER_FLAG_MAINASSIST
+
+-- GroupMemberFlags
+MEMBER_FLAG_ASSISTANT = 1
+MEMBER_FLAG_MAINTANK = 2
+MEMBER_FLAG_MAINASSIST = 4
 
 ---Sets or removes a flag for a Group member
 ---@param target number

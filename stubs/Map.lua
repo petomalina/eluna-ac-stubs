@@ -78,6 +78,22 @@ function Map:IsRaid() end
 ---Saves the Map's instance data to the database.
 function Map:SaveInstanceData() end
 
+---@alias WeatherType
+---| 0 # WEATHER_TYPE_FINE
+---| 1 # WEATHER_TYPE_RAIN
+---| 2 # WEATHER_TYPE_SNOW
+---| 3 # WEATHER_TYPE_STORM
+---| 86 # WEATHER_TYPE_THUNDERS
+---| 90 # WEATHER_TYPE_BLACKRAIN
+
+-- WeatherType
+WEATHER_TYPE_FINE = 0
+WEATHER_TYPE_RAIN = 1
+WEATHER_TYPE_SNOW = 2
+WEATHER_TYPE_STORM = 3
+WEATHER_TYPE_THUNDERS = 86
+WEATHER_TYPE_BLACKRAIN = 90
+
 ---Sets the [Weather] type based on [WeatherType] and grade supplied.
 ---@param zone number
 ---@param type WeatherType
