@@ -89,11 +89,11 @@ func main() {
 	// Process each class
 	for _, class := range classes {
 		// debug
-		if class != "Global" {
-			continue
-		}
+		// if class != "Creature" {
+		// 	continue
+		// }
 
-		page, err := parseWikiPage(baseURL, class)
+		page, err := parseClassPage(baseURL, class)
 		if err != nil {
 			slog.Error("failed to parse wiki page",
 				"class", class,
@@ -151,17 +151,13 @@ func contains(slice []string, str string) bool {
 	return false
 }
 
-func parseWikiPage(baseURL, className string) (*ClassPage, error) {
+func parseClassPage(baseURL, className string) (*ClassPage, error) {
 	slog.Info("parsing class page", "class", className)
-	c := colly.NewCollector(
-		colly.AllowURLRevisit(),
-	)
+	c := colly.NewCollector()
 
 	page := &ClassPage{
 		Title: className,
 	}
-
-	methods := make(map[string]*Method)
 
 	// Parse inheritance info
 	c.OnHTML("section#main > p", func(e *colly.HTMLElement) {
@@ -185,13 +181,14 @@ func parseWikiPage(baseURL, className string) (*ClassPage, error) {
 		}
 	})
 
+	// Parse method list
+	methods := make(map[string]*Method)
 	c.OnHTML("table tr", func(e *colly.HTMLElement) {
 		methodName := e.ChildText("td > a.fn")
 		if methodName == "" {
 			return
 		}
 
-		slog.Info("found method", "class", className, "method", methodName)
 		description := strings.TrimSpace(e.ChildText("td.docblock"))
 
 		method := &Method{
@@ -199,33 +196,54 @@ func parseWikiPage(baseURL, className string) (*ClassPage, error) {
 			Description: description,
 		}
 		methods[methodName] = method
+	})
 
-		methodURL := fmt.Sprintf("%s%s/%s.html", baseURL, className, methodName)
-		slog.Debug("visiting method page", "class", className, "method", methodName, "url", methodURL)
-		err := c.Visit(methodURL)
+	// Visit class page
+	url := fmt.Sprintf("%s%s/index.html", baseURL, className)
+	slog.Info("visiting class page", "class", className, "url", url)
+	if err := c.Visit(url); err != nil {
+		return nil, fmt.Errorf("failed to fetch class page: %w", err)
+	}
+
+	slog.Info("found methods", "class", className, "count", len(methods))
+	// Parse each method's details
+	for methodName, method := range methods {
+		methodPage, err := parseMethodPage(baseURL, className, methodName)
 		if err != nil {
-			slog.Error("failed to visit method page",
+			slog.Error("failed to parse method page",
 				"class", className,
 				"method", methodName,
-				"url", methodURL,
 				"error", err,
 			)
+			continue
 		}
-	})
+		method.Parameters = methodPage.Parameters
+		method.ReturnType = methodPage.ReturnType
+	}
+
+	// Convert methods map to sorted slice
+	page.Methods = getSortedMethods(methods)
+
+	slog.Info("finished parsing class",
+		"class", className,
+		"methods_count", len(page.Methods),
+	)
+	return page, nil
+}
+
+type MethodPage struct {
+	Parameters []Parameter
+	ReturnType string
+}
+
+func parseMethodPage(baseURL, className, methodName string) (*MethodPage, error) {
+	c := colly.NewCollector()
+	page := &MethodPage{}
+
+	slog.Info("parsing method page", "class", className, "method", methodName)
 
 	// Parse return type from returns section
 	c.OnHTML("#returns ~ dl dt code strong a", func(e *colly.HTMLElement) {
-		urlParts := strings.Split(e.Request.URL.Path, "/")
-		if len(urlParts) < 2 {
-			return
-		}
-		methodName := strings.TrimSuffix(urlParts[len(urlParts)-1], ".html")
-
-		method, exists := methods[methodName]
-		if !exists {
-			return
-		}
-
 		// Get return type from the link or strong tag
 		returnType := e.Text
 		if returnType == "" {
@@ -234,7 +252,7 @@ func parseWikiPage(baseURL, className string) (*ClassPage, error) {
 		}
 
 		if returnType != "" {
-			method.ReturnType = returnType
+			page.ReturnType = returnType
 			slog.Debug("found return type",
 				"class", className,
 				"method", methodName,
@@ -245,39 +263,22 @@ func parseWikiPage(baseURL, className string) (*ClassPage, error) {
 
 	// Parse parameters from arguments section
 	c.OnHTML("#arguments ~ dl", func(e *colly.HTMLElement) {
-		urlParts := strings.Split(e.Request.URL.Path, "/")
-		if len(urlParts) < 2 {
-			return
-		}
-		methodName := strings.TrimSuffix(urlParts[len(urlParts)-1], ".html")
-		slog.Debug("parsing method parameters", "class", className, "method", methodName)
-
-		method, exists := methods[methodName]
-		if !exists {
-			return
-		}
-
 		e.ForEach("dt", func(_ int, dt *colly.HTMLElement) {
 			paramText := dt.Text
-			// Example: Unit passenger or number seat
 			parts := strings.Fields(paramText)
 			if len(parts) >= 2 {
 				var paramType string
-				// Check if type is a link to another class
 				if link := dt.ChildAttr("a", "href"); link != "" {
 					paramType = dt.ChildText("a")
 				} else {
-					// Get the type from the strong tag
 					paramType = dt.ChildText("strong")
 				}
 
-				// If we couldn't get the type from HTML elements, use the text
 				if paramType == "" {
 					paramType = strings.Trim(parts[0], "<>strong")
 				}
 
 				paramName := strings.Trim(parts[1], "()")
-
 				defaultValue := ""
 				if len(parts) > 2 {
 					defaultValue = strings.Trim(parts[2], "()")
@@ -290,30 +291,24 @@ func parseWikiPage(baseURL, className string) (*ClassPage, error) {
 					"type", paramType,
 					"default_value", defaultValue,
 				)
+
 				param := Parameter{
 					Type:         paramType,
 					Name:         paramName,
 					DefaultValue: defaultValue,
 				}
-				method.Parameters = append(method.Parameters, param)
+				page.Parameters = append(page.Parameters, param)
 			}
 		})
 	})
 
-	url := fmt.Sprintf("%s%s/index.html", baseURL, className)
-	slog.Info("visiting class page", "class", className, "url", url)
-	err := c.Visit(url)
-	if err != nil {
-		return nil, fmt.Errorf("failed to fetch class page: %w", err)
+	// Visit method page
+	url := fmt.Sprintf("%s%s/%s.html", baseURL, className, methodName)
+	slog.Debug("visiting method page", "class", className, "method", methodName, "url", url)
+	if err := c.Visit(url); err != nil {
+		return nil, fmt.Errorf("failed to fetch method page: %w", err)
 	}
 
-	// Convert methods map to sorted slice
-	page.Methods = getSortedMethods(methods)
-
-	slog.Info("finished parsing class",
-		"class", className,
-		"methods_count", len(page.Methods),
-	)
 	return page, nil
 }
 
