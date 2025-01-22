@@ -84,11 +84,6 @@ function Creature:GetAITargetsCount() end
 ---@return number
 function Creature:GetAggroRange(target) end
 
----Returns the effective aggro range of the Creature for target.
----@param target Unit
----@return number
-function Creature:GetAttackDistance(target) end
-
 ---Returns the delay between when the Creature dies and when its body despawns.
 ---@return number
 function Creature:GetCorpseDelay() end
@@ -216,6 +211,8 @@ function Creature:IsCivilian() end
 ---@return boolean
 function Creature:IsDamageEnoughForLootingAndReward() end
 
+---Returns true if the Creature's flags_extra includes Dungeon Boss (0x1000000),   and returns false otherwise.
+---@return boolean
 function Creature:IsDungeonBoss() end
 
 ---Returns true if the Creature's rank is Elite or Rare Elite,   and returns false otherwise.

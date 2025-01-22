@@ -96,9 +96,6 @@ function Player:CanUseItem(item, entry) end
 ---Clears the Players combo points
 function Player:ClearComboPoints() end
 
----Clears all of Players weekly honor status
-function Player:ClearHonorInfo() end
-
 ---Completes the given quest entry for the Player and tries to satisfy all quest requirements.
 ---@param entry number
 function Player:CompleteQuest(entry) end
@@ -288,18 +285,9 @@ function Player:GetGuildRank() end
 ---@return number
 function Player:GetHealthBonusFromStamina() end
 
----Returns last week's standing position
----@return number
-function Player:GetHonorLastWeekStandingPos() end
-
 ---Returns the Players current amount of Honor Points
 ---@return number
 function Player:GetHonorPoints() end
-
----Returns Player kills
----@param honorable? boolean
----@return number
-function Player:GetHonorStoredKills(honorable) end
 
 ---Returns the amount of time the Player has spent ingame
 ---@return number
@@ -407,10 +395,6 @@ function Player:GetQuestRewardStatus(questId) end
 ---@param questId number
 ---@return QuestStatus
 function Player:GetQuestStatus(questId) end
-
----Returns rank points
----@return number
-function Player:GetRankPoints() end
 
 ---Returns the amount of reputation the Player has with the faction specified
 ---@param faction number
@@ -805,9 +789,6 @@ function Player:ResetAchievements() end
 ---Resets all of the Player's cooldowns
 function Player:ResetAllCooldowns() end
 
----Resets the Players weekly honor status
-function Player:ResetHonor() end
-
 ---Resets the Players pets talent points
 function Player:ResetPetTalents() end
 
@@ -959,10 +940,6 @@ function Player:SetCoinage(copperAmt) end
 ---@param drunkValue number
 function Player:SetDrunkValue(drunkValue) end
 
----Toggle the Players FFA flag
----@param applyFFA? boolean
-function Player:SetFFA(applyFFA) end
-
 ---Sets the Players faction standing to that of the race specified
 ---@param raceId number
 function Player:SetFactionForRace(raceId) end
@@ -996,18 +973,9 @@ function Player:SetGlyph(glyphId, slotIndex) end
 ---@param rank number
 function Player:SetGuildRank(rank) end
 
----Sets last week's honor standing position
----@param standingPos number
-function Player:SetHonorLastWeekStandingPos(standingPos) end
-
 ---Sets the Players Honor Points to the amount specified
 ---@param honorPoints number
 function Player:SetHonorPoints(honorPoints) end
-
----Sets kills
----@param kills number
----@param honorable? boolean
-function Player:SetHonorStoredKills(kills, honorable) end
 
 ---Adds the specified title to the Players list of known titles
 ---@param titleId number
@@ -1029,10 +997,6 @@ function Player:SetPvPDeath(on) end
 ---@param entry number
 ---@param status number
 function Player:SetQuestStatus(entry, status) end
-
----Sets rank points
----@param rankPoints number
-function Player:SetRankPoints(rankPoints) end
 
 ---Sets the Players reputation amount for the faction specified
 ---@param factionId number
@@ -1108,9 +1072,6 @@ function Player:UnbindInstance(map, difficulty) end
 ---Removes a title by ID from the Players list of known titles
 ---@param titleId number
 function Player:UnsetKnownTitle(titleId) end
-
----Updates the Players weekly honor status
-function Player:UpdateHonor() end
 
 ---Sets a setting value for the Player
 ---@param source string

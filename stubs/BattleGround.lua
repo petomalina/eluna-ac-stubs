@@ -13,10 +13,6 @@ function BattleGround:GetAlivePlayersCountByTeam(team) end
 ---@return number
 function BattleGround:GetBonusHonorFromKillCount(kills) end
 
----Returns the bracket ID of the specific BattleGround.
----@return BattleGroundBracketId
-function BattleGround:GetBracketId() end
-
 ---Returns the end time of the BattleGround.
 ---@return number
 function BattleGround:GetEndTime() end
