@@ -137,8 +137,8 @@ function Player:DurabilityRepair(position, cost, discountMod) end
 function Player:DurabilityRepairAll(takeCost, discountMod, guidBank) end
 
 ---@alias InventorySlots
----| 0 # EQUIPMENT_SLOT_HEAD
 ---| 0 # EQUIPMENT_SLOT_START
+---| 0 # EQUIPMENT_SLOT_HEAD
 ---| 1 # EQUIPMENT_SLOT_NECK
 ---| 2 # EQUIPMENT_SLOT_SHOULDERS
 ---| 3 # EQUIPMENT_SLOT_BODY
@@ -162,8 +162,8 @@ function Player:DurabilityRepairAll(takeCost, discountMod, guidBank) end
 ---| 23 # INVENTORY_SLOT_BAG_END
 
 -- InventorySlots
-EQUIPMENT_SLOT_HEAD = 0
 EQUIPMENT_SLOT_START = 0
+EQUIPMENT_SLOT_HEAD = 0
 EQUIPMENT_SLOT_NECK = 1
 EQUIPMENT_SLOT_SHOULDERS = 2
 EQUIPMENT_SLOT_BODY = 3

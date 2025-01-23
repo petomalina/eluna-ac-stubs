@@ -285,8 +285,8 @@ function Unit:GetMountId() end
 ---| 0 # IDLE_MOTION_TYPE
 ---| 1 # RANDOM_MOTION_TYPE
 ---| 2 # WAYPOINT_MOTION_TYPE
----| 3 # ANIMAL_RANDOM_MOTION_TYPE
 ---| 3 # MAX_DB_MOTION_TYPE
+---| 3 # ANIMAL_RANDOM_MOTION_TYPE
 ---| 4 # CONFUSED_MOTION_TYPE
 ---| 5 # CHASE_MOTION_TYPE
 ---| 6 # HOME_MOTION_TYPE
@@ -306,8 +306,8 @@ function Unit:GetMountId() end
 IDLE_MOTION_TYPE = 0
 RANDOM_MOTION_TYPE = 1
 WAYPOINT_MOTION_TYPE = 2
-ANIMAL_RANDOM_MOTION_TYPE = 3
 MAX_DB_MOTION_TYPE = 3
+ANIMAL_RANDOM_MOTION_TYPE = 3
 CONFUSED_MOTION_TYPE = 4
 CHASE_MOTION_TYPE = 5
 HOME_MOTION_TYPE = 6
@@ -343,6 +343,30 @@ function Unit:GetOwnerGUID() end
 ---@return number
 function Unit:GetPetGUID() end
 
+---@alias Powers
+---| 0 # POWER_MANA
+---| 1 # POWER_RAGE
+---| 2 # POWER_FOCUS
+---| 3 # POWER_ENERGY
+---| 4 # POWER_HAPPINESS
+---| 5 # POWER_RUNE
+---| 6 # POWER_RUNIC_POWER
+---| 7 # MAX_POWERS
+---| 127 # POWER_ALL
+---| 4294967294 # POWER_HEALTH
+
+-- Powers
+POWER_MANA = 0
+POWER_RAGE = 1
+POWER_FOCUS = 2
+POWER_ENERGY = 3
+POWER_HAPPINESS = 4
+POWER_RUNE = 5
+POWER_RUNIC_POWER = 6
+MAX_POWERS = 7
+POWER_ALL = 127
+POWER_HEALTH = 4294967294
+
 ---Returns the Unit's power amount for given power type.
 ---@param type number
 ---@return number
@@ -370,11 +394,6 @@ function Unit:GetRaceAsString(locale) end
 ---@return number
 function Unit:GetRaceMask() end
 
----Returns the Unit's speed of given [UnitMoveType].
----@param type UnitMoveType
----@return number
-function Unit:GetSpeed(type) end
-
 ---@alias UnitMoveType
 ---| 0 # MOVE_WALK
 ---| 1 # MOVE_RUN
@@ -396,6 +415,11 @@ MOVE_TURN_RATE = 5
 MOVE_FLIGHT = 6
 MOVE_FLIGHT_BACK = 7
 MOVE_PITCH_RATE = 8
+
+---Returns the Unit's speed of given [UnitMoveType].
+---@param type UnitMoveType
+---@return number
+function Unit:GetSpeed(type) end
 
 ---Returns the Unit's speed rate of given [UnitMoveType].
 ---@param type UnitMoveType
@@ -778,30 +802,6 @@ function Unit:SetLevel(level) end
 ---Sets the Unit's max health.
 ---@param maxHealth number
 function Unit:SetMaxHealth(maxHealth) end
-
----@alias Powers
----| 0 # POWER_MANA
----| 1 # POWER_RAGE
----| 2 # POWER_FOCUS
----| 3 # POWER_ENERGY
----| 4 # POWER_HAPPINESS
----| 5 # POWER_RUNE
----| 6 # POWER_RUNIC_POWER
----| 7 # MAX_POWERS
----| 127 # POWER_ALL
----| 4294967294 # POWER_HEALTH
-
--- Powers
-POWER_MANA = 0
-POWER_RAGE = 1
-POWER_FOCUS = 2
-POWER_ENERGY = 3
-POWER_HAPPINESS = 4
-POWER_RUNE = 5
-POWER_RUNIC_POWER = 6
-MAX_POWERS = 7
-POWER_ALL = 127
-POWER_HEALTH = 4294967294
 
 ---Sets the Unit's max power amount for the given power type.
 ---@param type number
