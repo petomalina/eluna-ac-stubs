@@ -16,16 +16,6 @@ function GameObject:GetDBTableGUIDLow() end
 ---@return number
 function GameObject:GetDisplayId() end
 
----@alias GOState
----| 0 # GO_STATE_ACTIVE
----| 1 # GO_STATE_READY
----| 2 # GO_STATE_ACTIVE_ALTERNATIVE
-
--- GOState
-GO_STATE_ACTIVE = 0
-GO_STATE_READY = 1
-GO_STATE_ACTIVE_ALTERNATIVE = 2
-
 ---Returns the state of a GameObject Below are client side [GOState]s off of 3.3.5a
 ---@return GOState
 function GameObject:GetGoState() end
@@ -37,18 +27,6 @@ function GameObject:GetLootRecipient() end
 ---Returns the Group that can loot the GameObject
 ---@return Group
 function GameObject:GetLootRecipientGroup() end
-
----@alias LootState
----| 0 # GO_NOT_READY
----| 1 # GO_READY
----| 2 # GO_ACTIVATED
----| 3 # GO_JUST_DEACTIVATED
-
--- LootState
-GO_NOT_READY = 0
-GO_READY = 1
-GO_ACTIVATED = 2
-GO_JUST_DEACTIVATED = 3
 
 ---Returns the [LootState] of a GameObject Below are [LootState]s off of 3.3.5a
 ---@return LootState

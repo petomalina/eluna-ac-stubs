@@ -85,6 +85,59 @@ func correctParameterType(paramType string) string {
 	return paramType
 }
 
+// Add new type to track all enums globally
+type GlobalEnums struct {
+	Enums map[string]Enum // map of enum name to enum definition
+}
+
+var globalEnums = GlobalEnums{
+	Enums: make(map[string]Enum),
+}
+
+// Add function to save constants file
+func saveConstants() error {
+	var sb strings.Builder
+	sb.WriteString("---@meta\n\n")
+
+	// Sort enum names for consistent output
+	names := make([]string, 0, len(globalEnums.Enums))
+	for name := range globalEnums.Enums {
+		names = append(names, name)
+	}
+	sort.Strings(names)
+
+	// Write each enum
+	for _, enumName := range names {
+		enum := globalEnums.Enums[enumName]
+
+		// Create EmmyLua alias
+		sb.WriteString(fmt.Sprintf("---@alias %s\n", enumName))
+
+		// Sort values by their numeric value
+		values := make([]string, 0, len(enum.Values))
+		for name := range enum.Values {
+			values = append(values, name)
+		}
+		sort.Slice(values, func(i, j int) bool {
+			return enum.Values[values[i]] < enum.Values[values[j]]
+		})
+
+		// Write enum values as alias options
+		for _, value := range values {
+			sb.WriteString(fmt.Sprintf("---| %d # %s\n", enum.Values[value], value))
+		}
+
+		// Write enum values as globals
+		sb.WriteString(fmt.Sprintf("\n-- %s\n", enumName))
+		for _, value := range values {
+			sb.WriteString(fmt.Sprintf("%s = %d\n", value, enum.Values[value]))
+		}
+		sb.WriteString("\n")
+	}
+
+	return os.WriteFile("stubs/Constants.lua", []byte(sb.String()), 0644)
+}
+
 func main() {
 	baseURL := "https://www.azerothcore.org/eluna/"
 
@@ -121,6 +174,11 @@ func main() {
 				"error", err,
 			)
 		}
+	}
+
+	// Save all collected enums to Constants.lua
+	if err := saveConstants(); err != nil {
+		slog.Error("failed to save constants", "error", err)
 	}
 }
 
@@ -338,21 +396,14 @@ func parseMethodPage(baseURL, className, methodName string) (*MethodPage, error)
 		}
 
 		if enumName != "" && len(values) > 0 {
-			slog.Info("found enum",
-				"class", className,
-				"method", methodName,
-				"enum", enumName,
-				"values_count", len(values),
-			)
-
-			if _, ok := alreadyFoundEnums[enumName]; !ok {
-				// Add enum to page instead of method
-				page.Enums = append(page.Enums, Enum{
+			// Store enum globally
+			if _, exists := globalEnums.Enums[enumName]; !exists {
+				globalEnums.Enums[enumName] = Enum{
 					Name:   enumName,
 					Values: values,
-				})
-				alreadyFoundEnums[enumName] = struct{}{}
+				}
 			}
+			// Just store the enum name reference in the method
 			page.EnumNames = append(page.EnumNames, enumName)
 		}
 	})
@@ -484,61 +535,28 @@ func generateLuaDefs(page *ClassPage) string {
 
 	// Write methods with consistent formatting
 	for _, method := range page.Methods {
-		for _, enum := range method.Enums {
-			names := make([]string, 0, len(enum.Values))
-			for name := range enum.Values {
-				names = append(names, name)
-			}
-
-			// sort the names based on the mapped values
-			sort.Slice(names, func(i, j int) bool {
-				return enum.Values[names[i]] < enum.Values[names[j]]
-			})
-
-			// also create EmmyLua alias
-			/*
-				---@alias LocaleConstant
-				---| 0 # enUS
-				---| 1 # koKR
-				---| 2 # frFR
-			*/
-			sb.WriteString(fmt.Sprintf("---@alias %s\n", enum.Name))
-
-			for _, value := range names {
-				sb.WriteString(fmt.Sprintf("---| %d # %s\n", enum.Values[value], value))
-			}
-
-			// Add comment describing the enum
-			sb.WriteString(fmt.Sprintf("\n-- %s\n", enum.Name))
-
-			// Write each enum value as a global constant
-			for _, name := range names {
-				sb.WriteString(fmt.Sprintf("%s = %d\n", name, enum.Values[name]))
-			}
-			sb.WriteString("\n")
-		}
-
 		if method.Description != "" {
 			// Format description as a single line
 			desc := strings.ReplaceAll(method.Description, "\n", " ")
 			sb.WriteString(fmt.Sprintf("---%s\n", desc))
 		}
 
-		// Parameters with keyword handling
+		// Parameters with enum type handling
 		for _, param := range method.Parameters {
 			paramName := getSafeName(param.Name)
+			paramType := param.Type
 
-			// events also have enum definitions that we can use for the types
+			// Use enum type for event parameters
 			if strings.HasPrefix(method.Name, "Register") && paramName == "event" {
 				if len(method.EnumNames) > 0 {
-					param.Type = method.EnumNames[0]
+					paramType = method.EnumNames[0]
 				}
 			}
 
 			if param.DefaultValue != "" {
 				paramName += "?"
 			}
-			sb.WriteString(fmt.Sprintf("---@param %s %s\n", paramName, correctParameterType(param.Type)))
+			sb.WriteString(fmt.Sprintf("---@param %s %s\n", paramName, correctParameterType(paramType)))
 		}
 
 		// Return type

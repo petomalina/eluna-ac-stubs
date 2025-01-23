@@ -11,16 +11,6 @@ function Corpse:GetGhostTime() end
 ---@return number
 function Corpse:GetOwnerGUID() end
 
----@alias CorpseType
----| 0 # CORPSE_BONES
----| 1 # CORPSE_RESURRECTABLE_PVE
----| 2 # CORPSE_RESURRECTABLE_PVP
-
--- CorpseType
-CORPSE_BONES = 0
-CORPSE_RESURRECTABLE_PVE = 1
-CORPSE_RESURRECTABLE_PVP = 2
-
 ---Returns the [CorpseType] of a Corpse.
 ---@return CorpseType
 function Corpse:GetType() end

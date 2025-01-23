@@ -35,26 +35,6 @@ function Object:GetInt32Value(index) end
 ---@return number
 function Object:GetScale() end
 
----@alias TypeID
----| 0 # TYPEID_OBJECT
----| 1 # TYPEID_ITEM
----| 2 # TYPEID_CONTAINER
----| 3 # TYPEID_UNIT
----| 4 # TYPEID_PLAYER
----| 5 # TYPEID_GAMEOBJECT
----| 6 # TYPEID_DYNAMICOBJECT
----| 7 # TYPEID_CORPSE
-
--- TypeID
-TYPEID_OBJECT = 0
-TYPEID_ITEM = 1
-TYPEID_CONTAINER = 2
-TYPEID_UNIT = 3
-TYPEID_PLAYER = 4
-TYPEID_GAMEOBJECT = 5
-TYPEID_DYNAMICOBJECT = 6
-TYPEID_CORPSE = 7
-
 ---Returns the TypeId of the Object.
 ---@return number
 function Object:GetTypeId() end
