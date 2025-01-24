@@ -21,6 +21,8 @@ Add the following to your `settings.json` file, replacing the path to the `eluna
 ]
 ```
 
+Lastly, add `Constants.lua` to your `lua_scripts` directory, so that Eluna can use it in runtime.
+
 ## Parsing
 
 The parser uses the [Eluna AC Wiki](https://www.azerothcore.org/eluna/) as a source of information. It parses
