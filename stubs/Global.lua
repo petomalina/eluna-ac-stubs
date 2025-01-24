@@ -1,6 +1,5 @@
 ---@meta
 
----@class Global
 ---Adds a taxi path to a specified map, returns the used pathId.
 ---@param waypoints table
 ---@param mountA number
@@ -124,6 +123,11 @@ function ClearPlayerGossipEvents(entry, event_type) end
 ---Unbinds event handlers for either all server events, or one type of event.
 ---@param event_type number
 function ClearServerEvents(event_type) end
+
+---Unbinds event handlers for either all of a Spell's events, or one type of event.
+---@param entry number
+---@param event_type number
+function ClearSpellEvents(entry, event_type) end
 
 ---Unbinds event handlers for either all of a Creature's events, or one type of event.
 ---@param guid number
@@ -485,6 +489,13 @@ function RegisterPlayerGossipEvent(menu_id, event, func, shots) end
 ---@param shots? number
 ---@return function
 function RegisterServerEvent(event, func, shots) end
+
+---Registers a Spell event handler.
+---@param entry number
+---@param event SpellEvents
+---@param func function
+---@param shots? number
+function RegisterSpellEvent(entry, event, func, shots) end
 
 ---Registers a Creature event handler for a single Creature.
 ---@param guid number
