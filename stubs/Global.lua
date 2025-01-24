@@ -388,16 +388,6 @@ function RegisterBGEvent(event, func, shots) end
 ---@return function
 function RegisterCreatureEvent(entry, event, func, shots) end
 
----@alias GossipEvents
----| 1 # GOSSIP_EVENT_ON_HELLO
----| 2 # GOSSIP_EVENT_ON_SELECT
----| 3 # GOSSIP_EVENT_COUNT
-
--- GossipEvents
-GOSSIP_EVENT_ON_HELLO = 1
-GOSSIP_EVENT_ON_SELECT = 2
-GOSSIP_EVENT_COUNT = 3
-
 ---Registers a Creature gossip event handler.
 ---@param entry number
 ---@param event GossipEvents
@@ -458,26 +448,6 @@ function RegisterItemEvent(entry, event, func, shots) end
 ---@param shots? number
 ---@return function
 function RegisterItemGossipEvent(entry, event, func, shots) end
-
----@alias InstanceEvents
----| 1 # INSTANCE_EVENT_ON_INITIALIZE
----| 2 # INSTANCE_EVENT_ON_LOAD
----| 3 # INSTANCE_EVENT_ON_UPDATE
----| 4 # INSTANCE_EVENT_ON_PLAYER_ENTER
----| 5 # INSTANCE_EVENT_ON_CREATURE_CREATE
----| 6 # INSTANCE_EVENT_ON_GAMEOBJECT_CREATE
----| 7 # INSTANCE_EVENT_ON_CHECK_ENCOUNTER_IN_PROGRESS
----| 8 # INSTANCE_EVENT_COUNT
-
--- InstanceEvents
-INSTANCE_EVENT_ON_INITIALIZE = 1
-INSTANCE_EVENT_ON_LOAD = 2
-INSTANCE_EVENT_ON_UPDATE = 3
-INSTANCE_EVENT_ON_PLAYER_ENTER = 4
-INSTANCE_EVENT_ON_CREATURE_CREATE = 5
-INSTANCE_EVENT_ON_GAMEOBJECT_CREATE = 6
-INSTANCE_EVENT_ON_CHECK_ENCOUNTER_IN_PROGRESS = 7
-INSTANCE_EVENT_COUNT = 8
 
 ---Registers a Map event handler for all instance of a Map.
 ---@param map_id number
