@@ -119,7 +119,10 @@ func saveConstants() error {
 			values = append(values, name)
 		}
 		sort.Slice(values, func(i, j int) bool {
-			return enum.Values[values[i]] < enum.Values[values[j]]
+			if enum.Values[values[i]] != enum.Values[values[j]] {
+				return enum.Values[values[i]] < enum.Values[values[j]]
+			}
+			return values[i] < values[j]
 		})
 
 		// Write enum values as alias options
@@ -514,7 +517,7 @@ func generateLuaDefs(page *ClassPage) string {
 	// Write class definition with inheritance
 	if page.BaseType != "" {
 		sb.WriteString(fmt.Sprintf("---@class %s : %s\n", page.Title, page.BaseType))
-	} else {
+	} else if page.Title != "Global" {
 		sb.WriteString(fmt.Sprintf("---@class %s\n", page.Title))
 	}
 
