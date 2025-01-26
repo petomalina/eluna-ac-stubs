@@ -353,6 +353,12 @@ function IsInventoryPos(bag, slot) end
 ---@param player Player
 function Kick(player) end
 
+---Returns the instance of the specified DBC (DatabaseClient) store.
+---@param char ons
+---@param id number
+---@return DBCStore
+function LookupEntry(char, id) end
+
 ---Performs an in-game spawn and returns the Creature or GameObject spawned.
 ---@param spawnType number
 ---@param entry number
