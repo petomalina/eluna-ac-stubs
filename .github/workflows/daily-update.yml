@@ -14,7 +14,12 @@ jobs:
     steps:
       - uses: actions/checkout@v4
         with:
-          submodules: true  # Added to fetch submodules
+          submodules: recursive  # Changed to recursive to get nested submodules
+          
+      - name: Initialize and update submodules
+        run: |
+          git submodule init
+          git submodule update --recursive
           
       - name: Set up Go
         uses: actions/setup-go@v5
@@ -32,6 +37,8 @@ jobs:
           cd mod-eluna
           git fetch origin
           git reset --hard origin/master
+          git submodule init
+          git submodule update --recursive
           cd ..
         
       - name: Check for changes
