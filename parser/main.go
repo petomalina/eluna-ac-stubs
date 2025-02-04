@@ -9,6 +9,7 @@ import (
 	"strings"
 
 	"github.com/gocolly/colly/v2"
+	"github.com/petomalina/eluna-ac-stubs/pkg/parser"
 )
 
 var alreadyFoundEnums = make(map[string]struct{})
@@ -142,6 +143,50 @@ func saveConstants() error {
 }
 
 func main() {
+	f, err := os.Open("mod-eluna/src/LuaEngine/methods/MapMethods.h")
+	if err != nil {
+		slog.Error("failed to open file", "error", err)
+		return
+	}
+	defer f.Close()
+
+	ts, err := parser.NewCppParser(f)
+	if err != nil {
+		slog.Error("failed to create parser", "error", err)
+		return
+	}
+
+	captures, err := ts.Captures("(namespace_definition name: (namespace_identifier) @name body: (declaration_list (comment) @funccomment (function_definition declarator: (function_declarator declarator: (identifier) @funcname))))")
+	if err != nil {
+		slog.Error("failed to query", "error", err)
+		return
+	}
+
+	for {
+		match, _ := captures.Next()
+		if match == nil {
+			break
+		}
+
+		for _, capture := range match.Captures {
+			fmt.Println(capture.Node.ToSexp())
+		}
+	}
+
+	// query, err := tree_sitter.NewQuery(tree_sitter.NewLanguage(tree_sitter_cpp.Language()), "namespace_definition")
+	// if err != nil {
+	// 	slog.Error("failed to create query", "error", err)
+	// 	return
+	// }
+
+	// Get the namespace node
+	// namespaceNode := tree.RootNode().NamedChild(0)
+	// if namespaceNode.Kind() != "namespace_definition" {
+	// 	slog.Error("failed to find namespace node")
+	// 	return
+	// }
+
+	return
 	baseURL := "https://www.azerothcore.org/eluna/"
 
 	// Start with the main classes page to get all available classes
