@@ -2,6 +2,7 @@ package main
 
 import (
 	"fmt"
+	"io"
 	"log/slog"
 	"os"
 	"sort"
@@ -9,7 +10,8 @@ import (
 	"strings"
 
 	"github.com/gocolly/colly/v2"
-	"github.com/petomalina/eluna-ac-stubs/pkg/parser"
+	tree_sitter "github.com/tree-sitter/go-tree-sitter"
+	tree_sitter_cpp "github.com/tree-sitter/tree-sitter-cpp/bindings/go"
 )
 
 var alreadyFoundEnums = make(map[string]struct{})
@@ -142,37 +144,95 @@ func saveConstants() error {
 	return os.WriteFile("stubs/Constants.lua", []byte(sb.String()), 0644)
 }
 
+const (
+	NamespaceNameQuery = "(namespace_definition name: (namespace_identifier) @namespace_name)"
+	FuncionQuery       = `
+		(declaration_list
+			(comment)? @funcdoc
+			.
+			(function_definition
+				declarator: (function_declarator
+					declarator: (identifier) @funcname )))`
+)
+
 func main() {
-	f, err := os.Open("mod-eluna/src/LuaEngine/methods/MapMethods.h")
+	f, err := os.Open("mod-eluna/src/LuaEngine/methods/AchievementMethods.h")
 	if err != nil {
 		slog.Error("failed to open file", "error", err)
 		return
 	}
 	defer f.Close()
 
-	ts, err := parser.NewCppParser(f)
+	lang := tree_sitter.NewLanguage(tree_sitter_cpp.Language())
+	parser := tree_sitter.NewParser()
+	parser.SetLanguage(lang)
+
+	bb, err := io.ReadAll(f)
 	if err != nil {
-		slog.Error("failed to create parser", "error", err)
+		slog.Error("failed to read file", "error", err)
 		return
 	}
 
-	captures, err := ts.Captures("(namespace_definition name: (namespace_identifier) @namespace_name)")
-	if err != nil {
-		slog.Error("failed to query", "error", err)
+	tree := parser.Parse(bb, nil)
+	defer tree.Close()
+
+	q, qerr := tree_sitter.NewQuery(lang, NamespaceNameQuery)
+	if qerr != nil {
+		slog.Error("failed to create query", slog.Any("error", qerr))
 		return
 	}
 
-	for {
-		match, _ := captures.Next()
-		if match == nil {
-			break
-		}
+	var cls ClassPage
 
-		for _, capture := range match.Captures {
-			fmt.Println(capture.Node)
-			fmt.Println(ts.GetString(capture.Node.ByteRange()))
+	matches := tree_sitter.NewQueryCursor().Matches(q, tree.RootNode(), nil)
+	for match := matches.Next(); match != nil; match = matches.Next() {
+		for _, c := range match.Captures {
+			captureName := q.CaptureNames()[c.Index]
+
+			switch captureName {
+			case "namespace_name":
+				cls.Title = strings.TrimPrefix(c.Node.Utf8Text(bb), "Lua")
+			}
+
+			slog.Info("capture namespace",
+				slog.String("captureName", captureName),
+				slog.String("content", c.Node.Utf8Text(bb)),
+			)
 		}
 	}
+
+	qfuncs, qerr := tree_sitter.NewQuery(lang, FuncionQuery)
+	if qerr != nil {
+		slog.Error("failed to create query", slog.Any("error", qerr))
+		return
+	}
+
+	matches = tree_sitter.NewQueryCursor().Matches(qfuncs, tree.RootNode(), nil)
+	for match := matches.Next(); match != nil; match = matches.Next() {
+		for _, c := range match.Captures {
+			captureName := qfuncs.CaptureNames()[c.Index]
+
+			// if the method index is out of bounds, add a new method
+			if len(cls.Methods) == int(match.Id()) {
+				cls.Methods = append(cls.Methods, Method{})
+			}
+
+			switch captureName {
+			case "funcname":
+				cls.Methods[match.Id()].Name = c.Node.Utf8Text(bb)
+			case "funcdoc":
+				cls.Methods[match.Id()].Description = c.Node.Utf8Text(bb)
+			}
+
+			slog.Info("capture func",
+				slog.Uint64("match_id", uint64(match.Id())),
+				slog.String("captureName", captureName),
+				slog.String("content", c.Node.Utf8Text(bb)),
+			)
+		}
+	}
+
+	// slog.Info("found classdef", slog.Any("class", cls))
 
 	// query, err := tree_sitter.NewQuery(tree_sitter.NewLanguage(tree_sitter_cpp.Language()), "namespace_definition")
 	// if err != nil {
