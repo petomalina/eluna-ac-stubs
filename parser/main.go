@@ -156,7 +156,7 @@ func main() {
 		return
 	}
 
-	captures, err := ts.Captures("(namespace_definition name: (namespace_identifier) @name body: (declaration_list (comment) @funccomment (function_definition declarator: (function_declarator declarator: (identifier) @funcname))))")
+	captures, err := ts.Captures("(namespace_definition name: (namespace_identifier) @namespace_name)")
 	if err != nil {
 		slog.Error("failed to query", "error", err)
 		return
@@ -169,7 +169,8 @@ func main() {
 		}
 
 		for _, capture := range match.Captures {
-			fmt.Println(capture.Node.ToSexp())
+			fmt.Println(capture.Node)
+			fmt.Println(ts.GetString(capture.Node.ByteRange()))
 		}
 	}
 
