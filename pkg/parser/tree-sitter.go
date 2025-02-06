@@ -34,6 +34,15 @@ func NewCppParser(reader io.Reader) (*parser, error) {
 	return p, nil
 }
 
+func (p *parser) Close() {
+	if p.tree != nil {
+		p.tree.Close()
+	}
+
+	p.tree = nil
+	p.bb = nil
+}
+
 // Parse parses a C++ file and returns the tree.
 func (p *parser) parse(reader io.Reader) error {
 	bb, err := io.ReadAll(reader)
@@ -79,16 +88,7 @@ func (p *parser) Matches(query string) (tree_sitter.QueryMatches, error) {
 	return tree_sitter.NewQueryCursor().Matches(q, p.tree.RootNode(), nil), nil
 }
 
-// GetBytes returns the bytes of the file at the given range.
-// It is meant to be used in conjunction with the ByteRange() method of the QueryCapture struct.
-// or any ByteRange method of the Node struct.
-func (p *parser) GetBytes(start, end uint) []byte {
-	return p.bb[start:end]
-}
-
-// GetString returns the string of the file at the given range.
-// It is meant to be used in conjunction with the ByteRange() method of the QueryCapture struct.
-// or any ByteRange method of the Node struct.
-func (p *parser) GetString(start, end uint) string {
-	return string(p.bb[start:end])
+// GetString returns the string of the node.
+func (p *parser) GetString(node *tree_sitter.Node) string {
+	return node.Utf8Text(p.bb)
 }
