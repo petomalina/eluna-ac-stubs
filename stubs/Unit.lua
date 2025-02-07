@@ -57,6 +57,10 @@ function Unit:CastSpellAoF(x, y, z, spell, triggered) end
 ---Clears the Unit's combat
 function Unit:ClearInCombat() end
 
+---Clear the threat of a Unit in the threat list.
+---@param target Unit
+function Unit:ClearThreat(target) end
+
 ---Clears the Unit's threat list.
 function Unit:ClearThreatList() end
 
@@ -264,6 +268,11 @@ function Unit:GetStandState() end
 ---@param statType number
 ---@return number
 function Unit:GetStat(statType) end
+
+---Returns the threat of a Unit.
+---@param target Unit
+---@return number
+function Unit:GetThreat(target) end
 
 ---Returns the Unit's threat list.
 ---@return table
@@ -547,6 +556,9 @@ function Unit:RemoveArenaAuras() end
 ---Removes Aura of the given spell entry from the Unit.
 ---@param spell number
 function Unit:RemoveAura(spell) end
+
+---Resets the Unit's threat list, setting all threat targets' threat to 0.
+function Unit:ResetAllThreat() end
 
 ---Sends chat message to Player
 ---@param type number

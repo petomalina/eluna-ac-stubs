@@ -35,7 +35,6 @@ function BattleGround:GetMap() end
 function BattleGround:GetMapId() end
 
 ---Returns the max allowed Player level of the specific BattleGround.
----@return number
 function BattleGround:GetMaxLevel() end
 
 ---Returns the maximum allowed Player count of the specific BattleGround.

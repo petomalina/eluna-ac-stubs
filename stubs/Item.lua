@@ -107,7 +107,6 @@ function Item:GetRequiredLevel() end
 function Item:GetSellPrice() end
 
 ---Returns the Items current slot
----@return number
 function Item:GetSlot() end
 
 ---Returns the spell ID tied to the Item by spell index
@@ -127,9 +126,7 @@ function Item:GetStatsCount() end
 function Item:GetSubClass() end
 
 ---Returns 'true' if the Item has the Quest specified tied to it, 'false' otherwise
----@param questId number
----@return boolean
-function Item:HasQuest(questId) end
+function Item:HasQuest() end
 
 ---Returns 'true' if the Item is an armor vellum, 'false' otherwise
 ---@return boolean

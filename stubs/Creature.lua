@@ -4,8 +4,7 @@
 Creature = {}
 
 ---Adds a loot mode to the Creature
----@param lootMode number
-function Creature:AddLootMode(lootMode) end
+function Creature:AddLootMode() end
 
 ---Make the Creature attack target.
 ---@param target Unit
@@ -44,7 +43,6 @@ function Creature:CanFly() end
 function Creature:CanStartAttack(target, force) end
 
 ---Returns true if the Creature can move through deep water,   and returns false otherwise.
----@return boolean
 function Creature:CanSwim() end
 
 ---Returns true if the Creature can move on land,   and returns false otherwise.

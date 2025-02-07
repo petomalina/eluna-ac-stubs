@@ -35,6 +35,10 @@ function ItemTemplate:GetExtraFlags() end
 ---@return number
 function ItemTemplate:GetFlags() end
 
+---Returns the icon is used by this ItemTemplate.
+---@return string
+function ItemTemplate:GetIcon() end
+
 ---Returns the ItemTemplate's inventory type.
 ---@return number
 function ItemTemplate:GetInventoryType() end
@@ -47,16 +51,16 @@ function ItemTemplate:GetItemId() end
 ---@return number
 function ItemTemplate:GetItemLevel() end
 
----Returns the ItemTemplate's name.
+---Returns the ItemTemplate's name in the Player's locale.
+---@param locale? LocaleConstant
 ---@return string
-function ItemTemplate:GetName() end
+function ItemTemplate:GetName(locale) end
 
 ---Returns the ItemTemplate's quality.
 ---@return number
 function ItemTemplate:GetQuality() end
 
 ---Returns the minimum level required to use this ItemTemplate.
----@return number
 function ItemTemplate:GetRequiredLevel() end
 
 ---Returns the ItemTemplate's sell price.

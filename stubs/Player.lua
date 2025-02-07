@@ -3,6 +3,10 @@
 ---@class Player : Object, WorldObject, Unit
 Player = {}
 
+---Add bonus talents count to the Player
+---@param count? number
+function Player:AddBonusTalent(count) end
+
 ---Adds combo points to the Player
 ---@param target Unit
 ---@param count number
@@ -41,9 +45,7 @@ function Player:AreaExploredOrEventHappens(quest) end
 function Player:CanBlock() end
 
 ---Returns true if the Player satisfies all requirements to complete the quest entry.
----@param entry number
----@return boolean
-function Player:CanCompleteQuest(entry) end
+function Player:CanCompleteQuest() end
 
 ---Returns true if the Player satisfies all requirements to complete the quest entry.
 ---@param questId number
@@ -185,6 +187,10 @@ function Player:GetBattlegroundId() end
 ---@return BattleGroundTypeId
 function Player:GetBattlegroundTypeId() end
 
+---Get bonus talents count from the Player
+---@return number
+function Player:GetBonusTalentCount() end
+
 ---Returns the faction ID the Player is currently flagged as champion for
 ---@return number
 function Player:GetChampioningFaction() end
@@ -226,9 +232,7 @@ function Player:GetDbLocaleIndex() end
 function Player:GetDbcLocale() end
 
 ---Returns raid or dungeon difficulty
----@param isRaid? boolean
----@return number
-function Player:GetDifficulty(isRaid) end
+function Player:GetDifficulty() end
 
 ---Returns the Players current level of intoxication
 ---@return number
@@ -284,6 +288,9 @@ function Player:GetGuildRank() end
 ---Returns health bonus from amount of stamina
 ---@return number
 function Player:GetHealthBonusFromStamina() end
+
+---Returns the Player homebind location.
+function Player:GetHomebind() end
 
 ---Returns the Players current amount of Honor Points
 ---@return number
@@ -430,9 +437,7 @@ function Player:GetShieldBlockValue() end
 function Player:GetSkillPermBonusValue(skill, bonusVal) end
 
 ---Returns skill temporary bonus value
----@param skill number
----@param bonusVal number
-function Player:GetSkillTempBonusValue(skill, bonusVal) end
+function Player:GetSkillTempBonusValue() end
 
 ---Returns skill value
 ---@param skill number
@@ -447,6 +452,10 @@ function Player:GetSpecsCount() end
 ---@param spellId number
 ---@return number
 function Player:GetSpellCooldownDelay(spellId) end
+
+---Returns the Player spells list
+---@return table
+function Player:GetSpells() end
 
 ---Returns Players current sub group
 ---@return number
@@ -755,6 +764,10 @@ function Player:Mute(muteTime) end
 ---Remove cooldowns on spells that have less than 10 minutes of cooldown from the Player, similarly to when you enter an arena.
 function Player:RemoveArenaSpellCooldowns() end
 
+---Remove bonus talents count to the Player
+---@param count? number
+function Player:RemoveBonusTalent(count) end
+
 ---Forcefully removes the Player from a BattleGround raid group
 function Player:RemoveFromBattlegroundRaid() end
 
@@ -932,6 +945,10 @@ function Player:SetAtLoginFlag(flag) end
 ---@param areaId number
 function Player:SetBindPoint(x, y, z, mapId, areaId) end
 
+---Set bonus talent count to a specific count for the Player
+---@param value number
+function Player:SetBonusTalentCount(value) end
+
 ---Sets the Players amount of money to copper specified
 ---@param copperAmt number
 function Player:SetCoinage(copperAmt) end
@@ -1050,6 +1067,9 @@ function Player:TalkedToCreature(entry, creature) end
 ---@param zCoord number
 ---@param orientation number
 function Player:Teleport(mappId, xCoord, yCoord, zCoord, orientation) end
+
+---Teleports Player to a predefined location based on the teleport name.
+function Player:TeleportTo() end
 
 ---Sends a text emote from the Player
 ---@param emoteText string

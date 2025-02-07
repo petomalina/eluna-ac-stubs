@@ -1,13 +1,7 @@
 ---@meta
 
 ---Adds a taxi path to a specified map, returns the used pathId.
----@param waypoints table
----@param mountA number
----@param mountH number
----@param price? number
----@param pathId? number
----@return number
-function AddTaxiPath(waypoints, mountA, mountH, price, pathId) end
+function AddTaxiPath() end
 
 ---Adds an Item to a vendor and updates the world database.
 ---@param entry number
@@ -174,7 +168,6 @@ function GetActiveGameEvents() end
 function GetAreaName(areaOrZoneId, locale) end
 
 ---Returns emulator's supported expansion.
----@return number
 function GetCoreExpansion() end
 
 ---Returns emulator's name.
@@ -208,6 +201,12 @@ function GetGUIDType(guid) end
 ---@return number
 function GetGameTime() end
 
+---Gets the localized OptionText and BoxText for a specific gossip menu option. If the text for the specified locale is not found, it returns the default text.
+---@param menuId number
+---@param optionId number
+---@param locale number
+function GetGossipMenuOptionLocale(menuId, optionId, locale) end
+
 ---Returns Guild by the leader's GUID
 ---@param guid number
 ---@return Guild
@@ -240,6 +239,10 @@ function GetLuaEngine() end
 ---@param instanceId? number
 ---@return Map
 function GetMapById(mapId, instanceId) end
+
+---Return the entrance position (x, y, z, o) of the specified dungeon map id
+---@param mapId number
+function GetMapEntrance(mapId) end
 
 ---Builds a GameObject's GUID.
 ---@param lowguid number
@@ -284,6 +287,11 @@ function GetQuest(questId) end
 
 function GetRealmID() end
 
+---Get the SpellInfo for the specified Spell id
+---@param spellId number
+---@return SpellInfo
+function GetSpellInfo(spellId) end
+
 ---Returns the instance ID of the Lua state. Returns 0 for continent maps and the world state.
 ---@return number
 function GetStateInstanceId() end
@@ -323,10 +331,7 @@ function HttpRequest(httpMethod, url, headers, body, contentType, func) end
 function IsBagPos(bag, slot) end
 
 ---Returns true if the bag and slot is a valid bank position, otherwise false.
----@param bag number
----@param slot number
----@return boolean
-function IsBankPos(bag, slot) end
+function IsBankPos() end
 
 ---Returns true if Eluna is in compatibility mode, false if in multistate.
 ---@return boolean
@@ -384,11 +389,7 @@ function PrintError() end
 function PrintInfo() end
 
 ---Registers a BattleGround event handler.
----@param event BGEvents
----@param func function
----@param shots? number
----@return function
-function RegisterBGEvent(event, func, shots) end
+function RegisterBGEvent() end
 
 ---Registers a Creature event handler.
 ---@param entry number
@@ -568,9 +569,7 @@ function StopGameEvent(eventId, force) end
 function VendorRemoveAllItems(entry) end
 
 ---Removes an Item from a vendor and updates the database.
----@param entry number
----@param item number
-function VendorRemoveItem(entry, item) end
+function VendorRemoveItem() end
 
 ---Executes a SQL query on the world database.
 ---@param sql string

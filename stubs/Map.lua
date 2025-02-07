@@ -11,6 +11,15 @@ Map = {}
 ---@return number
 function Map:GetAreaId(x, y, z, phasemask) end
 
+---Returns a table with all the current Creatures in the map
+---@return table
+function Map:GetCreatures() end
+
+---Returns a table with all the current Creatures in the specific area id
+---@param areaId number
+---@return table
+function Map:GetCreaturesByAreaId(areaId) end
+
 ---Returns the difficulty of the Map.
 ---@return number
 function Map:GetDifficulty() end
