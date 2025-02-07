@@ -19,7 +19,6 @@ type ClassPage struct {
 	Title    string
 	Content  string
 	Methods  []Method
-	Fields   []Field
 	BaseType string
 }
 
@@ -34,9 +33,8 @@ type Method struct {
 
 // Enum represents enum information
 type Enum struct {
-	Name    string
-	Values  map[string]int
-	Comment string
+	Name   string
+	Values map[string]int
 }
 
 // Parameter represents a method parameter
@@ -385,17 +383,6 @@ func generateLuaDefs(page *ClassPage) string {
 		sb.WriteString(fmt.Sprintf("---@class %s : %s\n", page.Title, page.BaseType))
 	} else if page.Title != "Global" {
 		sb.WriteString(fmt.Sprintf("---@class %s\n", page.Title))
-	}
-
-	// Write fields
-	for _, field := range page.Fields {
-		if field.Description != "" {
-			sb.WriteString(fmt.Sprintf("---@field public %s %s @ %s\n",
-				field.Name, field.Type, field.Description))
-		} else {
-			sb.WriteString(fmt.Sprintf("---@field public %s %s\n",
-				field.Name, field.Type))
-		}
 	}
 
 	if page.Title != "Global" {
