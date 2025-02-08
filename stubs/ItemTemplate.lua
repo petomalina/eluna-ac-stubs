@@ -61,6 +61,7 @@ function ItemTemplate:GetName(locale) end
 function ItemTemplate:GetQuality() end
 
 ---Returns the minimum level required to use this ItemTemplate.
+---@return number
 function ItemTemplate:GetRequiredLevel() end
 
 ---Returns the ItemTemplate's sell price.

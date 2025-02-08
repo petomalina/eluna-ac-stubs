@@ -20,6 +20,7 @@ function ChatHandler:GetSelectedObject() end
 function ChatHandler:GetSelectedPlayer() end
 
 ---Returns the selected Player or the current Player if nothing is targeted or the target is not a player
+---@return Player
 function ChatHandler:GetSelectedPlayerOrSelf() end
 
 ---Returns the selected Unit

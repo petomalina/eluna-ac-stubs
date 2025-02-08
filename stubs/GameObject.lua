@@ -29,6 +29,7 @@ function GameObject:GetLootRecipient() end
 function GameObject:GetLootRecipientGroup() end
 
 ---Returns the [LootState] of a GameObject Below are [LootState]s off of 3.3.5a
+---@return LootState
 function GameObject:GetLootState() end
 
 ---Returns 'true' if the GameObject can give the specified Quest
@@ -67,7 +68,8 @@ function GameObject:SetGoState(state) end
 function GameObject:SetLootState(state) end
 
 ---Sets the respawn or despawn time for the gameobject.
-function GameObject:SetRespawnDelay() end
+---@param delay? number
+function GameObject:SetRespawnDelay(delay) end
 
 ---Sets the respawn or despawn time for the gameobject.
 ---@param delay? number

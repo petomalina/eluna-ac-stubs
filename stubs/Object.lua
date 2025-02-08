@@ -91,7 +91,10 @@ function Object:SetFlag(index, value) end
 function Object:SetFloatValue(index, value) end
 
 ---Sets the data at the specified index to the given value, converted to a signed 16-bit integer.
-function Object:SetInt16Value() end
+---@param index number
+---@param offset number
+---@param value number
+function Object:SetInt16Value(index, offset, value) end
 
 ---Sets the data at the specified index to the given value, converted to a signed 32-bit integer.
 ---@param index number

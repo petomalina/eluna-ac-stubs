@@ -45,7 +45,9 @@ function Player:AreaExploredOrEventHappens(quest) end
 function Player:CanBlock() end
 
 ---Returns true if the Player satisfies all requirements to complete the quest entry.
-function Player:CanCompleteQuest() end
+---@param entry number
+---@return boolean
+function Player:CanCompleteQuest(entry) end
 
 ---Returns true if the Player satisfies all requirements to complete the quest entry.
 ---@param questId number
@@ -232,7 +234,9 @@ function Player:GetDbLocaleIndex() end
 function Player:GetDbcLocale() end
 
 ---Returns raid or dungeon difficulty
-function Player:GetDifficulty() end
+---@param isRaid? boolean
+---@return number
+function Player:GetDifficulty(isRaid) end
 
 ---Returns the Players current level of intoxication
 ---@return number
@@ -437,7 +441,9 @@ function Player:GetShieldBlockValue() end
 function Player:GetSkillPermBonusValue(skill, bonusVal) end
 
 ---Returns skill temporary bonus value
-function Player:GetSkillTempBonusValue() end
+---@param skill number
+---@param bonusVal number
+function Player:GetSkillTempBonusValue(skill, bonusVal) end
 
 ---Returns skill value
 ---@param skill number

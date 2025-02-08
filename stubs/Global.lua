@@ -1,7 +1,13 @@
 ---@meta
 
 ---Adds a taxi path to a specified map, returns the used pathId.
-function AddTaxiPath() end
+---@param waypoints table
+---@param mountA number
+---@param mountH number
+---@param price? number
+---@param pathId? number
+---@return number
+function AddTaxiPath(waypoints, mountA, mountH, price, pathId) end
 
 ---Adds an Item to a vendor and updates the world database.
 ---@param entry number
@@ -168,6 +174,7 @@ function GetActiveGameEvents() end
 function GetAreaName(areaOrZoneId, locale) end
 
 ---Returns emulator's supported expansion.
+---@return number
 function GetCoreExpansion() end
 
 ---Returns emulator's name.
@@ -331,7 +338,10 @@ function HttpRequest(httpMethod, url, headers, body, contentType, func) end
 function IsBagPos(bag, slot) end
 
 ---Returns true if the bag and slot is a valid bank position, otherwise false.
-function IsBankPos() end
+---@param bag number
+---@param slot number
+---@return boolean
+function IsBankPos(bag, slot) end
 
 ---Returns true if Eluna is in compatibility mode, false if in multistate.
 ---@return boolean
@@ -389,7 +399,11 @@ function PrintError() end
 function PrintInfo() end
 
 ---Registers a BattleGround event handler.
-function RegisterBGEvent() end
+---@param event BGEvents
+---@param func function
+---@param shots? number
+---@return function
+function RegisterBGEvent(event, func, shots) end
 
 ---Registers a Creature event handler.
 ---@param entry number
@@ -569,7 +583,9 @@ function StopGameEvent(eventId, force) end
 function VendorRemoveAllItems(entry) end
 
 ---Removes an Item from a vendor and updates the database.
-function VendorRemoveItem() end
+---@param entry number
+---@param item number
+function VendorRemoveItem(entry, item) end
 
 ---Executes a SQL query on the world database.
 ---@param sql string

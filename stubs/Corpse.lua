@@ -4,6 +4,7 @@
 Corpse = {}
 
 ---Returns the time when the Player became a ghost and spawned this Corpse.
+---@return number
 function Corpse:GetGhostTime() end
 
 ---Returns the GUID of the Player that left the Corpse behind.

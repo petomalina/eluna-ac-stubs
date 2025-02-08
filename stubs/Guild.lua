@@ -84,7 +84,9 @@ function Guild:SendMessage(player, officierOnly, msg, lang) end
 function Guild:SendPacket(packet) end
 
 ---Sends a WorldPacket to all the Players at the specified rank in the Guild
-function Guild:SendPacketToRanked() end
+---@param packet WorldPacket
+---@param rankId number
+function Guild:SendPacketToRanked(packet, rankId) end
 
 ---Sets the information of the bank tab specified
 ---@param tabId number
@@ -92,7 +94,8 @@ function Guild:SendPacketToRanked() end
 function Guild:SetBankTabText(tabId, info) end
 
 ---Sets the leader of this Guild
-function Guild:SetLeader() end
+---@param leader Player
+function Guild:SetLeader(leader) end
 
 ---Promotes/demotes the Player to the specified rank.
 ---@param player Player

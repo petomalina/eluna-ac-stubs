@@ -1,5 +1,19 @@
 ---@meta
 
+---@alias BGEvents
+---| 1 # BG_EVENT_ON_START
+---| 2 # BG_EVENT_ON_END
+---| 3 # BG_EVENT_ON_CREATE
+---| 4 # BG_EVENT_ON_PRE_DESTROY
+---| 5 # BG_EVENT_COUNT
+
+-- BGEvents
+BG_EVENT_ON_START = 1
+BG_EVENT_ON_END = 2
+BG_EVENT_ON_CREATE = 3
+BG_EVENT_ON_PRE_DESTROY = 4
+BG_EVENT_COUNT = 5
+
 ---@alias BanMode
 ---| 0 # BAN_ACCOUNT
 ---| 1 # BAN_CHARACTER
