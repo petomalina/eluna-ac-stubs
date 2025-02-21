@@ -129,6 +129,10 @@ function ClearServerEvents(event_type) end
 ---@param event_type number
 function ClearSpellEvents(entry, event_type) end
 
+---Unbinds event handlers for either all Ticket events, or one type of Ticket event.
+---@param event_type number
+function ClearTicketEvents(event_type) end
+
 ---Unbinds event handlers for either all of a Creature's events, or one type of event.
 ---@param guid number
 ---@param instance_id number
@@ -517,6 +521,12 @@ function RegisterServerEvent(event, func, shots) end
 ---@param func function
 ---@param shots? number
 function RegisterSpellEvent(entry, event, func, shots) end
+
+---Registers a Ticket event handler.
+---@param event TicketEvents
+---@param func function
+---@param shots? number
+function RegisterTicketEvent(event, func, shots) end
 
 ---Registers a Creature event handler for a single Creature.
 ---@param guid number
