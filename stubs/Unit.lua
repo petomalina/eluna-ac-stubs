@@ -141,7 +141,6 @@ function Unit:GetClassMask() end
 function Unit:GetControllerGUID() end
 
 ---Returns the GUID of the Unit's charmer or owner or its own GUID.
----@return number
 function Unit:GetControllerGUIDS() end
 
 ---Returns the Unit's creator's GUID.
