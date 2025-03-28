@@ -361,7 +361,5 @@ function Creature:SetWalk(enable) end
 function Creature:SetWanderRadius(distance) end
 
 ---Transform the Creature into another Creature.
----@param entry number
----@param dataGUIDLow? number
-function Creature:UpdateEntry(entry, dataGUIDLow) end
+function Creature:UpdateEntry() end
 
