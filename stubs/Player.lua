@@ -13,10 +13,7 @@ function Player:AddBonusTalent(count) end
 function Player:AddComboPoints(target, count) end
 
 ---Adds the given amount of the specified item entry to the player.
----@param entry number
----@param itemCount? number
----@return Item
-function Player:AddItem(entry, itemCount) end
+function Player:AddItem() end
 
 function Player:AddLifetimeKills() end
 
