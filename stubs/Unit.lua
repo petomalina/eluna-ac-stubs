@@ -224,9 +224,7 @@ function Unit:GetOwnerGUID() end
 function Unit:GetPetGUID() end
 
 ---Returns the Unit's power amount for given power type.
----@param type number
----@return number
-function Unit:GetPower(type) end
+function Unit:GetPower() end
 
 ---Returns the Unit's power percent for given power type.
 ---@param type number
