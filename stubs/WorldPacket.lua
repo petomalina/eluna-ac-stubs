@@ -64,8 +64,7 @@ function WorldPacket:WriteByte(value) end
 function WorldPacket:WriteDouble(value) end
 
 ---Writes a 32-bit floating-point value to the WorldPacket.
----@param value number
-function WorldPacket:WriteFloat(value) end
+function WorldPacket:WriteFloat() end
 
 ---Writes an unsigned 64-bit integer value to the WorldPacket.
 ---@param value number
