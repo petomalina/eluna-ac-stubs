@@ -436,9 +436,7 @@ function Player:GetSelection() end
 function Player:GetShieldBlockValue() end
 
 ---Returns skill permanent bonus value
----@param skill number
----@param bonusVal number
-function Player:GetSkillPermBonusValue(skill, bonusVal) end
+function Player:GetSkillPermBonusValue() end
 
 ---Returns skill temporary bonus value
 ---@param skill number
