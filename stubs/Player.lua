@@ -55,11 +55,7 @@ function Player:CanCompleteQuest(entry) end
 function Player:CanCompleteRepeatableQuest(questId) end
 
 ---Returns true if the player can equip the given Item or item entry to the given slot, false otherwise.
----@param item Item
----@param entry number
----@param slot number
----@return boolean
-function Player:CanEquipItem(item, entry, slot) end
+function Player:CanEquipItem() end
 
 ---Returns true if the Player can fly, false otherwise.
 ---@return boolean
