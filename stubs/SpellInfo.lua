@@ -67,7 +67,9 @@ function SpellInfo:HasAttribute(attributeType, attribute) end
 function SpellInfo:HasAura(aura) end
 
 ---Checks if the SpellInfo has a specific effect.
-function SpellInfo:HasEffect() end
+---@param effect uint8
+---@return boolean
+function SpellInfo:HasEffect(effect) end
 
 ---Checks if the SpellInfo represents an ability learned with a profession skill.
 ---@return boolean
