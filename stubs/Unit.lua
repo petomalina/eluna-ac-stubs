@@ -544,8 +544,7 @@ function Unit:MoveTo(id, x, y, z, genPath) end
 function Unit:NearTeleport(x, y, z, o) end
 
 ---Makes the Unit perform the given emote.
----@param emoteId number
-function Unit:PerformEmote(emoteId) end
+function Unit:PerformEmote() end
 
 ---Removes all Aura's from the Unit.
 function Unit:RemoveAllAuras() end
