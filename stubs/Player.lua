@@ -222,6 +222,7 @@ function Player:GetCompletedAchievementsCount() end
 function Player:GetCompletedQuestsCount() end
 
 ---Returns the Players Corpse object
+---@return Corpse
 function Player:GetCorpse() end
 
 ---Returns the Players database locale index
