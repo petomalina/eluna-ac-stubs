@@ -3,6 +3,14 @@
 ---@class Player : Object, WorldObject, Unit
 Player = {}
 
+---Abandons a quest from the Player's quest log.
+---@param questId number
+function Player:AbandonQuest(questId) end
+
+---Adds armor proficiency to the Player.
+---@param flag number
+function Player:AddArmorProficiency(flag) end
+
 ---Add bonus talents count to the Player
 ---@param count? number
 function Player:AddBonusTalent(count) end
@@ -24,14 +32,19 @@ function Player:AddLifetimeKills() end
 ---@param entry number
 function Player:AddQuest(entry) end
 
+---Adds weapon proficiency to the Player.
+---@param flag number
+function Player:AddWeaponProficiency(flag) end
+
 ---Advances all of the Players skills to the amount specified
 ---@param skillStep number
 function Player:AdvanceAllSkills(skillStep) end
 
----Advances a Players specific skill to the amount specified
+---Updates a skill for the Player and advances it by the specified step.
 ---@param skillId number
----@param skillStep number
-function Player:AdvanceSkill(skillId, skillStep) end
+---@param step number
+---@return boolean
+function Player:AdvanceSkill(skillId, step) end
 
 ---Advances all of the Players weapon skills to the maximum amount available
 function Player:AdvanceSkillsToMax() end
@@ -39,6 +52,21 @@ function Player:AdvanceSkillsToMax() end
 ---Completes the Quest if a Quest area is explored, or completes the Quest
 ---@param quest number
 function Player:AreaExploredOrEventHappens(quest) end
+
+---Calculates reputation gain for the Player.
+---@param source number
+---@param creatureOrQuestLevel number
+---@param rep number
+---@param faction number
+---@param noQuestBonus boolean
+---@return number
+function Player:CalculateReputationGain(source, creatureOrQuestLevel, rep, faction, noQuestBonus) end
+
+---Returns true if the Player can add the specified quest, false otherwise.
+---@param quest Quest
+---@param msg boolean
+---@return boolean
+function Player:CanAddQuest(quest, msg) end
 
 ---Returns true if the Player can block incomming attacks, false otherwise.
 ---@return boolean
@@ -65,14 +93,37 @@ function Player:CanEquipItem(item, entry, slot) end
 ---@return boolean
 function Player:CanFly() end
 
+---Returns true if the Player can interact with the specified quest giver, false otherwise.
+---@param questGiver Object
+---@return boolean
+function Player:CanInteractWithQuestGiver(questGiver) end
+
 ---Returns true if the Player can parry incomming attacks, false otherwise.
 ---@return boolean
 function Player:CanParry() end
+
+---Returns true if the Player can resurrect their Pet and returns false otherwise.
+---@return boolean
+function Player:CanPetResurrect() end
+
+---Returns true if the Player can resummon a Pet with the specified spell ID, and false otherwise.
+---@param spellId number
+---@return boolean
+function Player:CanResummonPet(spellId) end
 
 ---Returns true if the Player satisfies all requirements to reward the quest entry.
 ---@param questId number
 ---@return boolean
 function Player:CanRewardQuest(questId) end
+
+---Returns true if the Player can see Death Knight Pets, and false otherwise.
+---@return boolean
+function Player:CanSeeDKPet() end
+
+---Returns true if the Player can see the specified quest start, false otherwise.
+---@param quest Quest
+---@return boolean
+function Player:CanSeeStartQuest(quest) end
 
 ---Returns true if the Player can share Quest specified by ID, false otherwise.
 ---@param entryId number
@@ -82,6 +133,20 @@ function Player:CanShareQuest(entryId) end
 ---Returns true if the Player can currently communicate through chat, false otherwise.
 ---@return boolean
 function Player:CanSpeak() end
+
+---Returns true if the Player can take the specified quest, false otherwise.
+---@param quest Quest
+---@param msg boolean
+---@return boolean
+function Player:CanTakeQuest(quest, msg) end
+
+---Returns true if the Player can tame exotic pets, and false otherwise.
+---@return boolean
+function Player:CanTameExoticPets() end
+
+---Returns true if the Player can teleport, false otherwise.
+---@return boolean
+function Player:CanTeleport() end
 
 ---Returns true if the Player can Titan Grip, false otherwise.
 ---@return boolean
@@ -103,6 +168,19 @@ function Player:ClearComboPoints() end
 ---Completes the given quest entry for the Player and tries to satisfy all quest requirements.
 ---@param entry number
 function Player:CompleteQuest(entry) end
+
+---Creates a tamed Pet from a Creature or creature entry.
+---@param creatureEntry number
+---@param creature Creature
+---@param spellID? number
+---@return Pet
+function Player:CreatePet(creatureEntry, creature, spellID) end
+
+---Returns a random number between the specified minimum and maximum values.
+---@param minimum number
+---@param maximum number
+---@return number
+function Player:DoRandomRoll(minimum, maximum) end
 
 ---Damages specified Item
 ---@param item Item
@@ -140,6 +218,12 @@ function Player:DurabilityRepair(position, cost, discountMod) end
 ---@param guidBank? boolean
 function Player:DurabilityRepairAll(takeCost, discountMod, guidBank) end
 
+---Applies environmental damage to the Player.
+---@param type number
+---@param damage number
+---@return number
+function Player:EnvironmentalDamage(type, damage) end
+
 ---Equips the given item or item entry to the given slot. Returns the equipped item or nil.
 ---@param item Item
 ---@param entry number
@@ -172,9 +256,33 @@ function Player:GetAchievementPoints() end
 ---@return number
 function Player:GetActiveSpec() end
 
+---Returns the Player's ammo DPS.
+---@return number
+function Player:GetAmmoDPS() end
+
 ---Returns the Players current amount of Arena Points
 ---@return number
 function Player:GetArenaPoints() end
+
+---Returns the Player's armor proficiency flags.
+---@return number
+function Player:GetArmorProficiency() end
+
+---Returns the average item level of the Player's equipment.
+---@return number
+function Player:GetAverageItemLevel() end
+
+---Returns an item from the Player's bank by slot.
+---@param slot number
+---@return Item
+function Player:GetBankItem(slot) end
+
+---Returns the barber shop cost for the specified style changes.
+---@param newhairstyle number
+---@param newhaircolor number
+---@param newfacialhair number
+---@return number
+function Player:GetBarberShopCost(newhairstyle, newhaircolor, newfacialhair) end
 
 ---Returns base skill value
 ---@param skill number
@@ -225,6 +333,10 @@ function Player:GetCompletedQuestsCount() end
 ---@return Corpse
 function Player:GetCorpse() end
 
+---Returns the Player's character creation time.
+---@return number
+function Player:GetCreationTime() end
+
 ---Returns the Players database locale index
 ---@return number
 function Player:GetDbLocaleIndex() end
@@ -237,6 +349,10 @@ function Player:GetDbcLocale() end
 ---@param isRaid? boolean
 ---@return number
 function Player:GetDifficulty(isRaid) end
+
+---Returns the Player's dodge chance from agility.
+---@return number
+function Player:GetDodgeFromAgility() end
 
 ---Returns the Players current level of intoxication
 ---@return number
@@ -304,6 +420,11 @@ function Player:GetHonorPoints() end
 ---@return number
 function Player:GetInGameTime() end
 
+---Returns an item from the Player's inventory by slot.
+---@param slot number
+---@return Item
+function Player:GetInventoryItem(slot) end
+
 ---Returns an Item from the player by entry.
 ---@param entryId number
 ---@return Item
@@ -325,6 +446,18 @@ function Player:GetItemByPos(bag, slot) end
 ---@param checkinBank? boolean
 ---@return number
 function Player:GetItemCount(entry, checkinBank) end
+
+---Returns known taxi nodes (flight paths) that the player has unlocked.
+---@return table
+function Player:GetKnownTaxiNodes() end
+
+---Returns the last pet number for the Player.
+---@return number
+function Player:GetLastPetNumber() end
+
+---Returns the spell ID of the Player's last Pet summoning spell.
+---@return number
+function Player:GetLastPetSpell() end
 
 ---Returns the Players current latency in MS
 ---@return number
@@ -356,6 +489,10 @@ function Player:GetManaBonusFromIntellect() end
 ---@return number
 function Player:GetMaxSkillValue(skill) end
 
+---Returns the Player's melee critical hit chance from agility.
+---@return number
+function Player:GetMeleeCritFromAgility() end
+
 ---Returns a random Raid Member Player object within radius specified of Player
 ---@param radius number
 ---@return Player
@@ -368,6 +505,10 @@ function Player:GetOriginalGroup() end
 ---Returns Players original sub group
 ---@return number
 function Player:GetOriginalSubGroup() end
+
+---Returns the Player's current Pet, if any.
+---@return Pet
+function Player:GetPet() end
 
 ---Returns the normal phase of the player instead of the actual phase possibly containing GM phase
 ---@return number
@@ -427,13 +568,26 @@ function Player:GetReqKillOrCastCurrentCount(quest, entry) end
 ---@return number
 function Player:GetRestBonus() end
 
+---Returns the Player's runes state for Death Knights.
+---@return number
+function Player:GetRunesState() end
+
 ---Returns the Players currently selected Unit object
 ---@return Unit
 function Player:GetSelection() end
 
+---Returns the Player's shield item.
+---@return Item
+function Player:GetShield() end
+
 ---Returns the Players current shield block value
 ---@return number
 function Player:GetShieldBlockValue() end
+
+---Returns the sight range of the Player for the specified target.
+---@param target WorldObject
+---@return number
+function Player:GetSightRange(target) end
 
 ---Returns skill permanent bonus value
 ---@param skill number
@@ -459,6 +613,10 @@ function Player:GetSpecsCount() end
 ---@return number
 function Player:GetSpellCooldownDelay(spellId) end
 
+---Returns the Player's spell critical hit chance from intellect.
+---@return number
+function Player:GetSpellCritFromIntellect() end
+
 ---Returns the Player spells list
 ---@return table
 function Player:GetSpells() end
@@ -471,6 +629,10 @@ function Player:GetSubGroup() end
 ---@return TeamId
 function Player:GetTeam() end
 
+---Returns the temporary unsummoned pet number for the Player.
+---@return number
+function Player:GetTemporaryUnsummonedPetNumber() end
+
 ---Returns the Players total time played
 ---@return number
 function Player:GetTotalPlayedTime() end
@@ -478,6 +640,14 @@ function Player:GetTotalPlayedTime() end
 ---Returns the Player that is currently trading with this Player
 ---@return Player
 function Player:GetTrader() end
+
+---Returns the Player's current viewpoint target.
+---@return WorldObject
+function Player:GetViewpoint() end
+
+---Returns the Player's weapon proficiency flags.
+---@return number
+function Player:GetWeaponProficiency() end
 
 ---Returns the Player's experience points
 ---@return number
@@ -617,6 +787,11 @@ function Player:HasTankSpec() end
 ---@return boolean
 function Player:HasTitle(titleId) end
 
+---Returns true if the Player has a title by bit index, false otherwise.
+---@param bitIndex number
+---@return boolean
+function Player:HasTitleByIndex(bitIndex) end
+
 ---Returns true if the Player is currently in an arena, false otherwise.
 ---@return boolean
 function Player:InArena() end
@@ -629,9 +804,16 @@ function Player:InBattleground() end
 ---@return boolean
 function Player:InBattlegroundQueue() end
 
+---Returns true if the Player is in a random LFG dungeon, false otherwise.
+---@return boolean
+function Player:InRandomLfgDungeon() end
+
 ---Sets the given quest entry incomplete for the Player.
 ---@param entry number
 function Player:IncompleteQuest(entry) end
+
+---Initializes taxi nodes for the Player's current level.
+function Player:InitTaxiNodesForLevel() end
 
 ---Returns true if the Player is 'Away From Keyboard' flagged, false otherwise.
 ---@return boolean
@@ -645,9 +827,32 @@ function Player:IsAcceptingWhispers() end
 ---@return boolean
 function Player:IsAlliance() end
 
+---Returns true if the Player is at group reward distance from the target, false otherwise.
+---@param target WorldObject
+---@return boolean
+function Player:IsAtGroupRewardDistance(target) end
+
+---Returns true if the Player is at loot reward distance from the target, false otherwise.
+---@param target WorldObject
+---@return boolean
+function Player:IsAtLootRewardDistance(target) end
+
 ---Returns true if the Player is 'Do Not Disturb' flagged, false otherwise.
 ---@return boolean
 function Player:IsDND() end
+
+---Returns true if the Player has completed the daily quest, false otherwise.
+---@param questId number
+---@return boolean
+function Player:IsDailyQuestDone(questId) end
+
+---Returns true if the Player has a Pet (active or stored) and returns false otherwise.
+---@return boolean
+function Player:IsExistPet() end
+
+---Returns true if the Player is flagged for Free-for-all PvP, false otherwise.
+---@return boolean
+function Player:IsFFAPvP() end
 
 ---Returns true if the Player is currently falling, false otherwise.
 ---@return boolean
@@ -707,17 +912,37 @@ function Player:IsInSameRaidWith(player) end
 ---@return boolean
 function Player:IsInWater() end
 
+---Returns true if the Player is at maximum level, false otherwise.
+---@return boolean
+function Player:IsMaxLevel() end
+
 ---Returns true if the Player is currently moving, false otherwise.
 ---@return boolean
 function Player:IsMoving() end
+
+---Returns true if the Player needs to temporarily unsummon their Pet, and false otherwise.
+---@return boolean
+function Player:IsPetNeedBeTemporaryUnsummoned() end
+
+---Returns true if the Player is flagged for PvP, false otherwise.
+---@return boolean
+function Player:IsPvP() end
 
 ---Returns true if the Player is currently rested, false otherwise.
 ---@return boolean
 function Player:IsRested() end
 
+---Returns true if the Player is a spectator, false otherwise.
+---@return boolean
+function Player:IsSpectator() end
+
 ---Returns true if the Player has taxi cheat activated, false otherwise.
 ---@return boolean
 function Player:IsTaxiCheater() end
+
+---Returns true if the Player is using the Looking for Group system, false otherwise.
+---@return boolean
+function Player:IsUsingLfg() end
 
 ---Returns true if the Player can see anoter Player specified by object, false otherwise.
 ---@param player Player
@@ -733,6 +958,12 @@ function Player:KillPlayer() end
 ---Gives Quest monster killed credit
 ---@param entry number
 function Player:KilledMonsterCredit(entry) end
+
+---Learns a pet talent for the specified Pet of the Player.
+---@param petGuid number
+---@param talentId number
+---@param talentRank number
+function Player:LearnPetTalent(petGuid, talentId, talentRank) end
 
 ---Teaches the Player the Spell specified by entry ID
 ---@param spellId number
@@ -767,6 +998,9 @@ function Player:ModifyMoney(copperAmt) end
 ---@param muteTime number
 function Player:Mute(muteTime) end
 
+---Removes the Player's ammo.
+function Player:RemoveAmmo() end
+
 ---Remove cooldowns on spells that have less than 10 minutes of cooldown from the Player, similarly to when you enter an arena.
 function Player:RemoveArenaSpellCooldowns() end
 
@@ -790,6 +1024,16 @@ function Player:RemoveItem(item, entry, itemCount) end
 ---@param val number
 function Player:RemoveLifetimeKills(val) end
 
+---Removes the specified Pet from the Player.
+---@param pet Pet
+---@param mode PetSaveMode
+---@param returnReagent? boolean
+function Player:RemovePet(pet, mode, returnReagent) end
+
+---Removes the specified player flag from the Player.
+---@param flag number
+function Player:RemovePlayerFlag(flag) end
+
 ---Removes the given quest entry from the Player.
 ---@param entry number
 function Player:RemoveQuest(entry) end
@@ -808,7 +1052,7 @@ function Player:ResetAchievements() end
 ---Resets all of the Player's cooldowns
 function Player:ResetAllCooldowns() end
 
----Resets the Players pets talent points
+---Resets the Player's pet talents.
 function Player:ResetPetTalents() end
 
 ---Resets cooldown of the specified spell
@@ -828,6 +1072,9 @@ function Player:ResetTalentsCost() end
 ---@param category number
 ---@param update? boolean
 function Player:ResetTypeCooldowns(category, update) end
+
+---Resummons the Player's pet if it was temporarily unsummoned.
+function Player:ResummonPetTemporaryUnSummonedIfAny() end
 
 ---Resurrects the Player.
 ---@param healthPercent? number
@@ -935,6 +1182,10 @@ function Player:SetAcceptWhispers(acceptWhispers) end
 ---@param achievementid number
 function Player:SetAchievement(achievementid) end
 
+---Sets the Player's ammo item.
+---@param itemEntry number
+function Player:SetAmmo(itemEntry) end
+
 ---Sets the Players Arena Points to the amount specified
 ---@param arenaPoints number
 function Player:SetArenaPoints(arenaPoints) end
@@ -955,9 +1206,17 @@ function Player:SetBindPoint(x, y, z, mapId, areaId) end
 ---@param value number
 function Player:SetBonusTalentCount(value) end
 
+---Sets whether the Player can teleport.
+---@param canTeleport boolean
+function Player:SetCanTeleport(canTeleport) end
+
 ---Sets the Players amount of money to copper specified
 ---@param copperAmt number
 function Player:SetCoinage(copperAmt) end
+
+---Sets the Player's character creation time.
+---@param creationTime number
+function Player:SetCreationTime(creationTime) end
 
 ---Sets the Players intoxication level to the level specified
 ---@param drunkValue number
@@ -1000,13 +1259,33 @@ function Player:SetGuildRank(rank) end
 ---@param honorPoints number
 function Player:SetHonorPoints(honorPoints) end
 
+---Sets the Player as spectator.
+---@param isSpectator boolean
+function Player:SetIsSpectator(isSpectator) end
+
+---Sets the player's known taxi nodes (flight paths).
+---@param nodes table
+function Player:SetKnownTaxiNodes(nodes) end
+
 ---Adds the specified title to the Players list of known titles
 ---@param titleId number
 function Player:SetKnownTitle(titleId) end
 
+---Sets the last pet number for the Player.
+---@param petNumber number
+function Player:SetLastPetNumber(petNumber) end
+
+---Sets the spell ID of the Player's last Pet summoning spell.
+---@param petSpell number
+function Player:SetLastPetSpell(petSpell) end
+
 ---Sets the Players amount of Lifetime Honorable Kills to the value specified
 ---@param honorableKills number
 function Player:SetLifetimeKills(honorableKills) end
+
+---Sets the specified player flag on the Player.
+---@param flag number
+function Player:SetPlayerFlag(flag) end
 
 ---Locks the player controls and disallows all movement and casting.
 ---@param apply? boolean
@@ -1034,6 +1313,10 @@ function Player:SetRestBonus(restBonus) end
 ---@param sheatheState number
 function Player:SetSheath(sheatheState) end
 
+---Sets whether the Player can see Death  Knight Pets.
+---@param show boolean
+function Player:SetShowDKPet(show) end
+
 ---Sets (increases) skill of the Player
 ---@param id number
 ---@param step number
@@ -1050,12 +1333,32 @@ function Player:SetSpellPower(value, apply) end
 ---@param taxiCheat? boolean
 function Player:SetTaxiCheat(taxiCheat) end
 
+---Sets the temporary unsummoned pet number for the Player.
+---@param petNumber number
+function Player:SetTemporaryUnsummonedPetNumber(petNumber) end
+
+---Sets the Player's viewpoint to the specified target.
+---@param target WorldObject
+function Player:SetViewpoint(target) end
+
 ---Converts Player's corpse to bones
 function Player:SpawnBones() end
 
 ---Attempts to start the taxi/flying to the given pathID
 ---@param pathId number
 function Player:StartTaxi(pathId) end
+
+---Summons a Pet at the specified location.
+---@param entry number
+---@param x number
+---@param y number
+---@param z number
+---@param ang number
+---@param petType PetType
+---@param duration? number
+---@param healthPct? number
+---@return Pet
+function Player:SummonPet(entry, x, y, z, ang, petType, duration, healthPct) end
 
 ---Sends a summon request to the player from the given summoner
 ---@param summoner Unit
@@ -1087,6 +1390,9 @@ function Player:ToggleAFK() end
 ---Toggle the Players 'Do Not Disturb' flag
 function Player:ToggleDND() end
 
+---Toggles instant flight mode for the Player.
+function Player:ToggleInstantFlight() end
+
 ---Unbinds the Player from his instances except the one he currently is in.
 function Player:UnbindAllInstances() end
 
@@ -1098,6 +1404,9 @@ function Player:UnbindInstance(map, difficulty) end
 ---Removes a title by ID from the Players list of known titles
 ---@param titleId number
 function Player:UnsetKnownTitle(titleId) end
+
+---Temporarily unsummons the Player's current Pet.
+function Player:UnsummonPetTemporarily() end
 
 ---Sets a setting value for the Player
 ---@param source string

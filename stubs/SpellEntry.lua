@@ -331,3 +331,239 @@ function SpellEntry:GetTotem() end
 ---@return table
 function SpellEntry:GetTotemCategory() end
 
+---Sets the active icon ID for the SpellEntry.
+---@param activeIconID number
+function SpellEntry:SetActiveIconID(activeIconID) end
+
+---Sets the attributes for the SpellEntry.
+---@param attributes number
+function SpellEntry:SetAttributes(attributes) end
+
+---Sets the attributesEx for the SpellEntry.
+---@param attributesEx number
+function SpellEntry:SetAttributesEx(attributesEx) end
+
+---Sets the attributesEx2 for the SpellEntry.
+---@param attributesEx2 number
+function SpellEntry:SetAttributesEx2(attributesEx2) end
+
+---Sets the attributesEx3 for the SpellEntry.
+---@param attributesEx3 number
+function SpellEntry:SetAttributesEx3(attributesEx3) end
+
+---Sets the attributesEx4 for the SpellEntry.
+---@param attributesEx4 number
+function SpellEntry:SetAttributesEx4(attributesEx4) end
+
+---Sets the attributesEx5 for the SpellEntry.
+---@param attributesEx5 number
+function SpellEntry:SetAttributesEx5(attributesEx5) end
+
+---Sets the attributesEx6 for the SpellEntry.
+---@param attributesEx6 number
+function SpellEntry:SetAttributesEx6(attributesEx6) end
+
+---Sets the attributesEx7 for the SpellEntry.
+---@param attributesEx7 number
+function SpellEntry:SetAttributesEx7(attributesEx7) end
+
+---Sets the aura interrupt flags for the SpellEntry.
+---@param auraInterruptFlags number
+function SpellEntry:SetAuraInterruptFlags(auraInterruptFlags) end
+
+---Sets the base level for the SpellEntry.
+---@param baseLevel number
+function SpellEntry:SetBaseLevel(baseLevel) end
+
+---Sets the caster aura spell for the SpellEntry.
+---@param casterAuraSpell number
+function SpellEntry:SetCasterAuraSpell(casterAuraSpell) end
+
+---Sets the caster aura state for the SpellEntry.
+---@param casterAuraState number
+function SpellEntry:SetCasterAuraState(casterAuraState) end
+
+---Sets the caster aura state not for the SpellEntry.
+---@param casterAuraStateNot number
+function SpellEntry:SetCasterAuraStateNot(casterAuraStateNot) end
+
+---Sets the category for the SpellEntry.
+---@param category number
+function SpellEntry:SetCategory(category) end
+
+---Sets the category recovery time for the SpellEntry.
+---@param categoryRecoveryTime number
+function SpellEntry:SetCategoryRecoveryTime(categoryRecoveryTime) end
+
+---Sets the channel interrupt flags for the SpellEntry.
+---@param channelInterruptFlags number
+function SpellEntry:SetChannelInterruptFlags(channelInterruptFlags) end
+
+---Sets the dispel type for the SpellEntry.
+---@param dispel number
+function SpellEntry:SetDispel(dispel) end
+
+---Sets the damage class for the SpellEntry.
+---@param dmgClass number
+function SpellEntry:SetDmgClass(dmgClass) end
+
+---Sets the equipped item class for the SpellEntry.
+---@param equippedItemClass number
+function SpellEntry:SetEquippedItemClass(equippedItemClass) end
+
+---Sets the equipped item inventory type mask for the SpellEntry.
+---@param equippedItemInventoryTypeMask number
+function SpellEntry:SetEquippedItemInventoryTypeMask(equippedItemInventoryTypeMask) end
+
+---Sets the equipped item sub class mask for the SpellEntry.
+---@param equippedItemSubClassMask number
+function SpellEntry:SetEquippedItemSubClassMask(equippedItemSubClassMask) end
+
+---Sets the exclude caster aura spell for the SpellEntry.
+---@param excludeCasterAuraSpell number
+function SpellEntry:SetExcludeCasterAuraSpell(excludeCasterAuraSpell) end
+
+---Sets the exclude target aura spell for the SpellEntry.
+---@param excludeTargetAuraSpell number
+function SpellEntry:SetExcludeTargetAuraSpell(excludeTargetAuraSpell) end
+
+---Sets the facing caster flags for the SpellEntry.
+---@param facingCasterFlags number
+function SpellEntry:SetFacingCasterFlags(facingCasterFlags) end
+
+---Sets the interrupt flags for the SpellEntry.
+---@param interruptFlags number
+function SpellEntry:SetInterruptFlags(interruptFlags) end
+
+---Sets the mana cost for the SpellEntry.
+---@param manaCost number
+function SpellEntry:SetManaCost(manaCost) end
+
+---Sets the mana cost percentage for the SpellEntry.
+---@param manaCostPercentage number
+function SpellEntry:SetManaCostPercentage(manaCostPercentage) end
+
+---Sets the mana cost per level for the SpellEntry.
+---@param manaCostPerlevel number
+function SpellEntry:SetManaCostPerlevel(manaCostPerlevel) end
+
+---Sets the mana per second for the SpellEntry.
+---@param manaPerSecond number
+function SpellEntry:SetManaPerSecond(manaPerSecond) end
+
+---Sets the mana per second per level for the SpellEntry.
+---@param manaPerSecondPerLevel number
+function SpellEntry:SetManaPerSecondPerLevel(manaPerSecondPerLevel) end
+
+---Sets the max affected targets for the SpellEntry.
+---@param maxAffectedTargets number
+function SpellEntry:SetMaxAffectedTargets(maxAffectedTargets) end
+
+---Sets the max level for the SpellEntry.
+---@param maxLevel number
+function SpellEntry:SetMaxLevel(maxLevel) end
+
+---Sets the max target level for the SpellEntry.
+---@param maxTargetLevel number
+function SpellEntry:SetMaxTargetLevel(maxTargetLevel) end
+
+---Sets the mechanic for the SpellEntry.
+---@param mechanic number
+function SpellEntry:SetMechanic(mechanic) end
+
+---Sets the power type for the SpellEntry.
+---@param powerType number
+function SpellEntry:SetPowerType(powerType) end
+
+---Sets the prevention type for the SpellEntry.
+---@param preventionType number
+function SpellEntry:SetPreventionType(preventionType) end
+
+---Sets the proc chance for the SpellEntry.
+---@param procChance number
+function SpellEntry:SetProcChance(procChance) end
+
+---Sets the proc charges for the SpellEntry.
+---@param procCharges number
+function SpellEntry:SetProcCharges(procCharges) end
+
+---Sets the proc flags for the SpellEntry.
+---@param procFlags number
+function SpellEntry:SetProcFlags(procFlags) end
+
+---Sets the recovery time for the SpellEntry.
+---@param recoveryTime number
+function SpellEntry:SetRecoveryTime(recoveryTime) end
+
+---Sets the requires spell focus for the SpellEntry.
+---@param requiresSpellFocus number
+function SpellEntry:SetRequiresSpellFocus(requiresSpellFocus) end
+
+---Sets the rune cost ID for the SpellEntry.
+---@param runeCostID number
+function SpellEntry:SetRuneCostID(runeCostID) end
+
+---Sets the school mask for the SpellEntry.
+---@param schoolMask number
+function SpellEntry:SetSchoolMask(schoolMask) end
+
+---Sets the speed for the SpellEntry.
+---@param speed number
+function SpellEntry:SetSpeed(speed) end
+
+---Sets the spell family name for the SpellEntry.
+---@param spellFamilyName number
+function SpellEntry:SetSpellFamilyName(spellFamilyName) end
+
+---Sets the spell icon ID for the SpellEntry.
+---@param spellIconID number
+function SpellEntry:SetSpellIconID(spellIconID) end
+
+---Sets the spell level for the SpellEntry.
+---@param spellLevel number
+function SpellEntry:SetSpellLevel(spellLevel) end
+
+---Sets the spell priority for the SpellEntry.
+---@param spellPriority number
+function SpellEntry:SetSpellPriority(spellPriority) end
+
+---Sets the stack amount for the SpellEntry.
+---@param stackAmount number
+function SpellEntry:SetStackAmount(stackAmount) end
+
+---Sets the stances for the SpellEntry.
+---@param stances number
+function SpellEntry:SetStances(stances) end
+
+---Sets the stancesNot for the SpellEntry.
+---@param stancesNot number
+function SpellEntry:SetStancesNot(stancesNot) end
+
+---Sets the start recovery category for the SpellEntry.
+---@param startRecoveryCategory number
+function SpellEntry:SetStartRecoveryCategory(startRecoveryCategory) end
+
+---Sets the start recovery time for the SpellEntry.
+---@param startRecoveryTime number
+function SpellEntry:SetStartRecoveryTime(startRecoveryTime) end
+
+---Sets the target aura spell for the SpellEntry.
+---@param targetAuraSpell number
+function SpellEntry:SetTargetAuraSpell(targetAuraSpell) end
+
+---Sets the target aura state for the SpellEntry.
+---@param targetAuraState number
+function SpellEntry:SetTargetAuraState(targetAuraState) end
+
+---Sets the target aura state not for the SpellEntry.
+---@param targetAuraStateNot number
+function SpellEntry:SetTargetAuraStateNot(targetAuraStateNot) end
+
+---Sets the target creature type for the SpellEntry.
+---@param targetCreatureType number
+function SpellEntry:SetTargetCreatureType(targetCreatureType) end
+
+---Sets the targets for the SpellEntry.
+---@param targets number
+function SpellEntry:SetTargets(targets) end
+

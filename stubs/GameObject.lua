@@ -8,10 +8,6 @@ function GameObject:AddLoot() end
 ---Despawns a GameObject
 function GameObject:Despawn() end
 
----Returns the guid of the GameObject that is used as the ID in the database
----@return number
-function GameObject:GetDBTableGUIDLow() end
-
 ---Returns display ID of the GameObject
 ---@return number
 function GameObject:GetDisplayId() end
@@ -31,6 +27,10 @@ function GameObject:GetLootRecipientGroup() end
 ---Returns the [LootState] of a GameObject Below are [LootState]s off of 3.3.5a
 ---@return LootState
 function GameObject:GetLootState() end
+
+---Returns the spawn ID for this GameObject.
+---@return number
+function GameObject:GetSpawnId() end
 
 ---Returns 'true' if the GameObject can give the specified Quest
 ---@param questId number

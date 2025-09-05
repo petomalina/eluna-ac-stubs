@@ -217,3 +217,11 @@ function Item:SetEnchantment(enchantId, enchantSlot) end
 ---@param player Player
 function Item:SetOwner(player) end
 
+---Sets the random properties for the Item from a given random property ID.
+---@param randomPropId number
+function Item:SetRandomProperty(randomPropId) end
+
+---Sets the random suffix for the Item from a given random suffix ID.
+---@param randomSuffixId number
+function Item:SetRandomSuffix(randomSuffixId) end
+

@@ -177,6 +177,11 @@ function GetActiveGameEvents() end
 ---@return string
 function GetAreaName(areaOrZoneId, locale) end
 
+---Returns config value as a string.
+---@param name string
+---@return string
+function GetConfigValue(name) end
+
 ---Returns emulator's supported expansion.
 ---@return number
 function GetCoreExpansion() end
@@ -265,6 +270,11 @@ function GetObjectGUID(lowguid, entry) end
 ---@param the number
 ---@return number
 function GetOwnerHalaa(the) end
+
+---Returns the byte size in bytes (2-9) of the ObjectGuid when packed.
+---@param guid number
+---@return number
+function GetPackedGUIDSize(guid) end
 
 ---Finds and Returns Player by guid if found
 ---@param guid number

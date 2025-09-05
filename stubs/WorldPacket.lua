@@ -31,6 +31,10 @@ function WorldPacket:ReadGUID() end
 ---@return number
 function WorldPacket:ReadLong() end
 
+---Reads a packed GUID from the WorldPacket and returns it as a full 64-bit integer. The packed data size varies (2-9 bytes), but always unpacks to a complete 64-bit GUID.
+---@return number
+function WorldPacket:ReadPackedGUID() end
+
 ---Reads and returns a signed 16-bit integer value from the WorldPacket.
 ---@return number
 function WorldPacket:ReadShort() end
@@ -74,6 +78,10 @@ function WorldPacket:WriteGUID(value) end
 ---Writes a signed 32-bit integer value to the WorldPacket.
 ---@param value number
 function WorldPacket:WriteLong(value) end
+
+---Writes an ObjectGuid as packed GUID format to the WorldPacket.
+---@param value number
+function WorldPacket:WritePackedGUID(value) end
 
 ---Writes a signed 16-bit integer value to the WorldPacket.
 ---@param value number

@@ -120,6 +120,10 @@ function Creature:GetExtraFlags() end
 ---@return number
 function Creature:GetHomePosition(x, y, z) end
 
+---Returns the Creature's loot.
+---@return Loot
+function Creature:GetLoot() end
+
 function Creature:GetLootMode() end
 
 ---Returns the Player that can loot this Creature.
@@ -138,6 +142,10 @@ function Creature:GetNPCFlags() end
 ---@return Rank
 function Creature:GetRank() end
 
+---Returns the Creature's current ReactState.
+---@return ReactState
+function Creature:GetReactState() end
+
 ---Returns the time it takes for this Creature to respawn once killed.
 ---@return number
 function Creature:GetRespawnDelay() end
@@ -153,6 +161,10 @@ function Creature:GetScriptName() end
 ---Returns the Creature's shield block value.
 ---@return number
 function Creature:GetShieldBlockValue() end
+
+---Returns the spawn ID for this Creature.
+---@return number
+function Creature:GetSpawnId() end
 
 ---Returns the Creature's Unit flags.
 ---@return UnitFlags
@@ -281,6 +293,10 @@ function Creature:SelectVictim() end
 ---Sets whether the Creature can be aggroed.
 ---@param allow? boolean
 function Creature:SetAggroEnabled(allow) end
+
+---Sets the time it takes for the Creature's corpse to despawn when killed.
+---@param delay number
+function Creature:SetCorpseDelay(delay) end
 
 ---Sets the Creature's death state to deathState.
 ---@param deathState DeathState
