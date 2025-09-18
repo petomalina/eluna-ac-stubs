@@ -3,7 +3,11 @@
 ---@class GameObject : Object, WorldObject
 GameObject = {}
 
-function GameObject:AddLoot() end
+---Adds an Item to the loot of a GameObject Requires an gameobject with loot_template set to 0.
+---@param entry number
+---@param amount? number
+---@return number
+function GameObject:AddLoot(entry, amount) end
 
 ---Despawns a GameObject
 function GameObject:Despawn() end

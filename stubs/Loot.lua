@@ -54,7 +54,7 @@ function Loot:GetMaxSlotForPlayer(player) end
 function Loot:GetMoney() end
 
 ---Returns the Player GUID that owns this loot for round robin distribution.
----@return bjectGUI
+---@return number
 function Loot:GetRoundRobinPlayer() end
 
 ---Returns the source WorldObject GUID for this loot.

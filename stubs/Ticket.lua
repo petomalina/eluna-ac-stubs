@@ -15,7 +15,7 @@ function Ticket:DeleteResponse() end
 function Ticket:GetAssignedPlayer() end
 
 ---Returns the assigned guid.
----@return ObjectGUID
+---@return number
 function Ticket:GetAssignedToGUID() end
 
 ---Return the Ticket chatlog.
@@ -23,7 +23,7 @@ function Ticket:GetAssignedToGUID() end
 function Ticket:GetChatLog() end
 
 ---Return the Ticket id.
----@return nint3
+---@return number
 function Ticket:GetId() end
 
 ---Returns the last modified time from the Ticket.
@@ -50,13 +50,13 @@ function Ticket:GetResponse() end
 ---@return boolean
 function Ticket:IsAssigned() end
 
----Return true if the Ticket is not assigned to the GUID or false.
----@param playerGuid ui
+---Return true if the Ticket is not assigned to the Player or false.
+---@param playerGuid number
 ---@return boolean
 function Ticket:IsAssignedNotTo(playerGuid) end
 
----Return true if the Ticket is assigned to the GUID or false.
----@param playerGuid ui
+---Return true if the Ticket is assigned to the Player or false.
+---@param playerGuid number
 ---@return boolean
 function Ticket:IsAssignedTo(playerGuid) end
 
@@ -69,12 +69,12 @@ function Ticket:IsClosed() end
 function Ticket:IsCompleted() end
 
 ---Return true if this GUID is the same as the Player who created the Ticket or false.
----@param playerGuid ui
+---@param playerGuid number
 ---@return boolean
 function Ticket:IsFromPlayer(playerGuid) end
 
 ---Assign the Ticket to a player via his GUID.
----@param playerGuid ui
+---@param playerGuid number
 ---@param isAdmin boolean
 function Ticket:SetAssignedTo(playerGuid, isAdmin) end
 
@@ -97,12 +97,12 @@ function Ticket:SetMessage(message) end
 function Ticket:SetPosition(mapId, x, y, z) end
 
 ---Set Ticket resolved by player via his GUID.
----@param playerGuid ui
+---@param playerGuid number
 function Ticket:SetResolvedBy(playerGuid) end
 
----Set Ticket is unassigned.
+---Set Ticket as unassigned.
 function Ticket:SetUnassigned() end
 
----Set Ticket is viewed.
+---Set Ticket as viewed.
 function Ticket:SetViewed() end
 

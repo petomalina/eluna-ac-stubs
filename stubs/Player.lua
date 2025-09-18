@@ -26,7 +26,10 @@ function Player:AddComboPoints(target, count) end
 ---@return Item
 function Player:AddItem(entry, itemCount) end
 
-function Player:AddLifetimeKills() end
+---Adds a specified number of lifetime honorable kills to the Player.
+---@param player Player
+---@param kills number
+function Player:AddLifetimeKills(player, kills) end
 
 ---Tries to add the given quest entry for the Player.
 ---@param entry number
@@ -371,9 +374,9 @@ function Player:GetFreeTalentPoints() end
 ---@return AccountTypes
 function Player:GetGMRank() end
 
----Get glyphId of the glyph slot specified by slotIndex off the Player's current talent specialization.`
+---Returns the glyph ID in the specified glyph slot of the Player's current talent specialization.
 ---@param slotIndex number
----@return lyphI
+---@return number
 function Player:GetGlyph(slotIndex) end
 
 ---Returns the database textID of the WorldObject's gossip header text for the Player
@@ -866,11 +869,21 @@ function Player:IsFlying() end
 ---@return boolean
 function Player:IsGM() end
 
-function Player:IsGMChat() end
+---Returns true if the Player has GM chat enabled, false otherwise.
+---@param player Player
+---@return boolean
+function Player:IsGMChat(player) end
 
-function Player:IsGMVisible() end
+---Returns true if the Player is currently visible to other players, false if hidden via GM invisibility.
+---@param player Player
+---@return boolean
+function Player:IsGMVisible(player) end
 
-function Player:IsGroupVisibleFor() end
+---Returns true if the Player is in the same group and visible to the specified Player, false otherwise.
+---@param player Player
+---@param target Player
+---@return boolean
+function Player:IsGroupVisibleFor(player, target) end
 
 ---Returns true if the Player is eligible for Honor or XP gain by Unit specified, false otherwise.
 ---@param unit Unit

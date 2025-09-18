@@ -57,7 +57,7 @@ function Guild:GetName() end
 function Guild:GetTotalBankMoney() end
 
 ---Invites Guild members to events based on level and rank filters.
----@param player laye
+---@param player Player
 ---@param minLevel number
 ---@param maxLevel number
 ---@param minRank number
@@ -74,10 +74,10 @@ function Guild:ResetTimes() end
 
 ---Send message to Guild from specific Player.
 ---@param player Player
----@param officierOnly boolean
+---@param officerOnly boolean
 ---@param msg string
 ---@param lang number
-function Guild:SendMessage(player, officierOnly, msg, lang) end
+function Guild:SendMessage(player, officerOnly, msg, lang) end
 
 ---Sends a WorldPacket to all the Players in the Guild
 ---@param packet WorldPacket

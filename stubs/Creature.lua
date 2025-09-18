@@ -124,7 +124,10 @@ function Creature:GetHomePosition(x, y, z) end
 ---@return Loot
 function Creature:GetLoot() end
 
-function Creature:GetLootMode() end
+---Returns the loot mode flags for the specified Creature.
+---@param creature Creature
+---@return number
+function Creature:GetLootMode(creature) end
 
 ---Returns the Player that can loot this Creature.
 ---@return Player
@@ -334,7 +337,10 @@ function Creature:SetHover(enable) end
 ---Sets the Creature as in combat with all Players in the dungeon instance.
 function Creature:SetInCombatWithZone() end
 
-function Creature:SetLootMode() end
+---Sets the loot mode flags for the specified Creature.
+---@param creature Creature
+---@param lootMode number
+function Creature:SetLootMode(creature, lootMode) end
 
 ---Sets the Creature's NPC flags to flags.
 ---@param flags NPCFlags

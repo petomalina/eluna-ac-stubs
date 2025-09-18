@@ -7,6 +7,8 @@ SpellEntry = {}
 ---@return number
 function SpellEntry:GetActiveIconID() end
 
+---Returns the Area Group ID associated with this SpellEntry.
+---@return number
 function SpellEntry:GetAreaGroupId() end
 
 ---Returns the attribute bitflags for the SpellEntry.
@@ -41,18 +43,28 @@ function SpellEntry:GetAttributesEx6() end
 ---@return number
 function SpellEntry:GetAttributesEx7() end
 
+---Returns the aura interrupt flags for this SpellEntry.
+---@return number
 function SpellEntry:GetAuraInterruptFlags() end
 
 ---Returns the base level required for the SpellEntry.
 ---@return number
 function SpellEntry:GetBaseLevel() end
 
+---Returns the required aura spell ID that must be on the caster.
+---@return number
 function SpellEntry:GetCasterAuraSpell() end
 
+---Returns the required caster aura state for this SpellEntry.
+---@return number
 function SpellEntry:GetCasterAuraState() end
 
+---Returns the forbidden caster aura state for this SpellEntry.
+---@return number
 function SpellEntry:GetCasterAuraStateNot() end
 
+---Returns the casting time index of this SpellEntry.
+---@return number
 function SpellEntry:GetCastingTimeIndex() end
 
 ---Returns the category ID for the SpellEntry.
@@ -63,6 +75,8 @@ function SpellEntry:GetCategory() end
 ---@return number
 function SpellEntry:GetCategoryRecoveryTime() end
 
+---Returns the channel interrupt flags for this SpellEntry.
+---@return number
 function SpellEntry:GetChannelInterruptFlags() end
 
 ---Returns the dispel ID for the SpellEntry.
@@ -145,6 +159,8 @@ function SpellEntry:GetEffectRadiusIndex() end
 ---@return table
 function SpellEntry:GetEffectRealPointsPerLevel() end
 
+---Returns a table of [SpellFamilyFlags] for each effect of this SpellEntry.
+---@return table
 function SpellEntry:GetEffectSpellClassMask() end
 
 ---Returns a table with all effect trigger spell for SpellEntry.
@@ -167,16 +183,24 @@ function SpellEntry:GetEquippedItemInventoryTypeMask() end
 ---@return number
 function SpellEntry:GetEquippedItemSubClassMask() end
 
+---Returns the aura spell ID that must NOT be on the caster.
+---@return number
 function SpellEntry:GetExcludeCasterAuraSpell() end
 
+---Returns the aura spell ID that must NOT be on the target.
+---@return number
 function SpellEntry:GetExcludeTargetAuraSpell() end
 
+---Returns the facing flags for this SpellEntry.
+---@return number
 function SpellEntry:GetFacingCasterFlags() end
 
 ---Returns the ID of the SpellEntry.
 ---@return number
 function SpellEntry:GetId() end
 
+---Returns the interrupt flags for this SpellEntry.
+---@return number
 function SpellEntry:GetInterruptFlags() end
 
 ---Returns the mana cost for the SpellEntry.
@@ -231,6 +255,8 @@ function SpellEntry:GetProcChance() end
 ---@return number
 function SpellEntry:GetProcCharges() end
 
+---Returns the proc flags for this SpellEntry.
+---@return number
 function SpellEntry:GetProcFlags() end
 
 ---Returns the range index for SpellEntry.
@@ -253,6 +279,8 @@ function SpellEntry:GetReagentCount() end
 ---@return number
 function SpellEntry:GetRecoveryTime() end
 
+---Returns the SpellFocus ID required to cast this SpellEntry.
+---@return number
 function SpellEntry:GetRequiresSpellFocus() end
 
 ---Returns the rune cost id for the SpellEntry.
@@ -267,8 +295,12 @@ function SpellEntry:GetSchoolMask() end
 ---@return number
 function SpellEntry:GetSpeed() end
 
+---Returns the spell family flags of this SpellEntry.
+---@return number
 function SpellEntry:GetSpellFamilyFlags() end
 
+---Returns the spell family name of this SpellEntry.
+---@return number
 function SpellEntry:GetSpellFamilyName() end
 
 ---Returns the spell icon ID for the SpellEntry.
@@ -299,6 +331,8 @@ function SpellEntry:GetStackAmount() end
 ---@return number
 function SpellEntry:GetStances() end
 
+---Returns the stance restriction bitmask for which the SpellEntry cannot be used.
+---@return number
 function SpellEntry:GetStancesNot() end
 
 ---Returns the global cooldown time value for SpellEntry.
@@ -309,10 +343,16 @@ function SpellEntry:GetStartRecoveryCategory() end
 ---@return number
 function SpellEntry:GetStartRecoveryTime() end
 
+---Returns the required aura spell ID that must be on the target.
+---@return number
 function SpellEntry:GetTargetAuraSpell() end
 
+---Returns the required target aura state for this SpellEntry.
+---@return number
 function SpellEntry:GetTargetAuraState() end
 
+---Returns the forbidden target aura state for this SpellEntry.
+---@return number
 function SpellEntry:GetTargetAuraStateNot() end
 
 ---Returns the target creature type bitmasks for the SpellEntry.

@@ -86,7 +86,10 @@ function Item:GetName() end
 ---@return Player
 function Item:GetOwner() end
 
-function Item:GetOwnerGUID() end
+---Returns the GUID of the Player who owns the specified Item.
+---@param item Item
+---@return number
+function Item:GetOwnerGUID(item) end
 
 ---Returns the quality of the Item
 ---@return number
@@ -96,7 +99,10 @@ function Item:GetQuality() end
 ---@return number
 function Item:GetRandomProperty() end
 
-function Item:GetRandomSuffix() end
+---Returns the random suffix ID of the specified Item.  This corresponds to the RandomSuffix field from the item's ItemTemplate, which controls the applied suffix (e.g., "of the Bear", "of the Eagle").
+---@param item Item
+---@return number
+function Item:GetRandomSuffix(item) end
 
 ---Returns the minimum level required to use this Item
 ---@return number
@@ -120,7 +126,10 @@ function Item:GetSpellId(spellIndex) end
 ---@return number
 function Item:GetSpellTrigger(spellIndex) end
 
-function Item:GetStatsCount() end
+---Returns the number of stat entries defined on the Item's ItemTemplate.  This reflects how many stat slots (e.g., Strength, Stamina, etc.) are defined for the item.
+---@param item Item
+---@return number
+function Item:GetStatsCount(item) end
 
 ---Returns subclass of the Item
 ---@return number

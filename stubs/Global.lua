@@ -54,6 +54,10 @@ function CharDBQuery(sql) end
 ---@param callback function
 function CharDBQueryAsync(sql, callback) end
 
+---Unbinds event handlers for either all Creature events, or one type of Creature event.
+---@param event_type number
+function ClearAllCreatureEvents(event_type) end
+
 ---Unbinds event handlers for either all BattleGround events, or one type of event.
 ---@param event_type number
 function ClearBattleGroundEvents(event_type) end
@@ -244,7 +248,10 @@ function GetItemGUID(lowguid) end
 ---@return string
 function GetItemLink(entry, locale) end
 
-function GetItemTemplate() end
+---Returns the ItemTemplate for the specified item ID.  The ItemTemplate contains all static data about an item, such as name, quality, stats, required level, and more.
+---@param itemID number
+---@return ItemTemplate
+function GetItemTemplate(itemID) end
 
 ---Returns Lua engine's name.
 ---@return string
@@ -256,9 +263,13 @@ function GetLuaEngine() end
 ---@return Map
 function GetMapById(mapId, instanceId) end
 
----Return the entrance position (x, y, z, o) of the specified dungeon map id
+---Return the entrance position (x, y, z, o) of the specified dungeon map id.
 ---@param mapId number
-function GetMapEntrance(mapId) end
+---@param pos_x number
+---@param pos_y number
+---@param pos_z number
+---@return number
+function GetMapEntrance(mapId, pos_x, pos_y, pos_z) end
 
 ---Builds a GameObject's GUID.
 ---@param lowguid number
@@ -306,6 +317,8 @@ function GetPlayersInWorld(team, onlyGM) end
 ---@return Quest
 function GetQuest(questId) end
 
+---Returns emulator .conf RealmID
+---@return number
 function GetRealmID() end
 
 ---Get the SpellInfo for the specified Spell id
@@ -382,11 +395,11 @@ function IsInventoryPos(bag, slot) end
 ---@param player Player
 function Kick(player) end
 
----Returns the instance of the specified DBC (DatabaseClient) store.
----@param char ons
+---Returns an entry from the specified DBC (DatabaseClient) store.
+---@param dbcName string
 ---@param id number
 ---@return DBCStore
-function LookupEntry(char, id) end
+function LookupEntry(dbcName, id) end
 
 ---Performs an in-game spawn and returns the Creature or GameObject spawned.
 ---@param spawnType number
@@ -411,6 +424,12 @@ function PrintError() end
 
 ---Prints given parameters to the info log.
 function PrintInfo() end
+
+---Registers a Creature event handler. It used AllCreatureScript so this don't need creature entry as a key.
+---@param event AllCreatureEvents
+---@param func function
+---@param shots? number
+function RegisterAllCreatureEvent(event, func, shots) end
 
 ---Registers a BattleGround event handler.
 ---@param event BGEvents

@@ -283,8 +283,6 @@ function Unit:GetThreatList() end
 ---@return table
 function Unit:GetUnfriendlyUnitsInRange(range) end
 
-function Unit:GetVehicle() end
-
 ---Returns Unit's Vehicle methods
 ---@return Vehicle
 function Unit:GetVehicleKit() end
@@ -598,7 +596,9 @@ function Unit:SetConfused(apply) end
 ---@param guid number
 function Unit:SetCreatorGUID(guid) end
 
-function Unit:SetCritterGUID() end
+---Sets the Unit's critter companion by GUID.
+---@param guid ObjectGuid
+function Unit:SetCritterGUID(guid) end
 
 ---Sets the Unit's modelID.
 ---@param displayId number
