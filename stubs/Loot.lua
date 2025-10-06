@@ -10,7 +10,8 @@ Loot = {}
 ---@param chance number
 ---@param lootMode number
 ---@param needsQuest? boolean
-function Loot:AddItem(itemId, minCount, maxCount, chance, lootMode, needsQuest) end
+---@param allowStacking? boolean
+function Loot:AddItem(itemId, minCount, maxCount, chance, lootMode, needsQuest, allowStacking) end
 
 ---Adds a Player to the list of players currently looting this Loot.
 ---@param player Player
@@ -52,6 +53,10 @@ function Loot:GetMaxSlotForPlayer(player) end
 ---Returns the amount of money in this Loot.
 ---@return number
 function Loot:GetMoney() end
+
+---Returns a table containing all quest items in this Loot.
+---@return table
+function Loot:GetQuestItems() end
 
 ---Returns the Player GUID that owns this loot for round robin distribution.
 ---@return number
