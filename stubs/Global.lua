@@ -21,12 +21,12 @@ function AddVendorItem(entry, item, maxcount, incrtime, extendedcost) end
 ---@param sql string
 function AuthDBExecute(sql) end
 
----Executes a SQL query on the login database and returns an ElunaQuery.
+---Executes a SQL query on the login database and returns an ALEQuery.
 ---@param sql string
----@return ElunaQuery
+---@return ALEQuery
 function AuthDBQuery(sql) end
 
----Executes an asynchronous SQL query on the character database and passes an ElunaQuery to a callback function.
+---Executes an asynchronous SQL query on the character database and passes an ALEQuery to a callback function.
 ---@param sql string
 ---@param callback function
 function AuthDBQueryAsync(sql, callback) end
@@ -44,12 +44,12 @@ function Ban(banMode, nameOrIP, duration, reason, whoBanned) end
 ---@param sql string
 function CharDBExecute(sql) end
 
----Executes a SQL query on the character database and returns an ElunaQuery.
+---Executes a SQL query on the character database and returns an ALEQuery.
 ---@param sql string
----@return ElunaQuery
+---@return ALEQuery
 function CharDBQuery(sql) end
 
----Executes an asynchronous SQL query on the character database and passes an ElunaQuery to a callback function.
+---Executes an asynchronous SQL query on the character database and passes an ALEQuery to a callback function.
 ---@param sql string
 ---@param callback function
 function CharDBQueryAsync(sql, callback) end
@@ -370,7 +370,7 @@ function IsBagPos(bag, slot) end
 ---@return boolean
 function IsBankPos(bag, slot) end
 
----Returns true if Eluna is in compatibility mode, false if in multistate.
+---Returns true if ALE is in compatibility mode, false if in multistate.
 ---@return boolean
 function IsCompatibilityMode() end
 
@@ -567,7 +567,7 @@ function RegisterTicketEvent(event, func, shots) end
 function RegisterUniqueCreatureEvent(guid, instance_id, event, func, shots) end
 
 ---Reloads the Lua engine.
-function ReloadEluna() end
+function ReloadALE() end
 
 ---Removes a global timed event specified by ID.
 ---@param eventId number
@@ -630,12 +630,12 @@ function VendorRemoveItem(entry, item) end
 ---@param sql string
 function WorldDBExecute(sql) end
 
----Executes a SQL query on the world database and returns an ElunaQuery.
+---Executes a SQL query on the world database and returns an ALEQuery.
 ---@param sql string
----@return ElunaQuery
+---@return ALEQuery
 function WorldDBQuery(sql) end
 
----Executes an asynchronous SQL query on the world database and passes an ElunaQuery to a callback function.
+---Executes an asynchronous SQL query on the world database and passes an ALEQuery to a callback function.
 ---@param sql string
 ---@param callback function
 function WorldDBQueryAsync(sql, callback) end
