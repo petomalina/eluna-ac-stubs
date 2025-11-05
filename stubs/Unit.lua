@@ -111,9 +111,7 @@ function Unit:GetAttackers() end
 function Unit:GetAura(spellID) end
 
 ---Returns the Unit's base spell power
----@param spellSchool number
----@return number
-function Unit:GetBaseSpellPower(spellSchool) end
+function Unit:GetBaseSpellPower() end
 
 ---Returns the GUID of the Unit's charmed entity.
 ---@return number
