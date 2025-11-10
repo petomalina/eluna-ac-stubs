@@ -82,6 +82,16 @@ function SpellInfo:GetEffectMechanic(effIndex) end
 ---@return number
 function SpellInfo:GetEffectMechanicMask(effIndex) end
 
+---Retrieves the MiscValueA of a spell effect at the specified index.
+---@param effectIndex number
+---@return number
+function SpellInfo:GetEffectMiscValueA(effectIndex) end
+
+---Retrieves the MiscValueB of a spell effect at the specified index.
+---@param effectIndex number
+---@return number
+function SpellInfo:GetEffectMiscValueB(effectIndex) end
+
 ---Returns the explicit target mask of the SpellInfo.
 ---@return number
 function SpellInfo:GetExplicitTargetMask() end

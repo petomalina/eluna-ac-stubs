@@ -1285,7 +1285,8 @@ function Player:SetKnownTaxiNodes(nodes) end
 function Player:SetKnownTitle(titleId) end
 
 ---Sets the last pet number for the Player.
-function Player:SetLastPetNumber() end
+---@param petNumber number
+function Player:SetLastPetNumber(petNumber) end
 
 ---Sets the spell ID of the Player's last Pet summoning spell.
 ---@param petSpell number
