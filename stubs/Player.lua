@@ -52,6 +52,8 @@ function Player:AdvanceSkill(skillId, step) end
 ---Advances all of the Players weapon skills to the maximum amount available
 function Player:AdvanceSkillsToMax() end
 
+function Player:ApplyRatingMod() end
+
 ---Completes the Quest if a Quest area is explored, or completes the Quest
 ---@param quest number
 function Player:AreaExploredOrEventHappens(quest) end
@@ -545,6 +547,11 @@ function Player:GetQuestLevel(questId) end
 ---@param questId number
 ---@return boolean
 function Player:GetQuestRewardStatus(questId) end
+
+---Returns the Quest ID for the quest in the specified quest log slot.
+---@param slot number
+---@return number
+function Player:GetQuestSlotQuestId(slot) end
 
 ---Returns the status of the Players Quest specified by entry ID
 ---@param questId number
@@ -1218,6 +1225,10 @@ function Player:SetBindPoint(x, y, z, mapId, areaId) end
 ---Set bonus talent count to a specific count for the Player
 ---@param value number
 function Player:SetBonusTalentCount(value) end
+
+---Sets whether the Player can fly.
+---@param activate? boolean
+function Player:SetCanFly(activate) end
 
 ---Sets whether the Player can teleport.
 ---@param canTeleport boolean
