@@ -296,7 +296,7 @@ function Unit:GetVictim() end
 ---@param type number
 ---@param value number
 ---@param apply? boolean
-function Unit:HandleStatModifier(stat, type, value, apply) end
+function Unit:HandleStatFlatModifier(stat, type, value, apply) end
 
 ---Returns true if the Unit has an aura from the given spell entry.
 ---@param spell number
