@@ -13,7 +13,14 @@ jobs:
     
     steps:
       - uses: actions/checkout@v4
-      
+        with:
+          submodules: recursive  # Changed to recursive to get nested submodules
+          
+      - name: Initialize and update submodules
+        run: |
+          git submodule init
+          git submodule update --recursive
+          
       - name: Set up Go
         uses: actions/setup-go@v5
         with:
@@ -24,6 +31,15 @@ jobs:
         
       - name: Run parser
         run: go run parser/main.go
+        
+      - name: Update mod-eluna submodule
+        run: |
+          cd mod-eluna
+          git fetch origin
+          git reset --hard origin/master
+          git submodule init
+          git submodule update --recursive
+          cd ..
         
       - name: Check for changes
         id: git-check
@@ -37,5 +53,5 @@ jobs:
           git config --local user.email "github-actions[bot]@users.noreply.github.com"
           git config --local user.name "github-actions[bot]"
           git add .
-          git commit -m "chore: update stubs from wiki [skip ci]"
+          git commit -m "chore: update stubs and mod-eluna [skip ci]"
           git push 
