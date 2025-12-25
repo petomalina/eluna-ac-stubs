@@ -151,7 +151,12 @@ function ClearUniqueCreatureEvents(guid, instance_id, event_type) end
 function CreateLongLong(n, n_ll, n_str) end
 
 ---Registers a global timed event.
-function CreateLuaEvent() end
+---@param func function
+---@param delay number
+---@param delaytable table
+---@param repeats? number
+---@return number
+function CreateLuaEvent(func, delay, delaytable, repeats) end
 
 ---Creates a WorldPacket.
 ---@param opcode Opcodes
