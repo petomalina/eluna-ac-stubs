@@ -1394,12 +1394,7 @@ function Player:SummonPlayer(summoner) end
 function Player:TalkedToCreature(entry, creature) end
 
 ---Teleports a Player to the location specified
----@param mappId number
----@param xCoord number
----@param yCoord number
----@param zCoord number
----@param orientation number
-function Player:Teleport(mappId, xCoord, yCoord, zCoord, orientation) end
+function Player:Teleport() end
 
 ---Teleports Player to a predefined location based on the teleport name.
 function Player:TeleportTo() end
