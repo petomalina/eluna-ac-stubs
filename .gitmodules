@@ -1,0 +1,3 @@
+[submodule "mod-eluna"]
+	path = mod-eluna
+	url = https://github.com/azerothcore/mod-eluna.git
