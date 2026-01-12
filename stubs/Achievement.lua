@@ -4,7 +4,6 @@
 Achievement = {}
 
 ---Returns the Achievement's ID.
----@return number
 function Achievement:GetId() end
 
 ---Returns the Achievement's name.
