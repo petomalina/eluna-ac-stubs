@@ -957,7 +957,6 @@ function Player:IsRested() end
 function Player:IsSpectator() end
 
 ---Returns true if the Player has taxi cheat activated, false otherwise.
----@return boolean
 function Player:IsTaxiCheater() end
 
 ---Returns true if the Player is using the Looking for Group system, false otherwise.
