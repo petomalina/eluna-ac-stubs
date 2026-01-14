@@ -957,6 +957,7 @@ function Player:IsRested() end
 function Player:IsSpectator() end
 
 ---Returns true if the Player has taxi cheat activated, false otherwise.
+---@return boolean
 function Player:IsTaxiCheater() end
 
 ---Returns true if the Player is using the Looking for Group system, false otherwise.
@@ -1324,9 +1325,7 @@ function Player:SetPvPDeath(on) end
 function Player:SetQuestStatus(entry, status) end
 
 ---Sets the Players reputation amount for the faction specified
----@param factionId number
----@param reputationValue number
-function Player:SetReputation(factionId, reputationValue) end
+function Player:SetReputation() end
 
 ---Sets the Players rest bonus to the amount specified
 ---@param restBonus number

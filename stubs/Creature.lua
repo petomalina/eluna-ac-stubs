@@ -205,7 +205,6 @@ function Creature:HasLootRecipient() end
 function Creature:HasQuest(questId) end
 
 ---Returns true if the Creature has searched for combat assistance already,   and returns false otherwise.
----@return boolean
 function Creature:HasSearchedAssistance() end
 
 ---Returns true if the Creature can cast spellId when mind-controlled,   and returns false otherwise.
