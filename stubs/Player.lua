@@ -1325,7 +1325,9 @@ function Player:SetPvPDeath(on) end
 function Player:SetQuestStatus(entry, status) end
 
 ---Sets the Players reputation amount for the faction specified
-function Player:SetReputation() end
+---@param factionId number
+---@param reputationValue number
+function Player:SetReputation(factionId, reputationValue) end
 
 ---Sets the Players rest bonus to the amount specified
 ---@param restBonus number
