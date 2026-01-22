@@ -556,7 +556,8 @@ function SpellEntry:SetSpeed(speed) end
 function SpellEntry:SetSpellFamilyName(spellFamilyName) end
 
 ---Sets the spell icon ID for the SpellEntry.
-function SpellEntry:SetSpellIconID() end
+---@param spellIconID number
+function SpellEntry:SetSpellIconID(spellIconID) end
 
 ---Sets the spell level for the SpellEntry.
 ---@param spellLevel number
