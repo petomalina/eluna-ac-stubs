@@ -125,7 +125,9 @@ function SpellInfo:HasAreaAuraEffect() end
 function SpellInfo:HasAttribute(attributeType, attribute) end
 
 ---Checks if the SpellInfo has a specific aura.
-function SpellInfo:HasAura() end
+---@param aura number
+---@return boolean
+function SpellInfo:HasAura(aura) end
 
 ---Checks if the SpellInfo has a specific effect.
 ---@param effect uint8
