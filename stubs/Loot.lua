@@ -85,6 +85,7 @@ function Loot:HasItemForAll() end
 function Loot:HasOverThresholdItem() end
 
 ---Returns true if the Loot contains quest items and returns false otherwise.
+---@return boolean
 function Loot:HasQuestItems() end
 
 ---Returns true if the Loot is completely empty (no items and no money), returns false otherwise.
