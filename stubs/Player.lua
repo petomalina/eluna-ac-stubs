@@ -387,7 +387,6 @@ function Player:GetGlyph(slotIndex) end
 function Player:GetGossipTextId(object) end
 
 ---Returns the Players Group object
----@return Group
 function Player:GetGroup() end
 
 ---Returns Group invitation
