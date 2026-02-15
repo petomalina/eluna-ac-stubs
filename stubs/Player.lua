@@ -748,6 +748,11 @@ function Player:HasHealSpec() end
 ---@return boolean
 function Player:HasItem(itemId, count, check_bank) end
 
+---Returns true if the Player knows the given taxi node, false otherwise.
+---@param nodeId number
+---@return boolean
+function Player:HasKnownTaxiNode(nodeId) end
+
 ---Returns true if the Player has a Melee Specialization, false otherwise.
 ---@return boolean
 function Player:HasMeleeSpec() end
