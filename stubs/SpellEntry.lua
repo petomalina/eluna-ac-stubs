@@ -352,7 +352,6 @@ function SpellEntry:GetTargetAuraSpell() end
 function SpellEntry:GetTargetAuraState() end
 
 ---Returns the forbidden target aura state for this SpellEntry.
----@return number
 function SpellEntry:GetTargetAuraStateNot() end
 
 ---Returns the target creature type bitmasks for the SpellEntry.
