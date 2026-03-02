@@ -266,5 +266,7 @@ function SpellInfo:NeedsComboPoints() end
 function SpellInfo:NeedsExplicitUnitTarget() end
 
 ---Checks if the SpellInfo requires to be triggered by the caster of another specified SpellInfo.
-function SpellInfo:NeedsToBeTriggeredByCaster() end
+---@param triggeringSpell SpellInfo
+---@return boolean
+function SpellInfo:NeedsToBeTriggeredByCaster(triggeringSpell) end
 
