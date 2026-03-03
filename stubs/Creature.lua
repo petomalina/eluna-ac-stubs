@@ -19,7 +19,6 @@ function Creature:CallAssistance() end
 function Creature:CallForHelp(radius) end
 
 ---Returns true if the Creature can start attacking nearby hostile Units,   and returns false otherwise.
----@return boolean
 function Creature:CanAggro() end
 
 ---Returns true if the Creature can assist friend in combat against enemy,   and returns false otherwise.

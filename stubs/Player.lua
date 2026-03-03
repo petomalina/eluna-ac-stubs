@@ -852,6 +852,10 @@ function Player:IsAtGroupRewardDistance(target) end
 ---@return boolean
 function Player:IsAtLootRewardDistance(target) end
 
+---Returns true if the Player is a Playerbot/RNDBot, false otherwise.
+---@return boolean
+function Player:IsBot() end
+
 ---Returns true if the Player is 'Do Not Disturb' flagged, false otherwise.
 ---@return boolean
 function Player:IsDND() end
