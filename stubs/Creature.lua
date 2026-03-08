@@ -7,6 +7,9 @@ Creature = {}
 ---@param lootMode number
 function Creature:AddLootMode(lootMode) end
 
+---Handles this Creature's corpse state after all loot is removed.
+function Creature:AllLootRemovedFromCorpse() end
+
 ---Make the Creature attack target.
 ---@param target Unit
 function Creature:AttackStart(target) end

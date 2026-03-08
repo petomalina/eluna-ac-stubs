@@ -643,6 +643,14 @@ function Player:GetTeam() end
 ---@return number
 function Player:GetTemporaryUnsummonedPetNumber() end
 
+---Returns the Players today Honor points.
+---@return number
+function Player:GetTodayHonorPoints() end
+
+---Returns the Players today Honorable Kills
+---@return number
+function Player:GetTodayKills() end
+
 ---Returns the Players total time played
 ---@return number
 function Player:GetTotalPlayedTime() end
@@ -667,6 +675,14 @@ function Player:GetXP() end
 ---@param xp number
 ---@return number
 function Player:GetXPRestBonus(xp) end
+
+---Returns the Players yesterday Honor points.
+---@return number
+function Player:GetYesterdayHonorPoints() end
+
+---Returns the Players yesterday Honorable Kills
+---@return number
+function Player:GetYesterdayKills() end
 
 ---Gives the Player experience
 ---@param xp number
