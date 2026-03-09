@@ -949,9 +949,7 @@ function Player:IsInGuild() end
 function Player:IsInSameGroupWith(player) end
 
 ---Returns true if the Player is currently in the same raid as another Player by object, false otherwise.
----@param player Player
----@return boolean
-function Player:IsInSameRaidWith(player) end
+function Player:IsInSameRaidWith() end
 
 ---Returns true if the Player is currently in water, false otherwise.
 ---@return boolean

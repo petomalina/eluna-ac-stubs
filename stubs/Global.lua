@@ -392,8 +392,7 @@ function IsGameEventActive(eventId) end
 function IsInventoryPos(bag, slot) end
 
 ---Kicks a Player from the server.
----@param player Player
-function Kick(player) end
+function Kick() end
 
 ---Returns an entry from the specified DBC (DatabaseClient) store.
 ---@param dbcName string
