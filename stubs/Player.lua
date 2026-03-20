@@ -277,6 +277,10 @@ function Player:GetArmorProficiency() end
 ---@return number
 function Player:GetAverageItemLevel() end
 
+---Returns the number of free slots in the Player's bank (main bank and bank bags).
+---@return number
+function Player:GetBankFreeSlots() end
+
 ---Returns an item from the Player's bank by slot.
 ---@param slot number
 ---@return Item
@@ -424,6 +428,10 @@ function Player:GetHonorPoints() end
 ---Returns the amount of time the Player has spent ingame
 ---@return number
 function Player:GetInGameTime() end
+
+---Returns the number of free slots in the Player's inventory (backpack and equipped bags).
+---@return number
+function Player:GetInventoryFreeSlots() end
 
 ---Returns an item from the Player's inventory by slot.
 ---@param slot number

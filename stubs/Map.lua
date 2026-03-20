@@ -55,6 +55,10 @@ function Map:GetPlayerCount() end
 ---@return table
 function Map:GetPlayers(team) end
 
+---Returns a table of all Transports on the Map
+---@return table
+function Map:GetTransports() end
+
 ---Returns a WorldObject by its GUID from the map if it is spawned.
 ---@param guid number
 ---@return WorldObject

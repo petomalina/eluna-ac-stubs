@@ -145,6 +145,10 @@ function WorldObject:GetPlayersInRange(range, hostile, dead) end
 ---@return number
 function WorldObject:GetRelativePoint(distance, angle, x, y) end
 
+---Returns the transport the WorldObject is on, or nil if not on a transport
+---@return Transport
+function WorldObject:GetTransport() end
+
 ---Returns the current X coordinate of the WorldObject
 ---@return number
 function WorldObject:GetX() end
