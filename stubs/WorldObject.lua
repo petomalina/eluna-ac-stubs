@@ -275,8 +275,7 @@ function WorldObject:RemoveEventById(eventId) end
 function WorldObject:RemoveEvents() end
 
 ---Sends a WorldPacket to Players in sight of the WorldObject.
----@param packet WorldPacket
-function WorldObject:SendPacket(packet) end
+function WorldObject:SendPacket() end
 
 ---Sets the WorldObject's phase mask.
 ---@param phaseMask number
