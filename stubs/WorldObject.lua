@@ -127,6 +127,7 @@ function WorldObject:GetNearestPlayer(range, hostile, dead) end
 function WorldObject:GetO() end
 
 ---Returns the current phase of the WorldObject
+---@return number
 function WorldObject:GetPhaseMask() end
 
 ---Returns a table of Player objects in sight of the WorldObject or within the given range
