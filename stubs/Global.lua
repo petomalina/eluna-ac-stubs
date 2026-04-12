@@ -111,9 +111,7 @@ function ClearItemGossipEvents(entry, event_type) end
 function ClearMapEvents(map_id, event_type) end
 
 ---Unbinds event handlers for either all of a WorldPacket opcode's events, or one type of event.
----@param opcode number
----@param event_type number
-function ClearPacketEvents(opcode, event_type) end
+function ClearPacketEvents() end
 
 ---Unbinds event handlers for either all Player events, or one type of Player event.
 ---@param event_type number
