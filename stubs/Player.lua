@@ -994,7 +994,6 @@ function Player:IsSpectator() end
 function Player:IsTaxiCheater() end
 
 ---Returns true if the Player is using the Looking for Group system, false otherwise.
----@return boolean
 function Player:IsUsingLfg() end
 
 ---Returns true if the Player can see anoter Player specified by object, false otherwise.
