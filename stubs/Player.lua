@@ -182,10 +182,7 @@ function Player:CompleteQuest(entry) end
 function Player:CreatePet(creatureEntry, creature, spellID) end
 
 ---Returns a random number between the specified minimum and maximum values.
----@param minimum number
----@param maximum number
----@return number
-function Player:DoRandomRoll(minimum, maximum) end
+function Player:DoRandomRoll() end
 
 ---Damages specified Item
 ---@param item Item
@@ -506,6 +503,10 @@ function Player:GetMaxSkillValue(skill) end
 ---@return number
 function Player:GetMeleeCritFromAgility() end
 
+---Returns the index of the talent tree the Player has spent the most points in for the active spec
+---@return number
+function Player:GetMostPointsTalentTree() end
+
 ---Returns a random Raid Member Player object within radius specified of Player
 ---@param radius number
 ---@return Player
@@ -642,6 +643,10 @@ function Player:GetSpells() end
 ---Returns Players current sub group
 ---@return number
 function Player:GetSubGroup() end
+
+---Returns the Players spent talent points in each talent tree for the active spec
+---@return number
+function Player:GetTalentTreePoints() end
 
 ---Returns the Players [TeamId]
 ---@return TeamId
