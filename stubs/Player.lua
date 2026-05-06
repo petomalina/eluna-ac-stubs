@@ -182,7 +182,10 @@ function Player:CompleteQuest(entry) end
 function Player:CreatePet(creatureEntry, creature, spellID) end
 
 ---Returns a random number between the specified minimum and maximum values.
-function Player:DoRandomRoll() end
+---@param minimum number
+---@param maximum number
+---@return number
+function Player:DoRandomRoll(minimum, maximum) end
 
 ---Damages specified Item
 ---@param item Item
