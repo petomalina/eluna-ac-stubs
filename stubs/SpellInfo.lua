@@ -242,7 +242,6 @@ function SpellInfo:IsRangedWeaponSpell() end
 function SpellInfo:IsRequiringDeadTarget() end
 
 ---Checks if the SpellInfo represents a self-casting spell or ability.
----@return boolean
 function SpellInfo:IsSelfCast() end
 
 ---Returns true if the SpellInfo only affects a single target, false if it affects multiple or area targets.
