@@ -1187,7 +1187,8 @@ function Player:SendGuildInvite(invitee) end
 
 ---Sends a vendor window to the Player from the WorldObject specified.
 ---@param sender WorldObject
-function Player:SendListInventory(sender) end
+---@param vendorId? number
+function Player:SendListInventory(sender, vendorId) end
 
 ---Starts a movie for the Player
 ---@param MovieId number
