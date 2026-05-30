@@ -492,8 +492,7 @@ function SpellEntry:SetManaCostPerlevel(manaCostPerlevel) end
 function SpellEntry:SetManaPerSecond(manaPerSecond) end
 
 ---Sets the mana per second per level for the SpellEntry.
----@param manaPerSecondPerLevel number
-function SpellEntry:SetManaPerSecondPerLevel(manaPerSecondPerLevel) end
+function SpellEntry:SetManaPerSecondPerLevel() end
 
 ---Sets the max affected targets for the SpellEntry.
 ---@param maxAffectedTargets number
