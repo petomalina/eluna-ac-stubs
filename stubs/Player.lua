@@ -726,7 +726,10 @@ function Player:GossipComplete() end
 function Player:GossipMenuAddItem(icon, msg, sender, intid, code, popup, money) end
 
 ---Sends the current gossip items of the player to him as a gossip menu with header text from the given textId.
-function Player:GossipSendMenu() end
+---@param npc_text number
+---@param sender Object
+---@param menu_id number
+function Player:GossipSendMenu(npc_text, sender, menu_id) end
 
 ---Sends POI to the location on your map
 ---@param x number

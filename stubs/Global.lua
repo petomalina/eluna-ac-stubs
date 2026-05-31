@@ -73,7 +73,9 @@ function ClearCreatureEvents(entry, event_type) end
 function ClearCreatureGossipEvents(entry, event_type) end
 
 ---Unbinds event handlers for either all of a GameObject's events, or one type of event.
-function ClearGameObjectEvents() end
+---@param entry number
+---@param event_type number
+function ClearGameObjectEvents(entry, event_type) end
 
 ---Unbinds event handlers for either all of a GameObject's gossip events, or one type of event.
 ---@param entry number
@@ -163,7 +165,11 @@ function CreateLuaEvent(func, delay, delaytable, repeats) end
 function CreatePacket(opcode, size) end
 
 ---Returns an object representing an unsigned long long (64-bit) value.
-function CreateULongLong() end
+---@param n number
+---@param n_ull number
+---@param n_str string
+---@return number
+function CreateULongLong(n, n_ull, n_str) end
 
 ---Returns the currently active game events.
 ---@return table
