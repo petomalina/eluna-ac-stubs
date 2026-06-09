@@ -73,7 +73,6 @@ function Map:IsArena() end
 function Map:IsBattleground() end
 
 ---Returns true if the Map is a dungeon, false otherwise.
----@return boolean
 function Map:IsDungeon() end
 
 ---Returns true if the Map has no Players, false otherwise.
