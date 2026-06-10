@@ -192,6 +192,7 @@ function SpellEntry:GetExcludeCasterAuraSpell() end
 function SpellEntry:GetExcludeTargetAuraSpell() end
 
 ---Returns the facing flags for this SpellEntry.
+---@return number
 function SpellEntry:GetFacingCasterFlags() end
 
 ---Returns the ID of the SpellEntry.
