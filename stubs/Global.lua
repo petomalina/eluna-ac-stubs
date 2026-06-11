@@ -191,6 +191,7 @@ function GetConfigValue(name) end
 function GetCoreExpansion() end
 
 ---Returns emulator's name.
+---@return string
 function GetCoreName() end
 
 ---Returns emulator version

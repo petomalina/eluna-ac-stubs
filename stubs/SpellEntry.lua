@@ -348,7 +348,6 @@ function SpellEntry:GetStartRecoveryTime() end
 function SpellEntry:GetTargetAuraSpell() end
 
 ---Returns the required target aura state for this SpellEntry.
----@return number
 function SpellEntry:GetTargetAuraState() end
 
 ---Returns the forbidden target aura state for this SpellEntry.

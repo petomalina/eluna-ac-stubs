@@ -166,7 +166,10 @@ function WorldObject:GetZ() end
 function WorldObject:GetZoneId() end
 
 ---Returns true if the target is in the given arc behind the WorldObject
-function WorldObject:IsInBack() end
+---@param target WorldObject
+---@param arc? number
+---@return boolean
+function WorldObject:IsInBack(target, arc) end
 
 ---Returns true if the target is in the given arc in front of the WorldObject
 ---@param target WorldObject
