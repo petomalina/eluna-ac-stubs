@@ -8,7 +8,6 @@ Roll = {}
 function Roll:GetItemCount() end
 
 ---Returns the rolled Item's GUID.
----@return number
 function Roll:GetItemGUID() end
 
 ---Returns the rolled Item's entry.
