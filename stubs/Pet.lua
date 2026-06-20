@@ -12,7 +12,10 @@ Pet = {}
 function Pet:AddSpell(spellId, active, state, type) end
 
 ---Queues a spell to be cast when the Pet becomes available.
-function Pet:CastWhenWillAvailable() end
+---@param spellId number
+---@param target Unit
+---@param isPositive? boolean
+function Pet:CastWhenWillAvailable(spellId, target, isPositive) end
 
 ---Cleans up the Pet's action bar, removing invalid spells.
 function Pet:CleanupActionBar() end
