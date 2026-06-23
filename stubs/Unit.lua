@@ -520,7 +520,8 @@ function Unit:MoveIdle() end
 function Unit:MoveJump(x, y, z, zSpeed, maxHeight, id) end
 
 ---The Unit will move at random
-function Unit:MoveRandom() end
+---@param radius number
+function Unit:MoveRandom(radius) end
 
 ---Stops the Unit's movement
 function Unit:MoveStop() end
