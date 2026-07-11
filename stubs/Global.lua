@@ -78,7 +78,9 @@ function ClearCreatureGossipEvents(entry, event_type) end
 function ClearGameObjectEvents(entry, event_type) end
 
 ---Unbinds event handlers for either all of a GameObject's gossip events, or one type of event.
-function ClearGameObjectGossipEvents() end
+---@param entry number
+---@param event_type number
+function ClearGameObjectGossipEvents(entry, event_type) end
 
 ---Unbinds event handlers for either all Group events, or one type of Group event.
 ---@param event_type number
