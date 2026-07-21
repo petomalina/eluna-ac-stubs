@@ -231,5 +231,6 @@ function Item:SetOwner(player) end
 function Item:SetRandomProperty(randomPropId) end
 
 ---Sets the random suffix for the Item from a given random suffix ID.
-function Item:SetRandomSuffix() end
+---@param randomSuffixId number
+function Item:SetRandomSuffix(randomSuffixId) end
 
