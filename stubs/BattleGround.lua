@@ -71,6 +71,5 @@ function BattleGround:GetStatus() end
 function BattleGround:GetTypeId() end
 
 ---Returns the winning team of the specific BattleGround.
----@return Team
 function BattleGround:GetWinner() end
 
