@@ -69,6 +69,7 @@ function Unit:ClearThreatList() end
 function Unit:ClearUnitState(state) end
 
 ---Returns calculated percentage from Health
+---@return number
 function Unit:CountPctFromCurHealth() end
 
 ---Returns calculated percentage from Max Health
