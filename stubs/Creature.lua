@@ -141,6 +141,7 @@ function Creature:GetLootRecipient() end
 function Creature:GetLootRecipientGroup() end
 
 ---Returns the Creature's NPC flags.
+---@return NPCFlags
 function Creature:GetNPCFlags() end
 
 ---Returns the Creature's rank.
