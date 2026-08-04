@@ -102,7 +102,6 @@ function SpellInfo:GetExplicitTargetMask() end
 function SpellInfo:GetName(locale) end
 
 ---Returns the school mask of the SpellInfo.
----@return number
 function SpellInfo:GetSchoolMask() end
 
 ---Returns the mechanic mask for the SpellInfo based on an effect bitmask.
