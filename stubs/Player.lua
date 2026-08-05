@@ -576,7 +576,9 @@ function Player:GetQuestStatus(questId) end
 function Player:GetReputation(faction) end
 
 ---Returns the Players reputation rank of faction specified
-function Player:GetReputationRank() end
+---@param faction number
+---@return ReputationRank
+function Player:GetReputationRank(faction) end
 
 ---Returns Quest required Creature or GameObject count
 ---@param quest number
