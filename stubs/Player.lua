@@ -1186,7 +1186,9 @@ function Player:SendCinematicStart(CinematicSequenceId) end
 function Player:SendGuildInvite(invitee) end
 
 ---Sends a vendor window to the Player from the WorldObject specified.
-function Player:SendListInventory() end
+---@param sender WorldObject
+---@param vendorId? number
+function Player:SendListInventory(sender, vendorId) end
 
 ---Starts a movie for the Player
 ---@param MovieId number
