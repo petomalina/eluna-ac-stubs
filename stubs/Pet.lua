@@ -144,11 +144,7 @@ function Pet:LearnSpellHighRank(spellId) end
 function Pet:Remove(mode, returnReagent) end
 
 ---Removes a spell from the Pet's spellbook.
----@param spellId number
----@param learnPrev boolean
----@param clearAb boolean
----@return boolean
-function Pet:RemoveSpell(spellId, learnPrev, clearAb) end
+function Pet:RemoveSpell() end
 
 ---Resets the aura update mask for raid members.
 function Pet:ResetAuraUpdateMaskForRaid() end

@@ -80,7 +80,12 @@ function Unit:CountPctFromMaxHealth() end
 function Unit:DeMorph() end
 
 ---Makes the Unit damage the target Unit
-function Unit:DealDamage() end
+---@param target Unit
+---@param damage number
+---@param durabilityloss? boolean
+---@param school? SpellSchools
+---@param spell? number
+function Unit:DealDamage(target, damage, durabilityloss, school, spell) end
 
 ---Makes the Unit heal the target Unit with given spell
 ---@param target Unit
