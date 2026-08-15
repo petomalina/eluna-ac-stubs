@@ -11,7 +11,6 @@ WorldObject = {}
 function WorldObject:GetAngle(object, x, y) end
 
 ---Returns the current area ID of the WorldObject
----@return number
 function WorldObject:GetAreaId() end
 
 ---Returns a table of Creature objects in sight of the WorldObject or within the given range and/or with a specific entry ID
@@ -162,7 +161,6 @@ function WorldObject:GetY() end
 function WorldObject:GetZ() end
 
 ---Returns the current zone ID of the WorldObject
----@return number
 function WorldObject:GetZoneId() end
 
 ---Returns true if the target is in the given arc behind the WorldObject
