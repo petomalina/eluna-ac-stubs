@@ -75,6 +75,7 @@ function Item:GetItemSet() end
 function Item:GetItemTemplate() end
 
 ---Returns the Items max stack count
+---@return number
 function Item:GetMaxStackCount() end
 
 ---Returns the name of the Item
