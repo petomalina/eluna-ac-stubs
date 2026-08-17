@@ -667,9 +667,7 @@ function Unit:SetOwnerGUID(guid) end
 function Unit:SetPetGUID(guid) end
 
 ---Sets the Unit's power amount for the given power type.
----@param amount number
----@param type number
-function Unit:SetPower(amount, type) end
+function Unit:SetPower() end
 
 ---Sets the Unit's power type.
 ---@param type Powers

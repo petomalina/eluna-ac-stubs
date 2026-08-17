@@ -1334,8 +1334,7 @@ function Player:SetIsSpectator(isSpectator) end
 function Player:SetKnownTaxiNodes(nodes) end
 
 ---Adds the specified title to the Players list of known titles
----@param titleId number
-function Player:SetKnownTitle(titleId) end
+function Player:SetKnownTitle() end
 
 ---Sets the last pet number for the Player.
 ---@param petNumber number
