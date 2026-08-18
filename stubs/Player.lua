@@ -741,9 +741,7 @@ function Player:GossipSendMenu(npc_text, sender, menu_id) end
 function Player:GossipSendPOI(x, y, icon, flags, data, iconText) end
 
 ---Creates a new Group with the creator Player as leader.
----@param invited Player
----@return Group
-function Player:GroupCreate(invited) end
+function Player:GroupCreate() end
 
 ---Completes a Quest if in a Group
 ---@param quest number
@@ -1334,7 +1332,8 @@ function Player:SetIsSpectator(isSpectator) end
 function Player:SetKnownTaxiNodes(nodes) end
 
 ---Adds the specified title to the Players list of known titles
-function Player:SetKnownTitle() end
+---@param titleId number
+function Player:SetKnownTitle(titleId) end
 
 ---Sets the last pet number for the Player.
 ---@param petNumber number

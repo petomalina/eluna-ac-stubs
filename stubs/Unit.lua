@@ -98,8 +98,7 @@ function Unit:DealHeal(target, spell, amount, critical) end
 function Unit:Dismount() end
 
 ---Makes the Unit perform the given emote continuously.
----@param emoteId number
-function Unit:EmoteState(emoteId) end
+function Unit:EmoteState() end
 
 ---Returns the Unit's attackers.
 ---@return table
@@ -667,7 +666,9 @@ function Unit:SetOwnerGUID(guid) end
 function Unit:SetPetGUID(guid) end
 
 ---Sets the Unit's power amount for the given power type.
-function Unit:SetPower() end
+---@param amount number
+---@param type number
+function Unit:SetPower(amount, type) end
 
 ---Sets the Unit's power type.
 ---@param type Powers
