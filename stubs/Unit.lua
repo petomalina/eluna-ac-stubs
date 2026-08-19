@@ -98,7 +98,8 @@ function Unit:DealHeal(target, spell, amount, critical) end
 function Unit:Dismount() end
 
 ---Makes the Unit perform the given emote continuously.
-function Unit:EmoteState() end
+---@param emoteId number
+function Unit:EmoteState(emoteId) end
 
 ---Returns the Unit's attackers.
 ---@return table

@@ -846,7 +846,6 @@ function Player:InArena() end
 function Player:InBattleground() end
 
 ---Returns true if the Player is currently in a BattleGround queue, false otherwise.
----@return boolean
 function Player:InBattlegroundQueue() end
 
 ---Returns true if the Player is in a random LFG dungeon, false otherwise.
