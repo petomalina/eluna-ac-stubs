@@ -159,7 +159,10 @@ function CreateLongLong(n, n_ll, n_str) end
 function CreateLuaEvent(func, delay, delaytable, repeats) end
 
 ---Creates a WorldPacket.
-function CreatePacket() end
+---@param opcode Opcodes
+---@param size number
+---@return WorldPacket
+function CreatePacket(opcode, size) end
 
 ---Returns an object representing an unsigned long long (64-bit) value.
 ---@param n number

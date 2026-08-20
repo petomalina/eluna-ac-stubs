@@ -741,7 +741,9 @@ function Player:GossipSendMenu(npc_text, sender, menu_id) end
 function Player:GossipSendPOI(x, y, icon, flags, data, iconText) end
 
 ---Creates a new Group with the creator Player as leader.
-function Player:GroupCreate() end
+---@param invited Player
+---@return Group
+function Player:GroupCreate(invited) end
 
 ---Completes a Quest if in a Group
 ---@param quest number
@@ -846,6 +848,7 @@ function Player:InArena() end
 function Player:InBattleground() end
 
 ---Returns true if the Player is currently in a BattleGround queue, false otherwise.
+---@return boolean
 function Player:InBattlegroundQueue() end
 
 ---Returns true if the Player is in a random LFG dungeon, false otherwise.
