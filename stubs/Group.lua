@@ -109,9 +109,7 @@ function Group:SetLeader(guid) end
 function Group:SetMemberFlag(target, apply, flag) end
 
 ---Sets the member's subGroup
----@param guid number
----@param groupID number
-function Group:SetMembersGroup(guid, groupID) end
+function Group:SetMembersGroup() end
 
 ---Sets the target icon of an object for the Group
 ---@param icon number
