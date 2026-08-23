@@ -297,7 +297,8 @@ function Creature:SaveToDB() end
 function Creature:SelectVictim() end
 
 ---Sets whether the Creature can be aggroed.
-function Creature:SetAggroEnabled() end
+---@param allow? boolean
+function Creature:SetAggroEnabled(allow) end
 
 ---Sets the time it takes for the Creature's corpse to despawn when killed.
 ---@param delay number
