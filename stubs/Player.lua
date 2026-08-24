@@ -83,9 +83,7 @@ function Player:CanBlock() end
 function Player:CanCompleteQuest(entry) end
 
 ---Returns true if the Player satisfies all requirements to complete the quest entry.
----@param questId number
----@return boolean
-function Player:CanCompleteRepeatableQuest(questId) end
+function Player:CanCompleteRepeatableQuest() end
 
 ---Returns true if the player can equip the given Item or item entry to the given slot, false otherwise.
 ---@param item Item
@@ -994,7 +992,6 @@ function Player:IsPvP() end
 function Player:IsRested() end
 
 ---Returns true if the Player is a spectator, false otherwise.
----@return boolean
 function Player:IsSpectator() end
 
 ---Returns true if the Player has taxi cheat activated, false otherwise.
