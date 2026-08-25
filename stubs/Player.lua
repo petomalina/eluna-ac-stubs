@@ -83,7 +83,9 @@ function Player:CanBlock() end
 function Player:CanCompleteQuest(entry) end
 
 ---Returns true if the Player satisfies all requirements to complete the quest entry.
-function Player:CanCompleteRepeatableQuest() end
+---@param questId number
+---@return boolean
+function Player:CanCompleteRepeatableQuest(questId) end
 
 ---Returns true if the player can equip the given Item or item entry to the given slot, false otherwise.
 ---@param item Item
@@ -992,6 +994,7 @@ function Player:IsPvP() end
 function Player:IsRested() end
 
 ---Returns true if the Player is a spectator, false otherwise.
+---@return boolean
 function Player:IsSpectator() end
 
 ---Returns true if the Player has taxi cheat activated, false otherwise.
@@ -1103,6 +1106,9 @@ function Player:RemoveSpell(entry) end
 ---Loots Player's bones for insignia
 ---@param looter Player
 function Player:RemovedInsignia(looter) end
+
+---Teleports the Player to the most appropriate graveyard.
+function Player:RepopAtGraveyard() end
 
 ---Reset the Players completed achievements
 function Player:ResetAchievements() end
