@@ -19,6 +19,10 @@ function Aura:GetCasterGUID() end
 ---@return number
 function Aura:GetCasterLevel() end
 
+---Returns the number of charges left on the Aura.
+---@return number
+function Aura:GetCharges() end
+
 ---Returns the amount of time left until the Aura expires.
 ---@return number
 function Aura:GetDuration() end
@@ -31,9 +35,17 @@ function Aura:GetMaxDuration() end
 ---@return Unit
 function Aura:GetOwner() end
 
+---Returns the SpellInfo of the spell that created the Aura.
+---@return SpellInfo
+function Aura:GetSpellInfo() end
+
 ---Returns the number of times the Aura has "stacked".
 ---@return number
 function Aura:GetStackAmount() end
+
+---Returns true if the Aura is passive, false otherwise.
+---@return boolean
+function Aura:IsPassive() end
 
 ---Remove this Aura from the Unit it is applied to.
 function Aura:Remove() end

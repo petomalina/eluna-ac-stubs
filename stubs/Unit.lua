@@ -110,6 +110,10 @@ function Unit:GetAttackers() end
 ---@return Aura
 function Unit:GetAura(spellID) end
 
+---Returns a table containing all Auras applied on the Unit.
+---@return table
+function Unit:GetAuras() end
+
 ---Returns the Unit's base spell power
 ---@param spellSchool number
 ---@return number
@@ -290,6 +294,10 @@ function Unit:GetVehicleKit() end
 ---Returns the Unit's current victim target or nil.
 ---@return Unit
 function Unit:GetVictim() end
+
+---Returns a table containing the Auras shown on the Units buff bar, ordered by aura slot.
+---@return table
+function Unit:GetVisibleAuras() end
 
 ---The Unit modifies a specific stat
 ---@param stat number
