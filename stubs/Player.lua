@@ -826,6 +826,7 @@ function Player:HasSpellCooldown(spellId) end
 function Player:HasTalent(spellId, spec) end
 
 ---Returns true if the Player has a Tank Specialization, false otherwise.
+---@return boolean
 function Player:HasTankSpec() end
 
 ---Returns true if the Player has a title by specific ID, false otherwise.
