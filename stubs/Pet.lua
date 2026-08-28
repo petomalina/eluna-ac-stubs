@@ -84,8 +84,7 @@ function Pet:GetUsedTalentCount() end
 function Pet:GivePetLevel(level) end
 
 ---Gives experience points to the Pet.
----@param xp number
-function Pet:GivePetXP(xp) end
+function Pet:GivePetXP() end
 
 ---Returns true if the Pet has a temporary spell queued, returns false otherwise.
 ---@return boolean
