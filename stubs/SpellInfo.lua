@@ -254,6 +254,7 @@ function SpellInfo:IsSingleTarget() end
 function SpellInfo:IsStackableWithRanks() end
 
 ---Determines if the SpellInfo represents a spell or ability that targets an area.
+---@return boolean
 function SpellInfo:IsTargetingArea() end
 
 ---Returns true if the SpellInfo requires combo points to cast, false otherwise.

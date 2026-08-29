@@ -87,9 +87,7 @@ function Item:GetName() end
 function Item:GetOwner() end
 
 ---Returns the GUID of the Player who owns the specified Item.
----@param item Item
----@return number
-function Item:GetOwnerGUID(item) end
+function Item:GetOwnerGUID() end
 
 ---Returns the quality of the Item
 ---@return number
