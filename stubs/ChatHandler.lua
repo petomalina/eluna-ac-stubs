@@ -40,6 +40,7 @@ function ChatHandler:HasLowerSecurity(player, strong) end
 function ChatHandler:HasLowerSecurityAccount(account, strong) end
 
 ---Returns true if other previously called ChatHandler methods sent an error
+---@return boolean
 function ChatHandler:HasSentErrorMessage() end
 
 ---Checks if the securityLevel is available
