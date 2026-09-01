@@ -599,6 +599,7 @@ function Player:GetRunesState() end
 function Player:GetSelection() end
 
 ---Returns the Player's shield item.
+---@return Item
 function Player:GetShield() end
 
 ---Returns the Players current shield block value
